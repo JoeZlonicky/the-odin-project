@@ -2,16 +2,56 @@ h1 {
     font-size: 64px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(231, 107, 107);
+    text-align: center;
 }
 
 h2 {
     font-size: 32px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: hsl(0, 42%, 48%);
+    text-align: center;
 }
 
 p, li {
     font-size: 24px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     max-width: 1400px;
+}
+
+img {
+    height: 300px;
+    width: 450px;
+    margin: 0 auto;
+    display: block;
+}
+
+.recipe-list {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    justify-content: center;
+}
+
+.recipe-list li {
+    margin: 0px 24px;
+    width: 250px;
+    text-align: center;
+}
+
+.more-to-come {
+    text-align: center;
+    width: auto;
+    max-width: none;
+}
+
+.recipe-content {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
