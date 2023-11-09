@@ -1,0 +1,9 @@
+.grid-container, .button-container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.button-container {
+    padding: 10px 0px;
+}
