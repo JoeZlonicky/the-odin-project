@@ -2,11 +2,10 @@ const WON_ROUND_TEXT = 'You win the round!'
 const LOST_ROUND_TEXT = 'You lost the round :(';
 const TIED_ROUND_TEXT = 'Tie!';
 
-const WON_GAME_TEXT = 'You won the game!';
-const LOST_GAME_TEXT = 'You lost the game :(';
+const WON_GAME_TEXT = 'Winning you the game!';
+const LOST_GAME_TEXT = 'Losing you the game :(';
 
-const ROUNDS_TO_PLAY = 5;
-const ROUNDS_NEEDED_TO_WIN = 3;
+const ROUNDS_NEEDED_TO_WIN = 5;
 
 
 function getComputerChoice() {
@@ -45,36 +44,53 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-    let playerWinCount = 0;
-    let roundCount = 0;
+    let playerScore = 0;
+    let computerScore = 0;
+    let gameDecided = false;
 
-    while (roundCount < 5 && playerWinCount < ROUNDS_NEEDED_TO_WIN) {
-        let playerChoice = prompt("Choose rock, paper, or scissors:");
-        if (playerChoice === null) {
-            return;
+    let playerScoreDisplay = document.querySelector('.player-score');
+    let computerScoreDisplay = document.querySelector('.computer-score');
+    let computerChoiceDisplay = document.querySelector('.computer-choice-display');
+    let statusDisplay = document.querySelector('.status-display');
+
+    function onPlayerChoice(choice) {
+        if (gameDecided) {
+            reset();
         }
-
         let computerChoice = getComputerChoice();
-        let result = playRound(playerChoice, computerChoice);
+        let result = playRound(choice, computerChoice);
 
-        if (result) {
-            console.log(`The computer chose: ${computerChoice}`);
-            console.log(result);
-            if (result === WON_ROUND_TEXT) {
-                ++playerWinCount;
-                ++roundCount;
-            } else if (result === LOST_ROUND_TEXT) {
-                ++roundCount;
-            }
+        computerChoiceDisplay.textContent = `The computer chose: ${computerChoice}`;
+
+        if (result === WON_ROUND_TEXT) {
+            ++playerScore;
+            playerScoreDisplay.textContent = playerScore;
+        } else if (result === LOST_ROUND_TEXT) {
+            ++computerScore;
+            computerScoreDisplay.textContent = computerScore;
+        }
+        if (playerScore >= ROUNDS_NEEDED_TO_WIN) {
+            statusDisplay.textContent = WON_GAME_TEXT;
+            gameDecided = true;
+        } else if (computerScore >= ROUNDS_NEEDED_TO_WIN) {
+            statusDisplay.textContent = LOST_GAME_TEXT;
+            gameDecided = true;
         } else {
-            console.log('Invalid choice');
+            statusDisplay.textContent = result;
         }
     }
 
-    if (playerWinCount >= ROUNDS_NEEDED_TO_WIN) {
-        alert(WON_GAME_TEXT);
-    } else {
-        alert(LOST_GAME_TEXT);
+    function reset() {
+        gameDecided = false;
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreDisplay.textContent = playerScore;
+        computerScoreDisplay.textContent = computerScore;
+    }
+
+    let buttons = document.querySelectorAll('.choice');
+    for (let button of buttons) {
+        button.addEventListener('click', _ => onPlayerChoice(button.textContent));
     }
 }
 
