@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Odin';
+    src: url('./fonts/Norse-Bold.otf');
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -46,7 +51,8 @@ body {
 }
 
 .title-text {
-    font-size: 64px;
+    font-size: 100px;
+    font-family: 'Odin', sans-serif;
 }
 
 .splash p {
@@ -114,6 +120,16 @@ form input {
     font-size: 14px;
 }
 
+form input + p {
+    display: none;
+}
+
+form input.error + p {
+    display: block;
+    margin: 0;
+    color: red;
+}
+
 form input:focus {
     border: 1px solid rgb(100, 136, 255);
     outline: none;
@@ -121,8 +137,8 @@ form input:focus {
     box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.4);
 }
 
-form input:invalid {
-    /*border: 1px solid #ff5353;*/
+form input.error {
+    border: 1px solid #ff5353;
 }
 
 .content-container p, form button, .strip-content {
