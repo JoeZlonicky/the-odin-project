@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-container {
+    width: 600px;
+    margin-bottom: 15px;
+}
+
+.add-book-button {
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+/* Book div */
+.book-div {
+    display: flex;
+    gap: 25px;
+    padding: 10px;
+    background-color: rgb(238, 238, 238);
+}
+
+.book-div:nth-child(even) {
+    background-color: rgb(246, 246, 246);
+}
+
+.book-div__title-label {
+    flex: 1;
+}
