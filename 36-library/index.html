@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <dialog id="add-dialog">
+        <h2>Add Book</h2>
+        <button class="svg-button" id="add-dialog__close-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>Close</title>
+                <path
+                    d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+            </svg>
+        </button>
+        <form id="add-dialog__form">
+            <div class="add-dialog__title-section">
+                <label for="add-dialog__title-input">Title</label>
+                <input type="text" id="add-dialog__title-input" required="required">
+            </div>
+            <div class="add-dialog__author-section">
+                <label for="add-dialog__author-input">Author</label>
+                <input type="text" id="add-dialog__author-input" required="required">
+            </div>
+            <div class="add-dialog__n-pages-section">
+                <label for="add-dialog__n-pages-input"># of Pages</label>
+                <input id="add-dialog__n-pages-input" type="number" min="0" step="1" required="required">
+            </div>
+            <div class="add-dialog__read-section">
+                <label for="add-dialog__read-input">Read?</label>
+                <input id="add-dialog__read-input" type="checkbox">
+            </div>
+            <button type="submit" id="add-dialog__add-button" class="color-button">Add</button>
+        </form>
+    </dialog>
+    <h1>My Library</h1>
+    <div class="top-bar">
+        <div class="top-bar__search-section">
+            <label class="top-bar__search-label" for="search-field">Search:</label>
+            <input id="top-bar__search-field" type="search" id="search-field">
+        </div>
+        <button id="top-bar__add_book_button" class="color-button" type="button">Add Book</button>
+    </div>
+    <div id="card-container">
+        <template>
+            <div class="card">
+                <div class="card__title-and-author-section">
+                    <div class="card__title">Title</div>
+                    <div class="card__author">Author</div>
+                </div>
+                <div class="card__end-section">
+                    <div class="card__n-pages"># Pages</div>
+                    <div class="card__button-section">
+                        <button type="button" class="svg-button card__read-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>Toggle Read</title>
+                                <path fill="currentColor"
+                                    d="M3,10C2.76,10 2.55,10.09 2.41,10.25C2.27,10.4 2.21,10.62 2.24,10.86L2.74,13.85C2.82,14.5 3.4,15 4,15H7C7.64,15 8.36,14.44 8.5,13.82L9.56,10.63C9.6,10.5 9.57,10.31 9.5,10.19C9.39,10.07 9.22,10 9,10H3M7,17H4C2.38,17 0.96,15.74 0.76,14.14L0.26,11.15C0.15,10.3 0.39,9.5 0.91,8.92C1.43,8.34 2.19,8 3,8H9C9.83,8 10.58,8.35 11.06,8.96C11.17,9.11 11.27,9.27 11.35,9.45C11.78,9.36 12.22,9.36 12.64,9.45C12.72,9.27 12.82,9.11 12.94,8.96C13.41,8.35 14.16,8 15,8H21C21.81,8 22.57,8.34 23.09,8.92C23.6,9.5 23.84,10.3 23.74,11.11L23.23,14.18C23.04,15.74 21.61,17 20,17H17C15.44,17 13.92,15.81 13.54,14.3L12.64,11.59C12.26,11.31 11.73,11.31 11.35,11.59L10.43,14.37C10.07,15.82 8.56,17 7,17M15,10C14.78,10 14.61,10.07 14.5,10.19C14.42,10.31 14.4,10.5 14.45,10.7L15.46,13.75C15.64,14.44 16.36,15 17,15H20C20.59,15 21.18,14.5 21.25,13.89L21.76,10.82C21.79,10.62 21.73,10.4 21.59,10.25C21.45,10.09 21.24,10 21,10H15Z" />
+                            </svg>
+                        </button>
+                        <button type="button" class="svg-button card__trash-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>Delete</title>
+                                <path fill="currentColor"
+                                    d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</body>
+
+</html>
