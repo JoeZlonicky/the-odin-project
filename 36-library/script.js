@@ -74,8 +74,9 @@ function updateSearchFilter(search) {
     });
 }
 
-addBookToDisplay(new Book('Mistborn', 'Brandon Sanderson', 724));
-addBookToDisplay(new Book('Mistborn', 'Brandon Sanderson', 724));
+addBookToDisplay(new Book('Mistborn: The Final Empire', 'Brandon Sanderson', 647));
+addBookToDisplay(new Book('Mistborn: The Well of Ascension', 'Brandon Sanderson', 781));
+addBookToDisplay(new Book('Mistborn: The Hero of Ages', 'Brandon Sanderson', 572));
 
 addBookButton.addEventListener('click', () => {
     addBookDialog.showModal();
