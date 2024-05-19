@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <div id="content-container">
+        <div class="board-container">
+            <h2>Game not started</h2>
+            <div id="board">
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+        
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+                <div class="cell"><button type="button" class="cell-button"></button></div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <h1>Tic Tac Toe</h1>
+            <div class="name-section">
+                <label for="player-1-name-input">Name 1</label>
+                <input type="text" id="player-1-name-input" placeholder="Player1">
+            </div>
+            <div class="name-section">
+                <label for="player-2-name-input">Name 2</label>
+                <input type="text" id="player-2-name-input" placeholder="Player2">
+            </div>
+            <button id="start-button" type="button">Start</button>
+            <div id="game-log"></div>
+        </div>
+    </div>
+</body>
+</html>

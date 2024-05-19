@@ -1,0 +1,139 @@
+:root {
+    --background-color: #451952;
+    --background-color-lighter: #552364;
+    --background-color-darker: #351141;
+    --background-text-color: white;
+    --secondary-background-color: #662549;
+    --secondary-background-color-darker: #5a1d3f;
+    --accent-color: #f39f5a;
+    --accent-color-lighter: #ffb477;
+    --accent-color-darker: #df8b47;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--background-text-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    
+}
+
+#content-container {
+    display: flex;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+/* Board */
+.board-container {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin: auto;
+    position: relative;
+    top: -100px;
+}
+
+.board-container h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#board {
+    aspect-ratio: 1 / 1;
+    width: min(50%, 600px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
+    background-color: var(--background-text-color);
+}
+
+.cell {
+    display: flex;
+    padding: 5px;
+    background-color: var(--background-color);
+}
+
+.cell-button {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    color: white;
+    font-size: 4rem;
+}
+
+.cell-button:hover {
+    background-color: var(--background-color-lighter);
+}
+
+.cell-button:active {
+    background-color: var(--background-color-darker);
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--secondary-background-color);
+    width: min(30%, 300px);
+    padding: 15px;
+    height: calc(100vh - 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.name-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-section input {
+    flex: 1;
+}
+
+#start-button {
+    padding: 8px 30px;
+    
+    background-color: var(--accent-color);
+    color: var(--text-color-against-primary);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 5px solid var(--accent-color-darker);
+    cursor: pointer;
+
+    display: block;
+    margin: auto;
+}
+
+#start-button:hover {
+    background-color: var(--accent-color-lighter);
+    border-bottom: 5px solid var(--accent-color);
+}
+
+#start-button:active {
+    background-color: var(--accent-color);
+    border-bottom: none;
+    border-top: 5px solid var(--accent-color);
+}
+
+/* Game log */
+#game-log {
+    flex: 1;
+    overflow-y: scroll;
+    background-color: var(--secondary-background-color-darker);
+    padding: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.game-log__message {
+    color: var(--accent-color);
+}
