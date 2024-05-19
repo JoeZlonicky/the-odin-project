@@ -16,12 +16,23 @@ let books = [];
 let bookToCardMap = new Map();
 let bookIDCounter = 0;
 
-function Book(title, author, nPages, read=false) {
+// Swapped to using "class" style as part of a later lesson 
+/* function Book(title, author, nPages, read=false) {
     this.title = title;
     this.author = author;
     this.nPages = nPages;
     this.read = read;
     this.id = bookIDCounter++;
+} */
+
+class Book {
+    constructor(title, author, nPages, read=false) {
+        this.title = title;
+        this.author = author;
+        this.nPages = nPages;
+        this.read = read;
+        this.id = bookIDCounter++;
+    }
 }
 
 function addBookToDisplay(book) {
