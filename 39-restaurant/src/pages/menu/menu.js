@@ -2,7 +2,7 @@ import './menu.css';
 
 const menuData = require('../../data/menu.json');
 
-const menu = () => {
+const menu = (bread=true) => {
     const element = document.createElement('div');
     element.classList.add('menu__container');
 
@@ -20,11 +20,16 @@ const menu = () => {
             entry.classList.add('menu__entry');
 
             const entryHeader = document.createElement('h3');
-            entryHeader.innerText = entryData['name'] + ' - ' + entryData['cost'].toString();
+            if (bread) {
+                entryHeader.innerText = entryData['name'] + ' - ' + entryData['cost'].toString();
+            } else {
+                entryHeader.innerText = entryData['alt-name'] + ' - ' + entryData['cost'].toString();
+            }
+            
             entry.appendChild(entryHeader);
 
             const entryDescription = document.createElement('div');
-            entryDescription.innerText = entryData['description'];
+            entryDescription.innerText = (bread) ? entryData['description'] : entryData['alt-description'];
             entry.appendChild(entryDescription);
 
             section.appendChild(entry);

@@ -4,23 +4,31 @@
     "items": [
       {
         "name": "Bread",
+        "alt-name": "No Bread",
         "cost": 14,
-        "description": "It's bread."
+        "description": "It's bread.",
+        "alt-description": "Nothing."
       },
       {
         "name": "Bigger Bread",
+        "alt-name": "Bigger Lack of Bread",
         "cost": 16,
-        "description": "It's bigger bread."
+        "description": "It's bigger bread.",
+        "alt-description": "More nothing."
       },
       {
         "name": "Even Bigger Bread",
+        "alt-name": "Even Bigger Lack of Bread",
         "cost": 18,
-        "description": "It's even bigger bread."
+        "description": "It's even bigger bread.",
+        "alt-description": "Even more nothing."
       },
       {
         "name": "All The Bread",
+        "alt-name": "A Blackhole",
         "cost": 999,
-        "description": "Yes. All of it."
+        "description": "Yes. All of it.",
+        "alt-description": "Yes. A literal blackhole."
       }
     ]
   },
@@ -29,18 +37,24 @@
     "items": [
       {
         "name": "Bread Salad",
+        "alt-name": "Air Salad",
         "cost": 17,
-        "description": "Bread with croutons. Extra crunchy. And stop asking for lettuce, we don't have any."
+        "description": "Bread with croutons. Extra crunchy. And stop asking for lettuce, we don't have any.",
+        "alt-description": "Quite healthy for you."
       },
       {
         "name": "Bread Pasta",
+        "alt-name": "Pasta",
         "cost": 19,
-        "description": "No sauce."
+        "description": "No sauce.",
+        "alt-description": "Cause what restaurant doesn't have a pasta entree?"
       },
       {
         "name": "Bread Sandwich Sandwich",
+        "alt-name": "Everything except bread sandwich",
         "cost": 18,
-        "description": "Bread between two slices of bread, then put between another two slices of bread. Yum."
+        "description": "Bread between two slices of bread, then put between another two slices of bread. Yum.",
+        "alt-description": "We took everything in the world, except bread, and put it between two slices of... nothing."
       }
     ]
   },
@@ -49,8 +63,10 @@
     "items": [
       {
         "name": "Bread Pudding",
+        "alt-name": "Bread",
         "cost": 11,
-        "description": "It's really just left-over high-hydration dough, but don't tell the customers that. No, don't put that on the website. No one will buy it if they know it's just dough. Stop writing this down. Hey, I said stop. Okay pack your things, Jerry, you're fired."
+        "description": "It's really just left-over high-hydration dough, but don't tell the customers that. No, don't put that on the website. No one will buy it if they know it's just dough. Stop writing this down. Hey, I said stop. Okay pack your things, Jerry, you're fired.",
+        "alt-description": "Psyche."
       }
     ]
   }

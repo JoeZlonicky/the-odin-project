@@ -19,3 +19,8 @@
 .home__icon {
     width: 100px;
 }
+
+.bread-toggle {
+    border: none;
+    background-color: transparent;
+}

@@ -2,7 +2,7 @@ import './about.css';
 
 const aboutData = require('../../data/about.json');
 
-const about = () => {
+const about = (bread=true) => {
     const element = document.createElement('div');
     element.classList.add('about__container');
 
