@@ -1,0 +1,23 @@
+.about__container {
+    width: 80%;
+    max-width: 700px;
+}
+
+.about__container h2 {
+    font-size: 2rem;
+}
+
+.about__hours-section {
+    padding-bottom: 25px;
+    border-bottom: 1px black solid;
+}
+
+.about__hours-table {
+    border-collapse: collapse;
+}
+
+.about__day-label {
+    font-weight: bold;
+    padding-right: 15px;
+    padding-bottom: 5px;
+}

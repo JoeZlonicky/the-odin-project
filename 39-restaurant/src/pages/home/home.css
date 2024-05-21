@@ -1,0 +1,21 @@
+.home__container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 10%;
+    text-align: center;
+    align-items: center;
+}
+
+.home__container h1 {
+    font-size: 3rem;
+}
+
+.home__container h1, .home__container h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.home__icon {
+    width: 100px;
+}

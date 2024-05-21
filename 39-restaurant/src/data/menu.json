@@ -1,0 +1,57 @@
+[
+  {
+    "section": "Lunch",
+    "items": [
+      {
+        "name": "Bread",
+        "cost": 14,
+        "description": "It's bread."
+      },
+      {
+        "name": "Bigger Bread",
+        "cost": 16,
+        "description": "It's bigger bread."
+      },
+      {
+        "name": "Even Bigger Bread",
+        "cost": 18,
+        "description": "It's even bigger bread."
+      },
+      {
+        "name": "All The Bread",
+        "cost": 999,
+        "description": "Yes. All of it."
+      }
+    ]
+  },
+  {
+    "section": "Dinner",
+    "items": [
+      {
+        "name": "Bread Salad",
+        "cost": 17,
+        "description": "Bread with croutons. Extra crunchy. And stop asking for lettuce, we don't have any."
+      },
+      {
+        "name": "Bread Pasta",
+        "cost": 19,
+        "description": "No sauce."
+      },
+      {
+        "name": "Bread Sandwich Sandwich",
+        "cost": 18,
+        "description": "Bread between two slices of bread, then put between another two slices of bread. Yum."
+      }
+    ]
+  },
+  {
+    "section": "Dessert",
+    "items": [
+      {
+        "name": "Bread Pudding",
+        "cost": 11,
+        "description": "It's really just left-over high-hydration dough, but don't tell the customers that. No, don't put that on the website. No one will buy it if they know it's just dough. Stop writing this down. Hey, I said stop. Okay pack your things, Jerry, you're fired."
+      }
+    ]
+  }
+]

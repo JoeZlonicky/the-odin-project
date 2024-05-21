@@ -1,0 +1,12 @@
+{
+    "hours": {
+        "Monday": "12PM - 12:01PM",
+        "Tuesday": "1AM - 4AM",
+        "Wednesday": "Closed... or are we? No, we are... unless?",
+        "Thursday": "12PM - 9PM",
+        "Friday": "12PM - 9PM, unless the moon is full (werewolves)",
+        "Saturday": "Closed",
+        "Sunday": "Even more closed"
+    },
+    "location": "It's complicated."
+}
