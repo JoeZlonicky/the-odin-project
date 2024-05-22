@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'WorkSans';
+    src: url('../fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+    --primary-background-color: rgb(241, 241, 241);
+    --primary-background-color-darker: rgb(212, 212, 212);
+    --primary-background-color-lighter: white;
+
+    --accent-background-color: rgb(20, 20, 20);
+    --accent-background-color-darker: black;
+    --accent-background-color-lighter: rgb(80, 80, 80);
+
+    --primary-text-color: black;
+    --accent-text-color: white;
+}
+
+body {
+    font-family: 'WorkSans', sans-serif;
+
+    display: flex;
+    margin: 0;
+}
+
+input, select, textarea, button {
+    font-family: inherit;
+}
