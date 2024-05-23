@@ -21,7 +21,7 @@
     flex: 1;
 }
 
-.main__task-container {
+#main__task-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-template-rows: 150px;

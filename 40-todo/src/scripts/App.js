@@ -31,6 +31,11 @@ class App {
         if (listIdx === -1) return null;
         return this.lists[listIdx];
     }
+
+    doesListNameExist(name) {
+        const idx = this.lists.findIndex((list) => list.name === name);
+        return idx !== -1;
+    }
 }
 
 export default App;

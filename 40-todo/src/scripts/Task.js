@@ -3,7 +3,7 @@ class Task {
         this.title = title;
         this.description = description;
         this.priority = priority;
-        this.dueData = dueDate;
+        this.dueDate = dueDate;
     }
 }
 

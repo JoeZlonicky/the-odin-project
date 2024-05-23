@@ -1,9 +1,11 @@
 import App from './scripts/App.js';
 import sidebarTaskList from './scripts/components/sidebarTaskList.js';
+import taskCard from './scripts/components/taskCard.js';
 import './style/index.css';
 import './style/main.css';
 import './style/sidebar.css';
 import './style/dialog.css';
+import './style/taskCard.css';
 
 const app = new App();
 
@@ -24,6 +26,11 @@ const updateCurrentViewedList = () => {
         }
     });
     mainTitle.textContent = `${current.name} - Tasks`;
+
+    clearTaskCardsFromView();
+    app.currentList.tasks.forEach((task) => {
+        addTaskCardToView(task);
+    });
 }
 
 const addNewListButton = (list) => {
@@ -33,7 +40,24 @@ const addNewListButton = (list) => {
         updateCurrentViewedList();
     });
     sidebarListContainer.insertBefore(button, sidebarListContainer.lastElementChild);
-};
+}
+
+const taskCardContainer = document.querySelector('#main__task-container');
+
+const clearTaskCardsFromView = () => {
+    const cards = taskCardContainer.querySelectorAll('.task-card');
+    cards.forEach((card) => card.remove());
+}
+
+const addTaskCardToView = (task) => {
+    const newCard = taskCard(task.title, task.priority, task.dueDate);
+    const checkButton = newCard.querySelector('.task-card__check-button');
+    checkButton.addEventListener('click', () => {
+        newCard.remove();
+        app.currentList.removeTask(task.title);
+    });
+    taskCardContainer.insertBefore(newCard, taskCardContainer.lastElementChild);
+}
 
 // Initial app setup
 app.lists.forEach((list) => {
@@ -70,15 +94,17 @@ updateCurrentViewedList();
     });
 
     const nameTakenCheck = () => {
-        nameInput.setCustomValidity('');
-        const takenIndex = app.lists.findIndex((list) => list.name === nameInput.value);
-        if (takenIndex != -1) {
+        const taken = app.doesListNameExist(nameInput.value);
+        if (taken) {
             nameInput.setCustomValidity('Name already in use.');
+
+        } else {
+            nameInput.setCustomValidity('');
         }
     }
 
     nameTakenCheck();
-    nameInput.addEventListener('input', (e) => {
+    nameInput.addEventListener('input', () => {
         nameTakenCheck();
     });
 })();
@@ -87,8 +113,15 @@ updateCurrentViewedList();
 (() => {
     const newButtons = document.querySelectorAll('.main__new-task');
     const dialog = document.querySelector('#new-task-dialog');
+    const form = dialog.querySelector('form');
     const closeButton = dialog.querySelector('.dialog-close-button');
-    const dueDatePicker = dialog.querySelector('#new-task-dialog__due-date-input');
+
+    const titleInput = dialog.querySelector('#new-task-dialog__title-input');
+    const descriptionInput = dialog.querySelector('#new-task-dialog__description-input');
+    const dueDateInput = dialog.querySelector('#new-task-dialog__due-date-input');
+    const priorityInput = dialog.querySelector('#new-task-dialog__priority-input');
+
+    const addButton = dialog.querySelector('#new-task-dialog__add-button');
 
     newButtons.forEach(element => {
         element.onclick = () => dialog.showModal();
@@ -96,5 +129,32 @@ updateCurrentViewedList();
 
     closeButton.onclick = () => dialog.close();
 
-    dueDatePicker.min = new Date().toISOString().split("T")[0];
+    dueDateInput.min = new Date().toISOString().split("T")[0];
+
+    const titleTakenCheck = () => {
+        const taken = app.currentList.doesTaskTitleExist(titleInput.value);
+        if (taken) {
+            titleInput.setCustomValidity('Title already in use.');
+        } else {
+            titleInput.setCustomValidity('');
+        }
+    }
+
+    titleTakenCheck();
+    titleInput.addEventListener('input', () => {
+        titleTakenCheck();
+    });
+
+    addButton.addEventListener('click', (e) => {
+        if (!form.checkValidity()) {
+            return;
+        }
+
+        e.preventDefault();
+        const newTask = app.addNewTaskToCurrentList(titleInput.value, descriptionInput.value, 
+            parseInt(priorityInput.value), dueDateInput.value);
+        addTaskCardToView(newTask);
+        form.reset();
+        dialog.close();
+    });
 })();

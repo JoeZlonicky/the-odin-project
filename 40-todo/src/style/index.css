@@ -15,7 +15,7 @@
     --primary-text-color: black;
     --accent-text-color: white;
 
-    --error-color: rgb(255, 195, 195);
+    --error-color: red;
 }
 
 body {
@@ -27,10 +27,7 @@ body {
 
 input, select, textarea, button {
     font-family: inherit;
-}
-
-input:invalid:required {
-    background-color: var(--error-color);
+    font-size: 1rem;
 }
 
 .color-button {

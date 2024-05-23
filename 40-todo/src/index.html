@@ -17,7 +17,7 @@
             <div class="main__title">Default - Tasks</div>
             <div class="main__author">Made by Joe Zlonicky</div>
         </div>
-        <div class="main__task-container">
+        <div id="main__task-container">
             <button class="main__new-task">+ New Task</button>
         </div>
     </div>
@@ -33,10 +33,10 @@
             </button>
         </div>
         <form id="new-list-dialog__form" method="dialog">
-            <div class="dialog-form-section">
+            <fieldset>
                 <label for="new-list-dialog__name-input">Name</label>
                 <input type="text" id="new-list-dialog__name-input" required="required">
-            </div>
+            </fieldset>
             <button type="submit" id="new-list-dialog__add-button" class="color-button">Add</button>
         </form>
     </dialog>
@@ -52,23 +52,23 @@
             </button>
         </div>
         <form id="new-task-dialog__form" method="dialog">
-            <div class="dialog-form-section">
+            <fieldset>
                 <label for="new-task-dialog__title-input">Title</label>
                 <input type="text" id="new-task-dialog__title-input" required="required">
-            </div>
-            <div class="dialog-form-section">
+            </fieldset>
+            <fieldset>
                 <label for="new-task-dialog__description-input">Description</label>
                 <textarea id="new-task-dialog__description-input"></textarea>
-            </div>
+            </fieldset>
             <div class="dialog-side-by-side">
-                <div class="dialog-form-section">
+                <fieldset>
                     <label for="new-task-dialog__due-date-input">Due Date</label>
                     <input type="date" id="new-task-dialog__due-date-input">
-                </div>
-                <div class="dialog-form-section">
+                </fieldset>
+                <fieldset>
                     <label for="new-task-dialog__priority-input">Priority</label>
                     <input type="number" min="1" max="5" step="1" value="1" class="dialog-short-number-input" id="new-task-dialog__priority-input">
-                </div>
+                </fieldset>
             </div>
             <button type="submit" id="new-task-dialog__add-button" class="color-button">Add</button>
         </form>

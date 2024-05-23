@@ -12,12 +12,18 @@
     font-weight: bold;
 }
 
-.dialog-form-section {
+.dialog-modal fieldset {
     margin-top: 15px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    border: 0;
+    padding: 0;
+}
+
+.dialog-modal fieldset:invalid > label {
+    color: var(--error-color);
 }
 
 .dialog-modal textarea {
@@ -35,6 +41,6 @@
     gap: 20px;
 }
 
-.dialog-side-by-side .dialog-form-section {
+.dialog-side-by-side fieldset {
     margin-top: 0;  /* Fix double margins due to being nested */
 }

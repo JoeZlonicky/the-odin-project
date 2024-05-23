@@ -1,0 +1,35 @@
+.task-card {
+    font-size: 1.5rem;
+    background-color: var(--primary-background-color-lighter);
+    color: var(--primary-text-color);
+    border: 3px var(--accent-background-color-lighter) solid;
+    border-radius: 10px;
+
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    margin: 5px 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task-card__header, .task-card__footer {
+    display: flex;
+}
+
+.task-card__title {
+    flex: 1;
+}
+
+.task-card .svg-button {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.task-card__due-date {
+    flex: 1;
+}
