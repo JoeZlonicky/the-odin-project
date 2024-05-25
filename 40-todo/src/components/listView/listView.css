@@ -1,11 +1,11 @@
-.main {
+.list-view {
     background-color: var(--primary-background-color);
 
     flex: 1;
     min-height: 100vh;
 }
 
-.main__header {
+.list-view__header {
     background-color: var(--primary-background-color-lighter);
 
     padding: 5px 20px;
@@ -15,13 +15,13 @@
     align-items: center;
 }
 
-.main__title {
+.list-view__title {
     font-size: 3rem;
     font-weight: bold;
     flex: 1;
 }
 
-#main__task-container {
+.list-view__task-table {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-template-rows: 150px;
@@ -29,7 +29,7 @@
     padding: 10px;
 }
 
-.main__new-task {
+.new-task-button {
     font-size: 1.5rem;
     background-color: inherit;
     color: var(--primary-text-color);
@@ -46,10 +46,10 @@
     justify-content: center;
 }
 
-.main__new-task:hover {
+.new-task-button:hover {
     background-color: var(--primary-background-color-lighter);
 }
 
-.main__new-task:active {
+.new-task-button:active {
     background-color: var(--primary-background-color-darker);
 }

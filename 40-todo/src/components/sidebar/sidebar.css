@@ -18,7 +18,7 @@
     margin-top: 10px;
 }
 
-.sidebar__new-list, .sidebar__task-list {
+.new-list-button, .list-select-button {
     font-size: 1.5rem;
     background-color: inherit;
     border-radius: 10px;
@@ -31,24 +31,24 @@
     padding: 5px;
 }
 
-.sidebar__task-list {
+.list-select-button {
     border: 3px var(--accent-text-color) solid;
 }
 
-.sidebar__task-list.current {
+.list-select-button.current {
     background-color: var(--accent-text-color);
     color: var(--accent-background-color-darker);
     cursor: auto;
 }
 
-.sidebar__new-list {
+.new-list-button {
     border: 3px var(--accent-text-color) dashed;
 }
 
-.sidebar__new-list:hover, .sidebar__task-list:not(.current):hover {
+.new-list-button:hover, .list-select-button:not(.current):hover {
     background-color: var(--accent-background-color-lighter);
 }
 
-.sidebar__new-list:active, .sidebar__task-list:not(.current):active {
+.new-list-button:active, .list-select-button:not(.current):active {
     background-color: var(--accent-background-color-darker);
 }

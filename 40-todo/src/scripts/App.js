@@ -4,17 +4,14 @@ import Task from './Task';
 class App {
     constructor() {
         this.lists = [];
-        this.currentList = null;
-        this.addNewList('Default', true);
-        this.addNewList('List 2');
+        this.addNewList('Default');
+
+        this.currentList = this.lists[0];
     }
 
-    addNewList(name, setToCurrent=false) {
+    addNewList(name) {
         const newList = new TaskList(name);
         this.lists.push(newList);
-        if (setToCurrent) {
-            this.currentList = newList;
-        }
         return newList;
     }
 

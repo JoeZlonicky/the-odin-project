@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'WorkSans';
-    src: url('../fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+    src: url('./fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
 }
 
 :root {
@@ -43,7 +43,7 @@ input, select, textarea, button {
 }
 
 .color-button:hover {
-    background-color: var(--primary-background-color);
+    background-color: var(--primary-background-color-lighter);
     color: var(--primary-text-color);
     border: 3px var(--accent-background-color) solid;
 }

@@ -1,3 +1,4 @@
+import './taskCard.css';
 import CheckMark from '../../images/check-bold.svg';
 import ArrowExpand from '../../images/arrow-expand.svg';
 
