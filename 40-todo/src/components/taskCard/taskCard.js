@@ -1,6 +1,10 @@
 import './taskCard.css';
 import CheckMark from '../../images/check-bold.svg';
-import ArrowExpand from '../../images/arrow-expand.svg';
+import SquareEdit from '../../images/square-edit.svg';
+
+import {format as formatDate} from 'date-fns';
+
+const currentYear = new Date().getFullYear();
 
 const createIconButton = (src) => {
     const button = document.createElement('button');
@@ -13,42 +17,40 @@ const createIconButton = (src) => {
     return button;
 }
 
-const taskCard = (title, priority=1, dueDate=null) => {
+const taskCard = (title, priority, dueDate=null) => {
     const card = document.createElement('div');
     card.classList.add('task-card');
-
-    const header = document.createElement('div');
-    header.classList.add('task-card__header');
 
     const titleLabel = document.createElement('div');
     titleLabel.classList.add('task-card__title');
     titleLabel.textContent = title;
-    header.appendChild(titleLabel);
 
-    const checkmark = createIconButton(CheckMark);
-    checkmark.classList.add('task-card__check-button');
-    header.appendChild(checkmark);
-
-    const expandButton = createIconButton(ArrowExpand);
-    expandButton.classList.add('task-card__expand-button');
-    header.appendChild(expandButton);
-
-    card.appendChild(header);
+    card.appendChild(titleLabel);
 
     const footer = document.createElement('div');
     footer.classList.add('task-card__footer');
     
     const dueDateLabel = document.createElement('div');
     dueDateLabel.classList.add('task-card__due-date');
-    dueDateLabel.textContent = (dueDate !== null) ? dueDate.toString() : '';
+    if (dueDate !== null) {
+        const date = new Date(dueDate);
+        const formatStr = date.getFullYear() === currentYear ? 'MMM do' : 'MMM do, y';
+        dueDateLabel.textContent = formatDate(date, formatStr);
+    }
+    
     footer.appendChild(dueDateLabel);
 
-    const priorityLabel = document.createElement('div');
-    priorityLabel.classList.add('task-card__priority');
-    priorityLabel.textContent = priority.toString();
-    footer.appendChild(priorityLabel);
+    const editButton = createIconButton(SquareEdit);
+    editButton.classList.add('task-card__edit-button');
+    footer.appendChild(editButton);
+
+    const checkmark = createIconButton(CheckMark);
+    checkmark.classList.add('task-card__check-button');
+    footer.appendChild(checkmark);
 
     card.appendChild(footer);
+
+    card.setAttribute('priority', priority.toString());
 
     return card;
 }

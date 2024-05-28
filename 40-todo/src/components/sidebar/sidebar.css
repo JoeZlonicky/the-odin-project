@@ -1,5 +1,5 @@
 .sidebar {
-    background-color: var(--accent-background-color);
+    background-color: var(--accent-color);
     color: var(--accent-text-color);
 
     width: 300px;
@@ -37,7 +37,7 @@
 
 .list-select-button.current {
     background-color: var(--accent-text-color);
-    color: var(--accent-background-color-darker);
+    color: var(--accent-color-darker);
     cursor: auto;
 }
 
@@ -46,9 +46,9 @@
 }
 
 .new-list-button:hover, .list-select-button:not(.current):hover {
-    background-color: var(--accent-background-color-lighter);
+    background-color: var(--accent-color-lighter);
 }
 
 .new-list-button:active, .list-select-button:not(.current):active {
-    background-color: var(--accent-background-color-darker);
+    background-color: var(--accent-color-darker);
 }

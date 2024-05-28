@@ -1,21 +1,39 @@
 .task-card {
     font-size: 1.5rem;
-    background-color: var(--primary-background-color-lighter);
+    background-color: var(--primary-color-lighter);
     color: var(--primary-text-color);
-    border: 3px var(--accent-background-color-lighter) solid;
     border-radius: 10px;
 
-    width: calc(100% - 20px);
     box-sizing: border-box;
-    margin: 5px 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.task-card__header, .task-card__footer {
+.task-card[priority="1"] {
+    background-color: var(--gradient-color-1);
+}
+
+.task-card[priority="2"] {
+    background-color: var(--gradient-color-2);
+}
+
+.task-card[priority="3"] {
+    background-color: var(--gradient-color-3);
+}
+
+.task-card[priority="4"] {
+    background-color: var(--gradient-color-4);
+}
+
+.task-card[priority="5"] {
+    background-color: var(--gradient-color-5);
+}
+
+.task-card__footer {
     display: flex;
+    align-items: center;
 }
 
 .task-card__title {
@@ -23,8 +41,8 @@
 }
 
 .task-card .svg-button {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     border-radius: 4px;
     padding: 2px;
     flex-shrink: 0;
@@ -32,4 +50,5 @@
 
 .task-card__due-date {
     flex: 1;
+    font-size: 1rem;
 }

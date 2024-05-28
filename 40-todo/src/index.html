@@ -17,7 +17,7 @@
             <div class="list-view__title">Default - Tasks</div>
             <div class="list-view__author">Made by Joe Zlonicky</div>
         </div>
-        <div class="list-view__task-table">
+        <div class="list-view__task-container">
             <button class="new-task-button">+ New Task</button>
         </div>
     </div>
@@ -40,7 +40,7 @@
             <button type="submit" id="new-list-dialog__add-button" class="color-button">Add</button>
         </form>
     </dialog>
-    <dialog class="dialog-modal" id="new-task-dialog">
+    <dialog class="dialog-modal" id="edit-task-dialog">
         <div class="dialog-header">
             <div class="dialog-title">New Task</div>
             <button class="svg-button dialog-close-button">
@@ -51,26 +51,26 @@
                 </svg>
             </button>
         </div>
-        <form id="new-task-dialog__form" method="dialog">
+        <form id="edit-task-dialog__form" method="dialog">
             <fieldset>
-                <label for="new-task-dialog__title-input">Title</label>
-                <input type="text" id="new-task-dialog__title-input" required="required">
+                <label for="edit-task-dialog__title-input">Title</label>
+                <input type="text" id="edit-task-dialog__title-input" required="required">
             </fieldset>
             <fieldset>
-                <label for="new-task-dialog__description-input">Description</label>
-                <textarea id="new-task-dialog__description-input"></textarea>
+                <label for="edit-task-dialog__description-input">Description</label>
+                <textarea id="edit-task-dialog__description-input"></textarea>
             </fieldset>
             <div class="dialog-side-by-side">
                 <fieldset>
-                    <label for="new-task-dialog__due-date-input">Due Date</label>
-                    <input type="date" id="new-task-dialog__due-date-input">
+                    <label for="edit-task-dialog__due-date-input">Due Date</label>
+                    <input type="date" id="edit-task-dialog__due-date-input">
                 </fieldset>
                 <fieldset>
-                    <label for="new-task-dialog__priority-input">Priority</label>
-                    <input type="number" min="1" max="5" step="1" value="1" class="dialog-short-number-input" id="new-task-dialog__priority-input">
+                    <label for="edit-task-dialog__priority-input">Priority</label>
+                    <input type="number" min="1" max="5" step="1" value="1" class="dialog-short-number-input" id="edit-task-dialog__priority-input">
                 </fieldset>
             </div>
-            <button type="submit" id="new-task-dialog__add-button" class="color-button">Add</button>
+            <button type="submit" id="edit-task-dialog__confirm-button" class="color-button">Add</button>
         </form>
     </dialog>
 </body>

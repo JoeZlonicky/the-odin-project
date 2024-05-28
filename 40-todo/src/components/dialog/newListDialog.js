@@ -1,14 +1,10 @@
 import './dialog.css';
 
+const dialog = document.querySelector('#new-list-dialog');
+
 // createListFunc: (name) => ...
 // nameValidityCheckFunc: (name) => '' | errorMessage
-const newListDialogSetup = (createListFunc, nameValidityCheckFunc) => {
-    const newButtons = document.querySelectorAll('.new-list-button');
-    const dialog = document.querySelector('#new-list-dialog');
-    newButtons.forEach(element => {
-        element.onclick = () => dialog.showModal();
-    });
-
+const setup = (createListFunc, nameValidityCheckFunc) => {
     const closeButton = dialog.querySelector('.dialog-close-button');
     closeButton.onclick = () => dialog.close();
 
@@ -37,4 +33,8 @@ const newListDialogSetup = (createListFunc, nameValidityCheckFunc) => {
     });
 }
 
-export default newListDialogSetup;
+const show = () => {
+    dialog.showModal();
+}
+
+export {setup, show};

@@ -4,18 +4,26 @@
 }
 
 :root {
-    --primary-background-color: rgb(241, 241, 241);
-    --primary-background-color-darker: rgb(212, 212, 212);
-    --primary-background-color-lighter: white;
-
-    --accent-background-color: rgb(20, 20, 20);
-    --accent-background-color-darker: black;
-    --accent-background-color-lighter: rgb(80, 80, 80);
-
+    --primary-color: rgb(241, 241, 241);
+    --primary-color-darker: rgb(212, 212, 212);
+    --primary-color-lighter: white;
     --primary-text-color: black;
+
+    --accent-color: rgb(20, 20, 20);
+    --accent-color-darker: black;
+    --accent-color-lighter: rgb(80, 80, 80);
     --accent-text-color: white;
 
     --error-color: red;
+
+    --gradient-color-1: #a6d96a;
+    --gradient-color-2: #fee08b;
+    --gradient-color-3: #fdae61;
+    --gradient-color-4: #f46d43;
+    --gradient-color-5: #d73027;
+
+    --light-hover-color: #00000020;
+    --dark-hover-color: #00000040;
 }
 
 body {
@@ -33,9 +41,9 @@ input, select, textarea, button {
 .color-button {
     padding: 8px 30px;
     
-    background-color: var(--accent-background-color);
+    background-color: var(--accent-color);
     color: var(--accent-text-color);
-    border: 3px var(--accent-background-color) solid;
+    border: 3px var(--accent-color) solid;
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
@@ -43,13 +51,13 @@ input, select, textarea, button {
 }
 
 .color-button:hover {
-    background-color: var(--primary-background-color-lighter);
+    background-color: var(--primary-color-lighter);
     color: var(--primary-text-color);
-    border: 3px var(--accent-background-color) solid;
+    border: 3px var(--accent-color) solid;
 }
 
 .color-button:active {
-    background-color: var(--primary-background-color-darker);
+    background-color: var(--primary-color-darker);
 }
 
 .svg-button {
@@ -63,9 +71,9 @@ input, select, textarea, button {
 }
 
 .svg-button:hover {
-    background-color: #00000020;
+    background-color: var(--light-hover-color);
 }
 
 .svg-button:active {
-    background-color: #00000040;
+    background-color: var(--dark-hover-color);
 }
