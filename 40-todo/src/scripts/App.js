@@ -15,10 +15,10 @@ class App {
         return newList;
     }
 
-    addNewTaskToCurrentList(title, description='', priority=0, dueDate=null) {
+    addNewTaskToCurrentList(title, description='', priority=0, dueDateString='') {
         if (this.currentList === null) return null;
 
-        const newTask = new Task(title, description, priority, dueDate);
+        const newTask = new Task(title, description, priority, dueDateString);
         this.currentList.addTask(newTask);
         return newTask;
     }

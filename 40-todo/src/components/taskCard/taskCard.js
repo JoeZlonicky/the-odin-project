@@ -17,7 +17,7 @@ const createIconButton = (src) => {
     return button;
 }
 
-const taskCard = (title, priority, dueDate=null) => {
+const taskCard = (title, priority, dueDateString='') => {
     const card = document.createElement('div');
     card.classList.add('task-card');
 
@@ -32,8 +32,8 @@ const taskCard = (title, priority, dueDate=null) => {
     
     const dueDateLabel = document.createElement('div');
     dueDateLabel.classList.add('task-card__due-date');
-    if (dueDate !== null) {
-        const date = new Date(dueDate);
+    if (dueDateString !== '') {
+        const date = new Date(`${dueDateString}T00:00:00`);
         const formatStr = date.getFullYear() === currentYear ? 'MMM do' : 'MMM do, y';
         dueDateLabel.textContent = formatDate(date, formatStr);
     }

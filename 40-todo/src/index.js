@@ -45,18 +45,18 @@ newListButtons.forEach((button) => {
 });
 
 // new task dialog setup
-const createNewTask = (title, description, priority, dueDate) => {
-    const newTask = app.addNewTaskToCurrentList(title, description, priority, dueDate);
+const createNewTask = (title, description, priority, dueDateString) => {
+    const newTask = app.addNewTaskToCurrentList(title, description, priority, dueDateString);
     const onRemoveFunc = () => {app.currentList.removeTask(newTask.title)};
     const onEditFunc = () => {editTaskDialog.showEdit(newTask)};
     listView.addTask(newTask, onRemoveFunc, onEditFunc);
 }
 
-const editTask = (originalTask, newTitle, newDescription, newPriority, newDueDate) => {
+const editTask = (originalTask, newTitle, newDescription, newPriority, newDueDateString) => {
     originalTask.title = newTitle;
     originalTask.description = newDescription;
     originalTask.priority = newPriority;
-    originalTask.dueDate = newDueDate;
+    originalTask.dueDateString = newDueDateString;
     const onRemoveFunc = () => {app.currentList.removeTask(originalTask.title)};
     const onEditFunc = () => {editTaskDialog.showEdit(originalTask)};
     listView.updateTask(originalTask, onRemoveFunc, onEditFunc);

@@ -19,7 +19,7 @@ const clearTasks = () => {
 // onEditFunc: () => ...
 // If idx -1 the new card will just get placed at the end
 const addTask = (task, onRemoveFunc, onEditFunc, idx=-1) => {
-    const newCard = taskCard(task.title, task.priority, task.dueDate);
+    const newCard = taskCard(task.title, task.priority, task.dueDateString);
     const checkButton = newCard.querySelector('.task-card__check-button');
     const editButton = newCard.querySelector('.task-card__edit-button');
     checkButton.addEventListener('click', () => {

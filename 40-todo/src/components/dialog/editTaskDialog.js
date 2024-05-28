@@ -15,8 +15,8 @@ const confirmButton = dialog.querySelector('#edit-task-dialog__confirm-button');
 let isEditMode = false;
 let currentlyEditingTask = null;
 
-// createTaskFunc: (name, description, priority, dueDate) => ...
-// editTaskFunc: (originalTask, newName, newDescription, newPriority, newDueDate) => ...
+// createTaskFunc: (name, description, priority, dueDateString) => ...
+// editTaskFunc: (originalTask, newName, newDescription, newPriority, newDueDateString) => ...
 // titleValidityCheckFunc: (title) => '' | errorMessage
 const setup = (createTaskFunc, editTaskFunc, titleValidityCheckFunc) => {
     const closeButton = dialog.querySelector('.dialog-close-button');
@@ -46,21 +46,17 @@ const setup = (createTaskFunc, editTaskFunc, titleValidityCheckFunc) => {
         }
 
         e.preventDefault();
-        let dueDate = new Date(dueDateInput.value);
-        if (isNaN(dueDate.getTime())) {
-            dueDate = null;
-        }
         if (isEditMode) {
             editTaskFunc(currentlyEditingTask,
                 titleInput.value, 
                 descriptionInput.value, 
                 parseInt(priorityInput.value), 
-                dueDate);
+                dueDateInput.value);
         } else {
             createTaskFunc(titleInput.value, 
                 descriptionInput.value, 
                 parseInt(priorityInput.value), 
-                dueDate);
+                dueDateInput.value);
         }
         
         form.reset();
@@ -78,7 +74,7 @@ const showNew = () => {
 
 const showEdit = (task) => {
     titleInput.value = task.title;
-    dueDateInput.value = (task.dueDate !== null) ? formatDate(task.dueDate, 'yyyy-MM-dd') : null;
+    dueDateInput.value = task.dueDateString;
     descriptionInput.value = task.description;
     priorityInput.value = task.priority;
     dialogTitle.textContent = 'Edit Task';
