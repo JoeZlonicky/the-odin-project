@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="sidebar__title">Lists</div>
@@ -15,6 +17,13 @@
     <div class="list-view">
         <div class="list-view__header">
             <div class="list-view__title">Default - Tasks</div>
+            <button class="svg-button list-view__discard-list-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <titel>Delete</titel>
+                    <path
+                        d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" />
+                </svg>
+            </button>
             <div class="list-view__author">Made by Joe Zlonicky</div>
         </div>
         <div class="list-view__task-container">
@@ -67,11 +76,13 @@
                 </fieldset>
                 <fieldset>
                     <label for="edit-task-dialog__priority-input">Priority</label>
-                    <input type="number" min="1" max="5" step="1" value="1" class="dialog-short-number-input" id="edit-task-dialog__priority-input">
+                    <input type="number" min="1" max="5" step="1" value="1" class="dialog-short-number-input"
+                        id="edit-task-dialog__priority-input">
                 </fieldset>
             </div>
             <button type="submit" id="edit-task-dialog__confirm-button" class="color-button">Add</button>
         </form>
     </dialog>
 </body>
+
 </html>

@@ -1,6 +1,7 @@
 import './sidebar.css';
 
 const listContainer = document.querySelector('.sidebar__list-container');
+const listToButton = new Map();
 
 const listSelectButton = (name) => {
     const button = document.createElement('button');
@@ -16,6 +17,14 @@ const addListButton = (list, onSelected=null) => {
         onSelected(list);
     });
     listContainer.insertBefore(button, listContainer.lastElementChild);
+    listToButton.set(list, button);
+}
+
+const removeListButton = (list) => {
+    const button = listToButton.get(list);
+    if (button === undefined) return;
+
+    button.remove();
 }
 
 const updateCurrentViewedList = (currentList) => {
@@ -32,4 +41,4 @@ const updateCurrentViewedList = (currentList) => {
 }
 
 
-export {addListButton, updateCurrentViewedList};
+export {addListButton, updateCurrentViewedList, removeListButton};

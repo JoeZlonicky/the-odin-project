@@ -1,7 +1,8 @@
 class TaskList {
-    constructor(name, tasks=[]) {
+    constructor(name, tasks=[], canBeRemoved=true) {
         this.name = name;
         this.tasks = tasks;
+        this.canBeRemoved = canBeRemoved;
     }
 
     addTask(task) {

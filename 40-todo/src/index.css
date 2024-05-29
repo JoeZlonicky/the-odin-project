@@ -38,6 +38,10 @@ input, select, textarea, button {
     font-size: 1rem;
 }
 
+.hidden {
+    display: none;
+}
+
 .color-button {
     padding: 8px 30px;
     

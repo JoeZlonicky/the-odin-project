@@ -9,15 +9,21 @@ import App from './scripts/App.js';
 
 const app = new App();
 
+// main list view setup
+const onCardRemoveFunc = (task) => {app.currentList.removeTask(task.title)};
+const onCardEditFunc = (task) => {editTaskDialog.showEdit(task)};
+const onListDeleteFunc = (list) => {
+    sidebar.removeListButton(list);
+    app.deleteCurrentListAndSetToDefault();
+    onListSelected(app.currentList);
+}
+listView.setup(onCardRemoveFunc, onCardEditFunc, onListDeleteFunc);
+
 // sidebar setup
 const onListSelected = (list) => {
     app.currentList = list;
     sidebar.updateCurrentViewedList(app.currentList);
-    listView.updateTitle(list.name);
-    listView.clearTasks();
-    list.tasks.forEach((task) => {
-        listView.addTask(task, () => {app.currentList.removeTask(task.title)});
-    });
+    listView.updateCurrentViewedList(app.currentList);
 }
 
 app.lists.forEach((list) => {
@@ -47,9 +53,7 @@ newListButtons.forEach((button) => {
 // new task dialog setup
 const createNewTask = (title, description, priority, dueDateString) => {
     const newTask = app.addNewTaskToCurrentList(title, description, priority, dueDateString);
-    const onRemoveFunc = () => {app.currentList.removeTask(newTask.title)};
-    const onEditFunc = () => {editTaskDialog.showEdit(newTask)};
-    listView.addTask(newTask, onRemoveFunc, onEditFunc);
+    listView.addTask(newTask);
 }
 
 const editTask = (originalTask, newTitle, newDescription, newPriority, newDueDateString) => {
@@ -57,9 +61,7 @@ const editTask = (originalTask, newTitle, newDescription, newPriority, newDueDat
     originalTask.description = newDescription;
     originalTask.priority = newPriority;
     originalTask.dueDateString = newDueDateString;
-    const onRemoveFunc = () => {app.currentList.removeTask(originalTask.title)};
-    const onEditFunc = () => {editTaskDialog.showEdit(originalTask)};
-    listView.updateTask(originalTask, onRemoveFunc, onEditFunc);
+    listView.updateTask(originalTask);
 }
 
 const taskTitleCheck = (title) => {
@@ -73,3 +75,5 @@ const newTaskButtons = document.querySelectorAll('.new-task-button');
 newTaskButtons.forEach((button) => {
     button.onclick = () => editTaskDialog.showNew();
 });
+
+listView.updateCurrentViewedList(app.currentList);
