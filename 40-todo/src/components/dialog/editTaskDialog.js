@@ -27,9 +27,6 @@ const setup = (createTaskFunc, editTaskFunc, titleValidityCheckFunc) => {
         dialog.close();
     }
 
-    // Make it so you can't set the due date in the past
-    dueDateInput.min = new Date().toISOString().split("T")[0];
-
     const checkTitle = () => {
         const validity = titleValidityCheckFunc(titleInput.value);
         titleInput.setCustomValidity(validity);

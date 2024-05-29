@@ -7,7 +7,6 @@ class App {
     constructor() {
         this.lists = [];
         this.addNewList(defaultListName, false);
-
         this.currentList = this.lists[0];
     }
 

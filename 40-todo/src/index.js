@@ -4,18 +4,30 @@ import * as listView from './components/listView/listView';
 import * as sidebar from './components/sidebar/sidebar';
 import * as newListDialog from './components/dialog/newListDialog';
 import * as editTaskDialog from './components/dialog/editTaskDialog';
+import {saveListsToStorage, loadListsFromStorage} from './scripts/saveLoad.js';
 
 import App from './scripts/App.js';
 
 const app = new App();
+const savedLists = loadListsFromStorage();
+if (savedLists.length > 0) {
+    app.lists = savedLists;
+    app.currentList = app.lists[0];
+}
 
 // main list view setup
-const onCardRemoveFunc = (task) => {app.currentList.removeTask(task.title)};
-const onCardEditFunc = (task) => {editTaskDialog.showEdit(task)};
+const onCardRemoveFunc = (task) => {
+    app.currentList.removeTask(task.title);
+    saveListsToStorage(app.lists);
+};
+const onCardEditFunc = (task) => {
+    editTaskDialog.showEdit(task);
+};
 const onListDeleteFunc = (list) => {
     sidebar.removeListButton(list);
     app.deleteCurrentListAndSetToDefault();
     onListSelected(app.currentList);
+    saveListsToStorage(app.lists);
 }
 listView.setup(onCardRemoveFunc, onCardEditFunc, onListDeleteFunc);
 
@@ -36,6 +48,7 @@ const createNewList = (name) => {
     const newList = app.addNewList(name);
     sidebar.addListButton(newList, onListSelected);
     onListSelected(newList);
+    saveListsToStorage(app.lists);
 }
 
 const listNameCheck = (name) => {
@@ -54,6 +67,7 @@ newListButtons.forEach((button) => {
 const createNewTask = (title, description, priority, dueDateString) => {
     const newTask = app.addNewTaskToCurrentList(title, description, priority, dueDateString);
     listView.addTask(newTask);
+    saveListsToStorage(app.lists);
 }
 
 const editTask = (originalTask, newTitle, newDescription, newPriority, newDueDateString) => {
@@ -62,6 +76,7 @@ const editTask = (originalTask, newTitle, newDescription, newPriority, newDueDat
     originalTask.priority = newPriority;
     originalTask.dueDateString = newDueDateString;
     listView.updateTask(originalTask);
+    saveListsToStorage(app.lists);
 }
 
 const taskTitleCheck = (title) => {
