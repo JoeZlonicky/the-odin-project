@@ -1,26 +1,26 @@
-button {
+.dropdown button {
   border: none;
   background-color: rgb(196, 151, 238);
   padding: 10px 20px;
 }
 
-button:hover {
+.dropdownbutton:hover {
   background-color: rgb(208, 172, 241);
 }
 
-button:active {
+.dropdown button:active {
   background-color: rgb(177, 131, 219);
 }
 
-.dropdown-content button {
+.dropdown__content button {
   background-color: rgb(161, 122, 197);
 }
 
-.dropdown-content button:hover {
+.dropdown__content button:hover {
   background-color: rgb(177, 137, 214);
 }
 
-.dropdown-content button:active {
+.dropdown__content button:active {
   background-color: rgb(133, 93, 170);
 }
 
@@ -32,10 +32,11 @@ button:active {
   position: relative;
 }
 
-.dropdown-content {
+.dropdown__content {
   position: absolute;
   left: 0;
   display: flex;
   flex-direction: column;
   width: fit-content;
+  z-index: 1;
 }

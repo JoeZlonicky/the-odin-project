@@ -1,0 +1,81 @@
+.carousel {
+  width: fit-content;
+}
+
+.carousel__frame {
+  position: relative;
+}
+
+.carousel img,
+.carousel__inner-container {
+  width: 400px;
+  height: 250px;
+}
+
+.carousel__inner-container {
+  overflow: hidden;
+  display: flex;
+}
+
+.carousel__inner-container img {
+  flex-shrink: 0;
+}
+
+.carousel__left-nav,
+.carousel__right-nav {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 6%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.carousel__left-nav:hover,
+.carousel__right-nav:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel__left-nav:active,
+.carousel__right-nav:active {
+  background-color: rgba(189, 189, 189, 0.9);
+}
+
+.carousel__left-nav {
+  left: 0;
+}
+
+.carousel__right-nav {
+  right: 0;
+}
+
+.carousel__slide-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px;
+}
+
+.carousel__slide-nav button {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(238, 238, 238);
+  border: 2px black solid;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel__slide-nav button:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.carousel__slide-nav button:active {
+  background-color: rgb(196, 196, 196);
+}
+
+.carousel__slide-nav button.current {
+  background-color: black;
+  cursor: default;
+}
