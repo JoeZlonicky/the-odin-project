@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Form Validation</title>
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <form novalidate>
+      <p>
+        <label for="email">
+          <span>Please enter your email address: </span>
+          <input type="email" id="email" name="email" required />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <p>
+        <label for="country">
+          <span>Please enter the country you reside in: </span>
+          <input type="text" id="country" name="country" required />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <p>
+        <label for="zip-code">
+          <span>Please enter your zip code: </span>
+          <input type="text" id="zip-code" name="zip-code" pattern="[0-9]*" required />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <p>
+        <label for="password">
+          <span>Please enter your password: </span>
+          <input type="password" id="password" name="password" required minlength="8" />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <p>
+        <label for="password-confirm">
+          <span>Please re-enter your password: </span>
+          <input type="password" id="password-confirm" name="password-confirm" required />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
