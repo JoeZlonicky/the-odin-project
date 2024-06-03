@@ -19,8 +19,6 @@ const passwordErrorMessage = getRespectiveErrorElement('password');
 const passwordConfirmInput = document.getElementById('password-confirm');
 const passwordConfirmErrorMessage = getRespectiveErrorElement('password-confirm');
 
-const submitButton = document.querySelector('button[type="submit"]');
-
 const clearErrorMessage = (errorMessage) => {
   errorMessage.textContent = '';
   errorMessage.classList.remove('active');
@@ -51,7 +49,9 @@ const showEmailError = () => {
 };
 
 emailInput.addEventListener('blur', () => {
-  checkEmail();
+  if (emailInput.value.length > 0) {
+    checkEmail();
+  }
 });
 
 emailInput.addEventListener('input', () => {

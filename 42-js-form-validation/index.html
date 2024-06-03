@@ -4,42 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Form Validation</title>
-    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <form novalidate>
       <p>
         <label for="email">
           <span>Please enter your email address: </span>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" placeholder="example@gmail.com" required />
           <span class="error" aria-live="polite"></span>
         </label>
       </p>
       <p>
         <label for="country">
           <span>Please enter the country you reside in: </span>
-          <input type="text" id="country" name="country" required />
+          <input type="text" id="country" name="country" placeholder="The United States" required />
           <span class="error" aria-live="polite"></span>
         </label>
       </p>
       <p>
         <label for="zip-code">
           <span>Please enter your zip code: </span>
-          <input type="text" id="zip-code" name="zip-code" pattern="[0-9]*" required />
+          <input type="text" id="zip-code" name="zip-code" pattern="[0-9]*" placeholder="12345" required />
           <span class="error" aria-live="polite"></span>
         </label>
       </p>
       <p>
         <label for="password">
           <span>Please enter your password: </span>
-          <input type="password" id="password" name="password" required minlength="8" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            minlength="8"
+            placeholder="Minimum 8 characters"
+            required
+          />
           <span class="error" aria-live="polite"></span>
         </label>
       </p>
       <p>
         <label for="password-confirm">
           <span>Please re-enter your password: </span>
-          <input type="password" id="password-confirm" name="password-confirm" required />
+          <input
+            type="password"
+            id="password-confirm"
+            name="password-confirm"
+            placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+            required
+          />
           <span class="error" aria-live="polite"></span>
         </label>
       </p>

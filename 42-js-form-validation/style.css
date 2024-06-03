@@ -1,0 +1,15 @@
+.error {
+  color: red;
+}
+
+input {
+  border: 1px solid black;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: red;
+  background-color: rgb(255, 215, 215);
+}
