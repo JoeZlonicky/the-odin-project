@@ -1,0 +1,51 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--panel-color);
+
+  height: 3rem;
+  min-width: fit-content;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  gap: 10px;
+
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.31);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.31);
+}
+
+header div:first-child {
+  flex: 1;
+  height: fit-content;
+}
+
+.title {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  text-wrap: nowrap;
+}
+
+.title .author {
+  font-size: 1.1rem;
+}
+
+header button {
+  text-wrap: nowrap;
+}
+
+.unit-switch-container {
+  white-space: nowrap;
+}
+
+.unit-switch-container button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.unit-switch-container button:nth-child(2) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
