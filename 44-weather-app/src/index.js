@@ -4,11 +4,13 @@ import './style/search.css';
 import './style/content.css';
 
 import * as apiKeyUtility from './scripts/apiKey.js';
+import { query as apiQuery } from './scripts/api.js';
+import displayData from './scripts/displayData.js';
 
 let apiKey = undefined;
 let waitingForKey = true;
 
-const getApiKey = async () => {
+const updateApiKey = async () => {
   apiKey = apiKeyUtility.getFromStorage();
   if (apiKey === null || !apiKeyUtility.verify(apiKey)) {
     waitingForKey = true;
@@ -21,7 +23,7 @@ const getApiKey = async () => {
   }
 };
 
-const getNewApiKey = async () => {
+const getNewApiKeyFromUser = async () => {
   waitingForKey = true;
   let newKey = await apiKeyUtility.promptUserForValidKey(apiKey !== undefined ? apiKey : '');
   waitingForKey = false;
@@ -32,11 +34,23 @@ const getNewApiKey = async () => {
   }
 };
 
-//getApiKey();
-
 const editApiKeyButton = document.querySelector('#edit-api-key-button');
 editApiKeyButton.addEventListener('click', () => {
   if (waitingForKey) return;
 
-  getNewApiKey();
+  getNewApiKeyFromUser();
 });
+
+(async () => {
+  await updateApiKey();
+  if (apiKey === null) {
+    return;
+  }
+
+  const initialQuery = await apiQuery(apiKey, 'Victoria BC');
+  if (initialQuery === null) {
+    return;
+  }
+
+  displayData(initialQuery, true);
+})();

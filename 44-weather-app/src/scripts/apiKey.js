@@ -1,3 +1,5 @@
+import { query as apiQuery } from './api.js';
+
 const LOCAL_STORAGE_STORE_KEY = 'API_KEY';
 
 // Return a valid key or null if the user cancels
@@ -35,14 +37,8 @@ const verify = async (key) => {
   if (key === '') {
     return 'Empty';
   }
-  const url = `https://api.weatherapi.com/v1/current.json?key=${key}&q=ottawa`;
-
-  const response = await fetch(url, { mode: 'cors' });
-  if (response.ok) {
-    return true;
-  }
-
-  return 'Failed to verify';
+  const result = await apiQuery(key, 'Ottawa');
+  return result !== null;
 };
 
 export { promptUserForValidKey, saveToStorage, getFromStorage, verify };
