@@ -1,7 +1,5 @@
 import { query as apiQuery } from './api.js';
 
-const LOCAL_STORAGE_STORE_KEY = 'API_KEY';
-
 // Return a valid key or null if the user cancels
 const promptUserForValidKey = async (defaultValue = '') => {
   while (true) {
@@ -19,17 +17,8 @@ const promptUserForValidKey = async (defaultValue = '') => {
       return key;
     }
 
-    alert(`An error occured: ${result}`);
+    alert(`Failed to verify API key.`);
   }
-};
-
-const saveToStorage = (key) => {
-  localStorage.setItem(LOCAL_STORAGE_STORE_KEY, key);
-};
-
-// Returns a key or null
-const getFromStorage = () => {
-  return localStorage.getItem(LOCAL_STORAGE_STORE_KEY);
 };
 
 // Returns true or an error message
@@ -41,4 +30,4 @@ const verify = async (key) => {
   return result !== null;
 };
 
-export { promptUserForValidKey, saveToStorage, getFromStorage, verify };
+export { promptUserForValidKey, verify };

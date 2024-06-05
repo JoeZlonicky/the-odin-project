@@ -3,6 +3,7 @@ import './style/header.css';
 import './style/search.css';
 import './style/content.css';
 
+import * as saveLoad from './scripts/saveLoad.js';
 import * as apiKeyUtility from './scripts/apiKey.js';
 import { query as apiQuery } from './scripts/api.js';
 import displayData from './scripts/displayData.js';
@@ -13,7 +14,7 @@ let waitingForKey = true;
 let isMetric = true;
 
 const updateApiKey = async () => {
-  apiKey = apiKeyUtility.getFromStorage();
+  apiKey = saveLoad.getApiKey();
   if (apiKey === null || !apiKeyUtility.verify(apiKey)) {
     waitingForKey = true;
     apiKey = await apiKeyUtility.promptUserForValidKey();
@@ -21,7 +22,7 @@ const updateApiKey = async () => {
   waitingForKey = false;
 
   if (apiKey !== null) {
-    apiKeyUtility.saveToStorage(apiKey);
+    saveLoad.saveApiKey(apiKey);
   }
 };
 
@@ -32,20 +33,28 @@ const getNewApiKeyFromUser = async () => {
 
   if (newKey !== null) {
     apiKey = newKey;
-    apiKeyUtility.saveToStorage(apiKey);
+    saveLoad.saveApiKey(apiKey);
   }
 };
+
+const searchMessage = document.querySelector('.search-message');
 
 const search = async (location) => {
   if (waitingForKey || location === '') return;
 
+  searchMessage.textContent = 'Searching...';
+
   const searchQuery = await apiQuery(apiKey, location);
   if (searchQuery === null) {
+    searchMessage.textContent = 'Search failed :(';
     return;
   }
 
+  searchMessage.textContent = '';
+
   currentQuery = searchQuery;
   displayData(currentQuery, isMetric);
+  saveLoad.saveLastQueryResult(currentQuery);
 };
 
 const editApiKeyButton = document.querySelector('#edit-api-key-button');
@@ -58,17 +67,35 @@ editApiKeyButton.addEventListener('click', () => {
 const metricToggles = document.querySelectorAll('.metric-unit-button');
 const imperialToggles = document.querySelectorAll('.imperial-unit-button');
 
+const swapToMetric = () => {
+  isMetric = true;
+  metricToggles.forEach((metricButton) => metricButton.classList.add('active'));
+  imperialToggles.forEach((imperialButton) => imperialButton.classList.remove('active'));
+
+  saveLoad.saveIsMetric(isMetric);
+
+  if (currentQuery !== null) {
+    displayData(currentQuery, isMetric);
+  }
+};
+
+const swapToImperial = () => {
+  isMetric = false;
+  imperialToggles.forEach((imperialButton) => imperialButton.classList.add('active'));
+  metricToggles.forEach((metricButton) => metricButton.classList.remove('active'));
+
+  saveLoad.saveIsMetric(isMetric);
+
+  if (currentQuery !== null) {
+    displayData(currentQuery, isMetric);
+  }
+};
+
 metricToggles.forEach((button) => {
   button.addEventListener('click', () => {
     if (isMetric) return;
 
-    isMetric = true;
-    metricToggles.forEach((metricButton) => metricButton.classList.add('active'));
-    imperialToggles.forEach((imperialButton) => imperialButton.classList.remove('active'));
-
-    if (currentQuery !== null) {
-      displayData(currentQuery, isMetric);
-    }
+    swapToMetric();
   });
 });
 
@@ -76,13 +103,7 @@ imperialToggles.forEach((button) => {
   button.addEventListener('click', () => {
     if (!isMetric) return;
 
-    isMetric = false;
-    imperialToggles.forEach((imperialButton) => imperialButton.classList.add('active'));
-    metricToggles.forEach((metricButton) => metricButton.classList.remove('active'));
-
-    if (currentQuery !== null) {
-      displayData(currentQuery, isMetric);
-    }
+    swapToImperial();
   });
 });
 
@@ -102,11 +123,24 @@ searchInput.addEventListener('keypress', (event) => {
   }
 });
 
-(async () => {
+const savedIsMetric = saveLoad.getIsMetric();
+if (!savedIsMetric) {
+  swapToImperial();
+}
+
+const savedLastQuery = saveLoad.getLastQueryResult();
+if (savedLastQuery != null) {
+  currentQuery = savedLastQuery;
+  displayData(currentQuery, isMetric);
+}
+
+const setup = async () => {
   await updateApiKey();
   if (apiKey === null) {
     return;
   }
+
+  if (currentQuery !== null) return;
 
   const initialQuery = await apiQuery(apiKey, 'Victoria BC');
   if (initialQuery === null) {
@@ -115,4 +149,8 @@ searchInput.addEventListener('keypress', (event) => {
 
   currentQuery = initialQuery;
   displayData(currentQuery, isMetric);
-})();
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => setup(), 20); // Delay enough that prompt won't interrupt page rendering
+});
