@@ -10,8 +10,8 @@ console.log(`sumRange(3) = ${sumRange(3)}`);
 
 // Q2: Power function
 function power(x, n) {
-  if (n == 0) return 1;
-  if (n == 1) return x;
+  if (n === 0) return 1;
+  if (n === 1) return x;
 
   return x * power(x, n - 1);
 }
@@ -22,8 +22,8 @@ console.log(`power(2, 0) = ${power(2, 0)}`);
 
 // Q3: Calculate factorial
 function factorial(n) {
-  if (n == 0) return 1;
-  if (n == 1) return 1;
+  if (n === 0) return 1;
+  if (n === 1) return 1;
 
   return n * factorial(n - 1);
 }
@@ -126,7 +126,7 @@ console.log(`Sum of squares of multi-dimensional array = ${sumSquares(secondMult
 // Q9: Replicate
 function replicate(x, n) {
   if (n <= 0) return [];
-  if (n == 1) return [x];
+  if (n === 1) return [x];
 
   return [x].concat(replicate(x, n - 1));
 }
