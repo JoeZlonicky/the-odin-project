@@ -15,6 +15,7 @@ const idMapping = {
   humidity: 'humidity-value',
   visibility: 'visibility-value',
   geo: 'geo-value',
+  timezone: 'timezone-value',
   localTime: 'local-time-value',
   lastUpdated: 'last-updated-value',
 };
@@ -49,6 +50,13 @@ class UnitSystem {
   }
 }
 
+const formatTime = (dateTime) => {
+  const date = new Date(dateTime);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+};
+
 const contentContainer = document.querySelector('.content-container');
 
 let elements = {};
@@ -58,7 +66,7 @@ Object.entries(idMapping).forEach(([key, value]) => {
 });
 
 const metricSystem = new UnitSystem('C', 'km/h', 'mb', 'mm', 'km');
-const imperialSystem = new UnitSystem('F', 'miles/h', 'inHg', 'in', 'miles');
+const imperialSystem = new UnitSystem('F', 'mph', 'inHg', 'in', ' miles');
 
 const displayData = (queryResult, isMetric) => {
   const unitSystem = isMetric ? metricSystem : imperialSystem;
@@ -84,8 +92,9 @@ const displayData = (queryResult, isMetric) => {
   elements.humidity.textContent = queryResult.humidity;
   elements.visibility.textContent = unitSystem.formatDistance(getUnitValue(queryResult.visibility));
   elements.geo.textContent = `${queryResult.latitude} / ${queryResult.longitude}`;
-  elements.localTime.textContent = queryResult.localTime;
-  elements.lastUpdated.textContent = queryResult.lastUpdated;
+  elements.timezone.textContent = queryResult.timeZone;
+  elements.localTime.textContent = formatTime(queryResult.localTime);
+  elements.lastUpdated.textContent = formatTime(queryResult.lastUpdated);
 };
 
 export default displayData;
