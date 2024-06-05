@@ -124,7 +124,7 @@ searchInput.addEventListener('keypress', (event) => {
 });
 
 const savedIsMetric = saveLoad.getIsMetric();
-if (!savedIsMetric) {
+if (savedIsMetric === false) {
   swapToImperial();
 }
 
