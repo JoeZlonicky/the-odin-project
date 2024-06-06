@@ -8,6 +8,7 @@ export default [
     rules: {
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
+      'prefer-const': 'warn',
       eqeqeq: ['warn', 'smart'],
     },
     languageOptions: {
