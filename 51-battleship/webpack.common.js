@@ -2,7 +2,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export const entry = './src/index.js';
+export const entry = './src/scripts/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const output = {
