@@ -1,0 +1,11 @@
+.board {
+  width: min(50%, 700px);
+  aspect-ratio: 1/1;
+  background-color: var(--panel-color);
+}
+
+.board__message {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  margin-top: -40px;
+}

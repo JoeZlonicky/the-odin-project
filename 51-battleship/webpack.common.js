@@ -13,7 +13,7 @@ export const output = {
 
 export const plugins = [
   new HtmlWebpackPlugin({
-    template: './src/index.html',
+    template: './src/layout/index.html',
     filename: 'index.html',
     scriptLoading: 'defer',
   }),

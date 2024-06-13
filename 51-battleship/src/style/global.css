@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Abel';
+  src: url('../fonts/Abel-Regular.ttf') format('truetype');
+}
+
+:root {
+  --background-gradient-1: #95498d;
+  --background-gradient-2: #aebbff;
+  --panel-color: rgba(0, 0, 0, 0.12);
+
+  --grid-color: white;
+  --grid-miss-color: rgba(0, 0, 0, 0.35);
+  --grid-hit-color: rgba(255, 0, 0, 0.35);
+
+  --text-color: white;
+  --text-color-faded: rgba(255, 255, 255, 0.5);
+
+  font-family: 'Abel', sans-serif;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  color: inherit;
+  font-size: 1rem;
+}
+
+.drop-shadow-text {
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.32);
+}
+
+::selection {
+  background-color: var(--panel-color);
+}
