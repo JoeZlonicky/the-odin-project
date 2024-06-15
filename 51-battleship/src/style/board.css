@@ -55,3 +55,8 @@
   top: -8px;
   left: calc(50% - 5px);
 }
+
+.board__cell.sunk .board__left-connection,
+.board__cell.sunk .board__up-connection {
+  background-color: var(--grid-sunk-color);
+}

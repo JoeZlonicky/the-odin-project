@@ -7,6 +7,10 @@ body {
   display: flex;
 }
 
+body.alt-color {
+  background: linear-gradient(0, var(--alt-background-gradient-1) 0%, var(--alt-background-gradient-2) 100%);
+}
+
 .content-container {
   flex: 1;
   display: flex;

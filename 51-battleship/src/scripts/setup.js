@@ -29,12 +29,14 @@ const boardSetup = (container, board, onCellSelected, gameState) => {
         }
       }
 
-      if (gameState === GameState.VIEWING_PLAYER) {
-        if (isShipAtPosition) {
+      if (isShipAtPosition) {
+        if (gameState === GameState.VIEWING_PLAYER || shipAtCell.isSunk()) {
           cell.classList.add('ship');
           createConnections(cell, shipAtCell, board, x, y);
         }
-      } else if (gameState === GameState.TARGETING_ENEMY && !hasBeenAttacked) {
+      }
+
+      if (gameState === GameState.TARGETING_ENEMY && !hasBeenAttacked) {
         cell.classList.add('selectable');
         cell.addEventListener('click', () => {
           onCellSelected(cell, x, y);

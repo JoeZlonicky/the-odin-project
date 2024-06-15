@@ -6,6 +6,8 @@
 :root {
   --background-gradient-1: #95498d;
   --background-gradient-2: #aebbff;
+  --alt-background-gradient-1: #7d3065;
+  --alt-background-gradient-2: #ffaeae;
   --panel-color: rgba(0, 0, 0, 0.2);
 
   --grid-color: white;

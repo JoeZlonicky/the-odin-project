@@ -9,15 +9,15 @@ class ComputerPlayer {
 
   getChoice(playerBoard) {
     while (this.priorityTargets.length) {
-      const [x, y] = this.priorityTargets[0];
+      const [x, y] = this.priorityTargets[this.priorityTargets.length - 1];
       if (playerBoard.at(x, y).isSunk()) {
-        this.priorityTargets.shift();
+        this.priorityTargets.pop();
         continue;
       }
 
       const adj = getRandomAdjacentThatHasNotBeenAttacked(playerBoard, [x, y]);
       if (adj === null) {
-        this.priorityTargets.shift();
+        this.priorityTargets.pop();
         continue;
       }
 
