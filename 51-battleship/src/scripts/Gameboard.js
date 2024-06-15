@@ -17,6 +17,10 @@ class Gameboard {
     return x >= 0 && x < this.width && y >= 0 && y < this.height;
   }
 
+  isShipAtPosition(x, y) {
+    return this.at(x, y) !== null;
+  }
+
   isValidPlacement(ship, start, end) {
     if (start[1] - start[0] !== 0 && end[1] - end[0] !== 0) {
       return false;

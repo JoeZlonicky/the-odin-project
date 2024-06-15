@@ -1,4 +1,7 @@
-const boardSetup = (container, board, isPlayer = true) => {
+import { GameState } from './Game.js';
+
+// onCellSelected(cell, x , y)
+const boardSetup = (container, board, onCellSelected, gameState) => {
   while (container.firstChild) {
     container.firstChild.remove();
   }
@@ -8,13 +11,34 @@ const boardSetup = (container, board, isPlayer = true) => {
       const cell = document.createElement('div');
       cell.classList.add('board__cell');
 
-      const ship = board.at(x, y);
-      if (isPlayer && ship !== null) {
-        cell.classList.add('ship');
+      const hasBeenAttacked = board.hasBeenAttackedBefore(x, y);
+      const isShipAtPosition = board.isShipAtPosition(x, y);
+      const isMissedCell = hasBeenAttacked && !isShipAtPosition;
+      const isHitCell = hasBeenAttacked && isShipAtPosition;
+      const shipAtCell = board.at(x, y);
 
-        createConnections(cell, ship, board, x, y);
-      } else {
+      if (isMissedCell) {
+        cell.classList.add('miss');
+      }
+
+      if (isHitCell) {
+        if (shipAtCell.isSunk()) {
+          cell.classList.add('sunk');
+        } else {
+          cell.classList.add('hit');
+        }
+      }
+
+      if (gameState === GameState.VIEWING_PLAYER) {
+        if (isShipAtPosition) {
+          cell.classList.add('ship');
+          createConnections(cell, shipAtCell, board, x, y);
+        }
+      } else if (gameState === GameState.TARGETING_ENEMY && !hasBeenAttacked) {
         cell.classList.add('selectable');
+        cell.addEventListener('click', () => {
+          onCellSelected(cell, x, y);
+        });
       }
 
       container.appendChild(cell);

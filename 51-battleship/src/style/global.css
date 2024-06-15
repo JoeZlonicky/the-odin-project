@@ -10,8 +10,9 @@
 
   --grid-color: white;
   --grid-ship-color: white;
-  --grid-miss-color: rgba(0, 0, 0, 0.35);
-  --grid-hit-color: rgba(255, 0, 0, 0.35);
+  --grid-miss-color: rgba(0, 0, 0, 0.5);
+  --grid-hit-color: rgba(255, 0, 0, 0.5);
+  --grid-sunk-color: rgba(255, 0, 0, 0.8);
 
   --text-color: white;
   --text-color-faded: rgba(255, 255, 255, 0.5);

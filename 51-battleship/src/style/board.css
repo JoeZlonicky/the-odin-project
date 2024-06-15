@@ -22,20 +22,32 @@
   background-color: var(--grid-ship-color);
 }
 
+.board__cell.miss {
+  background-color: var(--grid-miss-color);
+}
+
+.board__cell.hit {
+  background-color: var(--grid-hit-color);
+}
+
+.board__cell.sunk {
+  background-color: var(--grid-sunk-color);
+}
+
 .board__left-connection {
-  width: 20px;
+  width: 8px;
   height: 10px;
   background-color: white;
   position: absolute;
   top: calc(50% - 5px);
-  left: -10px;
+  left: -8px;
 }
 
 .board__up-connection {
   width: 10px;
-  height: 20px;
+  height: 8px;
   background-color: white;
   position: absolute;
-  top: -10px;
+  top: -8px;
   left: calc(50% - 5px);
 }

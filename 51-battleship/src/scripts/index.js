@@ -19,11 +19,13 @@ const logMessageReceiver = new MessageReceiver((message) => {
   logContainer.scrollTop = logContainer.scrollHeight;
 }, true);
 
-const onCellSelected = (cell, x, y) => {};
+const onCellSelected = (cell, x, y) => {
+  game.playTurn(x, y);
+};
 
 const boardElement = document.querySelector('.board');
-const onNewBoardDisplayed = (board, isPlayer = true) => {
-  boardSetup(boardElement, board, isPlayer);
+const onNewBoardDisplayed = (board, gameState) => {
+  boardSetup(boardElement, board, onCellSelected, gameState);
 };
 
 const game = new Game(bannerMessageReceiver, logMessageReceiver, onNewBoardDisplayed);
@@ -36,5 +38,5 @@ randomizeButton.addEventListener('click', () => {
 
 const startButton = document.querySelector('.start-button');
 startButton.addEventListener('click', () => {
-  game.start();
+  game.playersTurn();
 });
