@@ -49,9 +49,9 @@ class Game {
 
     await wait(COMPUTER_THINK_TIME_MS);
 
-    const choice = this.computer.getChoice(this.player.board);
-    this.playTurn(choice[0], choice[1]);
-    this.computer.recordChoice(choice);
+    const [x, y] = this.computer.getChoice(this.player.board);
+    this.playTurn(x, y);
+    this.computer.recordChoice([x, y], this.player.board.at(x, y));
   }
 
   playerWon() {
