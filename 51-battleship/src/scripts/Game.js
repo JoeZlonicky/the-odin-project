@@ -2,7 +2,7 @@ import Gameboard from './Gameboard.js';
 import HumanPlayer from './HumanPlayer.js';
 import ComputerPlayer from './ComputerPlayer.js';
 import Ship from './Ship.js';
-import { getRandomCellThatHasNotBeenAttacked, getRandomValidShipPlacement } from './random.js';
+import { getRandomValidShipPlacement } from './random.js';
 
 const GameState = {
   VIEWING_PLAYER: 1,
@@ -31,6 +31,11 @@ class Game {
     this.onNewBoardDisplayed?.(this.player.board, GameState.VIEWING_PLAYER);
   }
 
+  start() {
+    this.playersTurn();
+    this.logMessageReceiver.send('Game started!');
+  }
+
   playersTurn() {
     this.state = GameState.TARGETING_ENEMY;
     this.bannerMessageReceiver.send('Your turn!');
@@ -44,22 +49,37 @@ class Game {
 
     await wait(COMPUTER_THINK_TIME_MS);
 
-    const choice = getRandomCellThatHasNotBeenAttacked(this.player.board);
+    const choice = this.computer.getChoice(this.player.board);
     this.playTurn(choice[0], choice[1]);
+    this.computer.recordChoice(choice);
+  }
+
+  playerWon() {
+    this.bannerMessageReceiver.send('Victory!');
+    this.logMessageReceiver.send('Victory!');
+  }
+
+  playerLost() {
+    this.bannerMessageReceiver.send('Gameover!');
+    this.logMessageReceiver.send('Gameover!');
   }
 
   async playTurn(x, y) {
     const board = this.getCurrentBoard();
     const hit = board.receiveAttack(x, y);
+    const playerName = board === this.player.board ? 'Computer' : 'Player';
     if (hit) {
       const ship = board.at(x, y);
       if (ship.isSunk()) {
         this.bannerMessageReceiver.send('Battleship sunk!');
+        this.logMessageReceiver.send('Battleship sunk!');
       } else {
         this.bannerMessageReceiver.send('Hit!');
+        this.logMessageReceiver.send(`${playerName} hits: ${x + 1}, ${y + 1}`);
       }
     } else {
       this.bannerMessageReceiver.send('Miss!');
+      this.logMessageReceiver.send(`${playerName} misses: ${x + 1}, ${y + 1}`);
     }
 
     if (this.state === GameState.TARGETING_ENEMY) {
@@ -69,6 +89,11 @@ class Game {
 
     await wait(ACTION_DELAY_TIME_MS);
 
+    if (board.areAllShipsSunk()) {
+      board === this.player.board ? this.playerLost() : this.playerWon();
+      return;
+    }
+
     if (this.state === GameState.VIEWING_ENEMY) {
       this.enemysTurn();
     } else {
@@ -77,14 +102,18 @@ class Game {
   }
 
   reset() {
-    this.givePlayerNewBoard();
+    this.state = GameState.VIEWING_PLAYER;
     this.computer = new ComputerPlayer(this.generateRandomBoard());
-    this.isPlayerTurn = true;
+    this.player = new HumanPlayer(this.generateRandomBoard());
+    this.onNewBoardDisplayed?.(this.player.board, this.state);
+    this.bannerMessageReceiver.send('Welcome to Battleship!');
+    this.logMessageReceiver.sendClear();
   }
 
   givePlayerNewBoard() {
     this.player = new HumanPlayer(this.generateRandomBoard());
     this.logMessageReceiver.send('Randomized board!');
+    this.onNewBoardDisplayed?.(this.player.board, this.state);
   }
 
   generateRandomBoard() {

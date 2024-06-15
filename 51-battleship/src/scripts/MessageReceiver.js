@@ -3,8 +3,9 @@ const numToPaddedString = (n) => {
 };
 
 class MessageReceiver {
-  constructor(onMessageReceived, addTimestamp = false) {
+  constructor(onMessageReceived, onClear, addTimestamp = false) {
     this.onMessageReceived = onMessageReceived;
+    this.onClear = onClear;
     this.addTimestamp = addTimestamp;
   }
 
@@ -19,6 +20,10 @@ class MessageReceiver {
       message = `${timestamp}: ${message}`;
     }
     this.onMessageReceived(message);
+  }
+
+  sendClear() {
+    this.onClear?.();
   }
 }
 

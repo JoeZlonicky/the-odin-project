@@ -40,6 +40,10 @@ button {
   background-color: var(--panel-color);
 }
 
+.hidden {
+  display: none;
+}
+
 .selectable:after,
 button:after {
   content: '';

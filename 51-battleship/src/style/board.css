@@ -18,6 +18,10 @@
   position: relative;
 }
 
+.board__cell.selectable {
+  cursor: pointer;
+}
+
 .board__cell.ship {
   background-color: var(--grid-ship-color);
 }
