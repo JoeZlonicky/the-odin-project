@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals';
-import Ship from '../src/Ship';
-import Gameboard from '../src/Gameboard';
+import Ship from '../src/scripts/Ship.js';
+import Gameboard from '../src/scripts/Gameboard.js';
 
 test('Is in bounds happy path', () => {
   const board = new Gameboard(10, 10);

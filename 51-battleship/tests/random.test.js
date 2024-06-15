@@ -1,7 +1,11 @@
 import { jest, test, expect, afterEach } from '@jest/globals';
-import Ship from '../src/scripts/Ship';
-import Gameboard from '../src/scripts/Gameboard';
-import { getRandomCellThatHasNotBeenAttacked, getRandomValidShipPlacement } from '../src/scripts/random';
+import Ship from '../src/scripts/Ship.js';
+import Gameboard from '../src/scripts/Gameboard.js';
+import {
+  getRandomAdjacentThatHasNotBeenAttacked,
+  getRandomCellThatHasNotBeenAttacked,
+  getRandomValidShipPlacement,
+} from '../src/scripts/random.js';
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -29,6 +33,17 @@ test('Get random cell that has not been attacked when first choice is already at
   const pos = getRandomCellThatHasNotBeenAttacked(board);
 
   expect(pos).toEqual([0, 0]);
+});
+
+test('Get random adjacent that has not been attacked', () => {
+  const board = new Gameboard(10, 10);
+  board.receiveAttack(0, 0);
+
+  const adj = getRandomAdjacentThatHasNotBeenAttacked(board, [1, 0]);
+  expect([
+    [2, 0],
+    [1, 1],
+  ]).toContainEqual(adj);
 });
 
 test('Get random valid ship placement', () => {

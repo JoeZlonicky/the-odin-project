@@ -3,15 +3,12 @@ import HumanPlayer from './HumanPlayer.js';
 import ComputerPlayer from './ComputerPlayer.js';
 import Ship from './Ship.js';
 import { getRandomValidShipPlacement } from './random.js';
+import wait from './wait.js';
 
 const GameState = {
   VIEWING_PLAYER: 1,
   TARGETING_ENEMY: 2,
   VIEWING_ENEMY: 3,
-};
-
-const wait = async (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 const COMPUTER_THINK_TIME_MS = 1000;
