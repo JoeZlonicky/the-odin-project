@@ -1,18 +1,27 @@
-import Gameboard from './Gameboard';
-import HumanPlayer from './HumanPlayer';
-import ComputerPlayer from './ComputerPlayer';
-import Ship from './Ship';
-import { getRandomValidShipPlacement } from './random';
+import Gameboard from './Gameboard.js';
+import HumanPlayer from './HumanPlayer.js';
+import ComputerPlayer from './ComputerPlayer.js';
+import Ship from './Ship.js';
+import { getRandomValidShipPlacement } from './random.js';
 
 class Game {
-  constructor() {
+  // onNewBoardDisplayed(board, isPlayer)
+  constructor(bannerMessageReceiver, logMessageReceiver, onNewBoardDisplayed) {
     this.boardSize = 10;
+    this.bannerMessageReceiver = bannerMessageReceiver;
+    this.logMessageReceiver = logMessageReceiver;
 
-    this.player = null;
-    this.computer = null;
+    this.player = new HumanPlayer(this.generateRandomBoard());
+    this.computer = new ComputerPlayer(this.generateRandomBoard());
     this.isPlayerTurn = false;
+    this.onNewBoardDisplayed = onNewBoardDisplayed;
+    this.onNewBoardDisplayed?.(this.player.board, true);
+  }
 
-    this.reset();
+  start() {
+    this.isPlayerTurn = true;
+    this.bannerMessageReceiver.send('Your turn!');
+    this.onNewBoardDisplayed?.(this.computer.board, false);
   }
 
   reset() {
@@ -23,6 +32,7 @@ class Game {
 
   givePlayerNewBoard() {
     this.player = new HumanPlayer(this.generateRandomBoard());
+    this.logMessageReceiver.send('Randomized board!');
   }
 
   generateRandomBoard() {

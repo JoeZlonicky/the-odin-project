@@ -1,4 +1,4 @@
-import { getRandomCellThatHasNotBeenAttacked } from './random';
+import { getRandomCellThatHasNotBeenAttacked } from './random.js';
 
 class ComputerPlayer {
   constructor(board) {

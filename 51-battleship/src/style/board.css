@@ -1,11 +1,41 @@
 .board {
-  width: min(50%, 700px);
+  width: min(40%, 700px);
   aspect-ratio: 1/1;
-  background-color: var(--panel-color);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 8px;
 }
 
-.board__message {
+.board__banner {
   font-size: 3rem;
   margin-bottom: 20px;
   margin-top: -40px;
+}
+
+.board__cell {
+  background-color: var(--panel-color);
+  position: relative;
+}
+
+.board__cell.ship {
+  background-color: var(--grid-ship-color);
+}
+
+.board__left-connection {
+  width: 20px;
+  height: 10px;
+  background-color: white;
+  position: absolute;
+  top: calc(50% - 5px);
+  left: -10px;
+}
+
+.board__up-connection {
+  width: 10px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 5px);
 }
