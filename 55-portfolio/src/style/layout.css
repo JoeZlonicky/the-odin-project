@@ -13,6 +13,12 @@ main {
   margin: 100px 20%;
 }
 
+@media (max-width: 1200px) {
+  body main {
+    margin: 100px 10%;
+  }
+}
+
 .slant-bg {
   background-color: var(--accent-color);
 

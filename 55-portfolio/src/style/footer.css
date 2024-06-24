@@ -33,6 +33,12 @@ footer {
   }
 }
 
+@media (max-width: 1200px) {
+  body footer {
+    padding: 50px 10%;
+  }
+}
+
 .footer__contact-container {
   display: flex;
   align-items: center;
