@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('../fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+  --primary-color: rgb(255, 255, 255);
+  --primary-text-color: black;
+
+  --accent-color: rgb(87, 106, 68);
+  --accent-text-color: white;
+
+  --dark-hover-color-1: #00000030;
+  --dark-hover-color-2: #00000060;
+
+  --light-hover-color-1: #ffffff50;
+  --light-hover-color-2: #ffffffa0;
+
+  font-family: 'Montserrat', serif;
+  background-color: var(--primary-color);
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'PlayfairDisplay', sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.43);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.43);
+}
+
+.svg-link {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-link:hover {
+  background-color: var(--dark-hover-color-1);
+}
+
+.svg-link:active {
+  background-color: var(--dark-hover-color-2);
+}
+
+.socials-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 100px 20%;
+}
+
+.slant-bg {
+  background-color: var(--accent-color);
+
+  width: 100vw;
+  height: 400px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.slant-bg:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  border-top: 150px solid var(--accent-color);
+  border-right: 100vw solid var(--primary-color);
+}
+
+.project-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 315px);
+  grid-auto-rows: 390px;
+  justify-content: space-around;
+  column-gap: 40px;
+  row-gap: 80px;
+}

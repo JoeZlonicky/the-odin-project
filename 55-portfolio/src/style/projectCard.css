@@ -1,0 +1,35 @@
+.project-card {
+  will-change: transform;
+  transition: 0.2s transform ease;
+
+  p {
+    margin-top: 0;
+    padding: 0 20px;
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .svg-link {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.project-card__header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+
+  :first-child {
+    flex: 1;
+    align-items: center;
+    margin: 0;
+  }
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+}
