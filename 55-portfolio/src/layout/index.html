@@ -11,13 +11,22 @@
     <main>
       <section class="about-me box-shadow">
         <div class="about-me__image-container">
-          <img
-            class="box-shadow"
-            width="300"
-            height="300"
-            src="<%=require('../images/cool.jpg')%>"
-            alt="Joe Zlonicky"
-          />
+          <picture>
+            <source
+              srcset="<%=require('../images/cool_tall.jpg')%>"
+              media="(max-width: 700px)"
+              width="300"
+              height="360"
+            />
+            <img
+              class="box-shadow"
+              width="300"
+              height="300"
+              src="<%=require('../images/cool.jpg')%>"
+              alt="Joe Zlonicky"
+            />
+          </picture>
+
           <h1>Joe Zlonicky</h1>
         </div>
         <div class="about-me__content">
@@ -245,7 +254,16 @@
           </a>
         </div>
       </div>
-      <img width="450" height="300" src="<%=require('../images/landscape.jpg')%>" alt="Joe Zlonicky" />
+      <picture>
+        <source
+          width="600"
+          height="300"
+          media="(min-width: 1500px)"
+          srcset="<%=require('../images/landscape_wide.jpg')%>"
+        />
+        <source width="300" height="450" media="(max-width: 450px)" srcset="<%=require('../images/portrait.jpg')%>" />
+        <img width="450" height="300" src="<%=require('../images/landscape.jpg')%>" alt="Joe Zlonicky" />
+      </picture>
     </footer>
   </body>
 </html>

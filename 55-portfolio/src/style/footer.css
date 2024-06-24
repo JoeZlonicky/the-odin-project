@@ -60,6 +60,9 @@ footer {
   footer img {
     width: 300px;
     height: 200px;
+  }
+
+  footer picture {
     align-self: center;
   }
 }
@@ -76,6 +79,7 @@ footer {
   footer img {
     width: 100%;
     height: auto;
+    display: block;
   }
 
   footer .footer__contact-section {
