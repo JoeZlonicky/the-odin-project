@@ -19,6 +19,14 @@ main {
   }
 }
 
+@media (max-width: 700px) {
+  body main {
+    margin: 50px 10%;
+    margin-bottom: 0;
+    gap: 0;
+  }
+}
+
 .slant-bg {
   background-color: var(--accent-color);
 

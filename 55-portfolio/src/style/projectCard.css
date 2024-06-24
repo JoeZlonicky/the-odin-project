@@ -30,6 +30,8 @@
   }
 }
 
-.project-card:hover {
-  transform: scale(1.02);
+@media (min-width: 340px) {
+  .project-card:hover {
+    transform: scale(1.02);
+  }
 }
