@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'Inter';
+  font-family: Inter;
   src: url('./assets/Inter.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'PlayfairDisplay';
+  font-family: PlayfairDisplay;
   src: url('./assets/PlayfairDisplay.ttf') format('truetype');
 }
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
   color: white;
   background-color: #242424;
-
-  --accent-color: rgb(55, 132, 55);
-  --accent-text-color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,8 +35,8 @@ button {
   padding: 1rem 3rem;
   font-size: 1.2rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: var(--accent-color);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: rgb(55, 132, 55);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -55,13 +52,13 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #265033;
     background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: rgb(109, 228, 109);
   }
 }
