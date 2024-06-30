@@ -1,0 +1,10 @@
+.form-section__field-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  row-gap: 10px;
+  column-gap: 30px;
+}
+
+.form-section__field-container > div:nth-of-type(odd):last-child {
+  grid-column: 1 / 3;
+}

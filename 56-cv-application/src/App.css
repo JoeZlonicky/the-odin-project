@@ -1,6 +1,18 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 650px;
   margin: 0 auto;
   padding: 2rem;
+  box-sizing: border-box;
+}
+
+#root > h1 {
+  text-align: center;
+  margin: 0;
+}
+
+#root > h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }

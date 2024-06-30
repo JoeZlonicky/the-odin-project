@@ -1,4 +1,8 @@
 import FormField from './FormField';
+import FormSection from './FormSection';
+import FormTextArea from './FormTextArea';
+import TrayContainer from './TrayContainer';
+import '../style/InfoForm.css';
 
 function InfoForm({ initialInfo, setInfo, setIsEditing }) {
   function handleSubmit(e) {
@@ -17,27 +21,32 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
   }
 
   return (
-    <form method="post" onSubmit={handleSubmit}>
-      <h2>1. General Information</h2>
-      <FormField label="Name" valueName={'name'} defaultValue={initialInfo.name} />
-      <FormField label="Email" valueName={'email'} defaultValue={initialInfo.email} />
-      <FormField label="Phone Number" valueName={'phoneNumber'} defaultValue={initialInfo.phoneNumber} />
-      <FormField label="LinkedIn" valueName={'linkedIn'} defaultValue={initialInfo.linkedIn} />
+    <form method="post" onSubmit={handleSubmit} className="info-form">
+      <FormSection title={'General Information'} index={1}>
+        <FormField label="Name" valueName={'name'} defaultValue={initialInfo.name} />
+        <FormField label="Email" valueName={'email'} defaultValue={initialInfo.email} />
+        <FormField label="Phone Number" valueName={'phoneNumber'} defaultValue={initialInfo.phoneNumber} />
+        <FormField label="LinkedIn" valueName={'linkedIn'} defaultValue={initialInfo.linkedIn} />
+      </FormSection>
 
-      <h2>2. Education</h2>
-      <FormField label="School Name" valueName={'schoolName'} defaultValue={initialInfo.schoolName} />
-      <FormField label="Certification" valueName={'certification'} defaultValue={initialInfo.certification} />
-      <FormField label="Start Year" valueName={'startYear'} defaultValue={initialInfo.startYear} />
-      <FormField label="Graduation Year" valueName={'graduationYear'} defaultValue={initialInfo.graduationYear} />
+      <FormSection title={'Education'} index={2}>
+        <FormField label="School Name" valueName={'schoolName'} defaultValue={initialInfo.schoolName} />
+        <FormField label="Certification" valueName={'certification'} defaultValue={initialInfo.certification} />
+        <FormField label="Start Year" valueName={'startYear'} defaultValue={initialInfo.startYear} />
+        <FormField label="Graduation Year" valueName={'graduationYear'} defaultValue={initialInfo.graduationYear} />
+      </FormSection>
 
-      <h2>3. Work Experience</h2>
-      <FormField label="Position Title" valueName={'positionTitle'} defaultValue={initialInfo.positionTitle} />
-      <FormField label="Company Name" valueName={'companyName'} defaultValue={initialInfo.companyName} />
-      <FormField label="Start Date" valueName={'startDate'} defaultValue={initialInfo.startDate} />
-      <FormField label="End Date" valueName={'endDate'} defaultValue={initialInfo.endDate} />
-      <FormField label="Description" valueName={'description'} defaultValue={initialInfo.description} />
+      <FormSection title={'Work Experience'} index={3}>
+        <FormField label="Position Title" valueName={'positionTitle'} defaultValue={initialInfo.positionTitle} />
+        <FormField label="Company Name" valueName={'companyName'} defaultValue={initialInfo.companyName} />
+        <FormField label="Start Date" valueName={'startDate'} defaultValue={initialInfo.startDate} />
+        <FormField label="End Date" valueName={'endDate'} defaultValue={initialInfo.endDate} />
+        <FormTextArea label="Description" valueName={'description'} defaultValue={initialInfo.description} />
+      </FormSection>
 
-      <button type="submit">Generate</button>
+      <TrayContainer>
+        <button type="submit">Generate</button>
+      </TrayContainer>
     </form>
   );
 }
