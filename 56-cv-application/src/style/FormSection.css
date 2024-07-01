@@ -8,3 +8,8 @@
 .form-section__field-container > div:nth-of-type(odd):last-child {
   grid-column: 1 / 3;
 }
+
+.form-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}

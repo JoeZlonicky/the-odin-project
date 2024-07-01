@@ -4,3 +4,8 @@
   gap: 5px;
   font-weight: 500;
 }
+
+.form-field input {
+  padding: 4px;
+  font-size: 0.9rem;
+}

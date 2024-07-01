@@ -23,25 +23,30 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
   return (
     <form method="post" onSubmit={handleSubmit} className="info-form">
       <FormSection title={'General Information'} index={1}>
-        <FormField label="Name" valueName={'name'} defaultValue={initialInfo.name} />
-        <FormField label="Email" valueName={'email'} defaultValue={initialInfo.email} />
-        <FormField label="Phone Number" valueName={'phoneNumber'} defaultValue={initialInfo.phoneNumber} />
-        <FormField label="LinkedIn" valueName={'linkedIn'} defaultValue={initialInfo.linkedIn} />
+        <FormField label="Name (Required)" valueName={'name'} defaultValue={initialInfo.name} isRequired={true} />
+        <FormField label="Email (Required)" valueName={'email'} defaultValue={initialInfo.email} isRequired={true} />
+        <FormField
+          label="Phone Number (Required)"
+          valueName={'phoneNumber'}
+          defaultValue={initialInfo.phoneNumber}
+          isRequired={true}
+        />
+        <FormField label="Website" valueName={'website'} defaultValue={initialInfo.website} />
       </FormSection>
 
       <FormSection title={'Education'} index={2}>
-        <FormField label="School Name" valueName={'schoolName'} defaultValue={initialInfo.schoolName} />
         <FormField label="Certification" valueName={'certification'} defaultValue={initialInfo.certification} />
-        <FormField label="Start Year" valueName={'startYear'} defaultValue={initialInfo.startYear} />
-        <FormField label="Graduation Year" valueName={'graduationYear'} defaultValue={initialInfo.graduationYear} />
+        <FormField label="School Name" valueName={'schoolName'} defaultValue={initialInfo.schoolName} />
+        <FormField label="Start Date" valueName={'educationStart'} defaultValue={initialInfo.educationStart} />
+        <FormField label="Graduation Date" valueName={'educationEnd'} defaultValue={initialInfo.educationEnd} />
       </FormSection>
 
       <FormSection title={'Work Experience'} index={3}>
         <FormField label="Position Title" valueName={'positionTitle'} defaultValue={initialInfo.positionTitle} />
         <FormField label="Company Name" valueName={'companyName'} defaultValue={initialInfo.companyName} />
-        <FormField label="Start Date" valueName={'startDate'} defaultValue={initialInfo.startDate} />
-        <FormField label="End Date" valueName={'endDate'} defaultValue={initialInfo.endDate} />
-        <FormTextArea label="Description" valueName={'description'} defaultValue={initialInfo.description} />
+        <FormField label="Start Date" valueName={'workStart'} defaultValue={initialInfo.workStart} />
+        <FormField label="End Date" valueName={'workEnd'} defaultValue={initialInfo.workEnd} />
+        <FormTextArea label="Description" valueName={'workDescription'} defaultValue={initialInfo.workDescription} />
       </FormSection>
 
       <TrayContainer>

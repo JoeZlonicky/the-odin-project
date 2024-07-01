@@ -9,19 +9,18 @@ function App() {
     name: '',
     email: '',
     phoneNumber: '',
-    linkedIn: '',
+    website: '',
 
-    schoolName: '',
     certification: '',
-    startYear: null,
-    graduationYear: null,
+    schoolName: '',
+    educationStart: null,
+    educationEnd: null,
 
-    workExperience: [], // TODO: Implement work experience as list
     positionTitle: '',
     companyName: '',
-    startDate: '',
-    endDate: '',
-    description: '',
+    workStart: '',
+    workEnd: '',
+    workDescription: '',
   });
 
   return (
