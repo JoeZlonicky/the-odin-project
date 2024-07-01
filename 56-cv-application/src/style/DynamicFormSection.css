@@ -1,0 +1,13 @@
+.dynamic-form-section__button {
+  padding: 0.5rem 1.5rem;
+}
+
+.dynamic-form-section__remove-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(167, 64, 64);
+}
+
+.dynamic-form-section__divider {
+  margin-bottom: 20px;
+}

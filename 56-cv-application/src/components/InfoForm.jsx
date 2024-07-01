@@ -1,6 +1,7 @@
 import FormField from './FormField';
 import FormSection from './FormSection';
-import WorkExperienceFormSection from './WorkExperienceFormSection';
+import DynamicFormSection from './DynamicFormSection';
+import FormTextArea from './FormTextArea';
 import TrayContainer from './TrayContainer';
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
@@ -14,6 +15,45 @@ const workExperienceTemplate = {
   end: '',
   description: '',
 };
+
+function WorkExperienceFillOut({ initialWorkExperience }) {
+  const key = initialWorkExperience.id;
+
+  return (
+    <>
+      <FormField
+        label="Position Title"
+        valueName={'positionTitle'}
+        defaultValue={initialWorkExperience.positionTitle}
+        idOverride={`${key}-positionTitle`}
+      />
+      <FormField
+        label="Company Name"
+        valueName={'companyName'}
+        defaultValue={initialWorkExperience.companyName}
+        idOverride={`${key}-companyName`}
+      />
+      <FormField
+        label="Start Date"
+        valueName={'start'}
+        defaultValue={initialWorkExperience.start}
+        idOverride={`${key}-start`}
+      />
+      <FormField
+        label="End Date"
+        valueName={'end'}
+        defaultValue={initialWorkExperience.end}
+        idOverride={`${key}-end`}
+      />
+      <FormTextArea
+        label="Description"
+        valueName={'description'}
+        defaultValue={initialWorkExperience.description}
+        idOverride={`${key}-description`}
+      />
+    </>
+  );
+}
 
 function InfoForm({ initialInfo, setInfo, setIsEditing }) {
   const [workExperiences, setWorkExperiences] = useState(initialInfo.workExperiences);
@@ -60,14 +100,18 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
         <FormField label="Graduation Date" valueName={'educationEnd'} defaultValue={initialInfo.educationEnd} />
       </FormSection>
 
-      <FormSection title={'Work Experience'} index={3}>
-        {workExperiences.map((work) => (
-          <WorkExperienceFormSection initialWorkExperience={work} key={work.id} />
-        ))}
-      </FormSection>
-      <button type="button" onClick={addWorkExperience}>
-        Add
-      </button>
+      <DynamicFormSection
+        title={'Work Experience'}
+        index={3}
+        dataList={workExperiences}
+        keyGenerator={(data) => data.id}
+        childGenerator={(data) => <WorkExperienceFillOut initialWorkExperience={data} />}
+        onAdd={() => addWorkExperience()}
+        onRemove={(data) => {
+          const filtered = workExperiences.filter((work) => work.id !== data.id);
+          setWorkExperiences(filtered);
+        }}
+      />
 
       <TrayContainer>
         <button type="submit">Generate</button>
