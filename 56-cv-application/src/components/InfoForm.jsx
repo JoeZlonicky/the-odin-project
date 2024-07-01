@@ -1,10 +1,23 @@
 import FormField from './FormField';
 import FormSection from './FormSection';
-import FormTextArea from './FormTextArea';
+import WorkExperienceFormSection from './WorkExperienceFormSection';
 import TrayContainer from './TrayContainer';
+import { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import '../style/InfoForm.css';
 
+const workExperienceTemplate = {
+  id: null,
+  positionTitle: '',
+  companyName: '',
+  start: '',
+  end: '',
+  description: '',
+};
+
 function InfoForm({ initialInfo, setInfo, setIsEditing }) {
+  const [workExperiences, setWorkExperiences] = useState(initialInfo.workExperiences);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -18,6 +31,12 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
 
     setInfo(newInfo);
     setIsEditing(false);
+  }
+
+  function addWorkExperience() {
+    const newWork = Object.create(workExperienceTemplate);
+    newWork.id = uuid();
+    setWorkExperiences([...workExperiences, newWork]);
   }
 
   return (
@@ -42,12 +61,13 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
       </FormSection>
 
       <FormSection title={'Work Experience'} index={3}>
-        <FormField label="Position Title" valueName={'positionTitle'} defaultValue={initialInfo.positionTitle} />
-        <FormField label="Company Name" valueName={'companyName'} defaultValue={initialInfo.companyName} />
-        <FormField label="Start Date" valueName={'workStart'} defaultValue={initialInfo.workStart} />
-        <FormField label="End Date" valueName={'workEnd'} defaultValue={initialInfo.workEnd} />
-        <FormTextArea label="Description" valueName={'workDescription'} defaultValue={initialInfo.workDescription} />
+        {workExperiences.map((work) => (
+          <WorkExperienceFormSection initialWorkExperience={work} key={work.id} />
+        ))}
       </FormSection>
+      <button type="button" onClick={addWorkExperience}>
+        Add
+      </button>
 
       <TrayContainer>
         <button type="submit">Generate</button>

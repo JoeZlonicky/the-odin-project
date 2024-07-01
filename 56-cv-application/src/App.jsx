@@ -16,11 +16,7 @@ function App() {
     educationStart: null,
     educationEnd: null,
 
-    positionTitle: '',
-    companyName: '',
-    workStart: '',
-    workEnd: '',
-    workDescription: '',
+    workExperiences: [],
   });
 
   return (
