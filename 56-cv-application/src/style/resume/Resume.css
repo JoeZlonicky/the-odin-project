@@ -1,7 +1,8 @@
 .resume {
   margin: 0 auto;
-  -webkit-box-shadow: 0px 5px 15px 5px #000000;
-  box-shadow: 0px 5px 15px 5px #000000;
+  -webkit-box-shadow: 0px 5px 15px 5px #0000005e;
+  box-shadow: 0px 5px 15px 5px #0000005e;
+  background-color: #383139;
   padding: 3rem 3rem 4rem 3rem;
   max-width: 700px;
   font-family: serif;
@@ -11,6 +12,7 @@
   .resume {
     -webkit-box-shadow: 0px 5px 15px 5px #0000001e;
     box-shadow: 0px 5px 15px 5px #0000001e;
+    background-color: white;
   }
 }
 

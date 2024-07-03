@@ -34,7 +34,7 @@ button {
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 8px;
-  background-color: rgb(55, 132, 55);
+  background-color: rgb(69, 159, 69);
   padding: 1rem 3rem;
   font-weight: 500;
   font-size: 1.2rem;
@@ -52,8 +52,8 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    background-color: #ffffff;
-    color: #265033;
+    background-color: #f4f4f4;
+    color: #142c1c;
   }
   a:hover {
     color: #747bff;
