@@ -6,7 +6,8 @@
     "@eslint/js": "^9.3.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "eslint": "^9.3.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "prettier-plugin-css-order": "^2.1.2"
   },
   "dependencies": {
     "globals": "^15.3.0"

@@ -1,12 +1,12 @@
 #root {
-  width: 100%;
-  padding: 2rem;
   box-sizing: border-box;
+  padding: 2rem;
+  width: 100%;
 }
 
 .app__title {
-  text-align: center;
   margin: 0;
+  text-align: center;
 }
 
 .app__author {
