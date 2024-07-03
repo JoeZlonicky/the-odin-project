@@ -8,4 +8,4 @@ Finished:
 - [Intermdiate HTML and CSS](https://www.theodinproject.com/paths/full-stack-javascript/courses/intermediate-html-and-css) - 23/23.
 - [JavaScript](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript) - 41/41
 - [Advanced HTML and CSS](https://www.theodinproject.com/paths/full-stack-javascript/courses/advanced-html-and-css) - 16/16
-- [React](https://www.theodinproject.com/paths/full-stack-javascript/courses/react) - 2/26
+- [React](https://www.theodinproject.com/paths/full-stack-javascript/courses/react) - 12/26
