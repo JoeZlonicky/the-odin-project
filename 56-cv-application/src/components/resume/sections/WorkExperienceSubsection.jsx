@@ -1,3 +1,5 @@
+import '../../../style/resume/WorkExperienceSubsection.css';
+
 function WorkExperienceSubsection({ positionTitle, companyName, start, end, description }) {
   const hasPositionAndCompany = positionTitle && companyName;
   const hasDate = start || end;
@@ -6,14 +8,15 @@ function WorkExperienceSubsection({ positionTitle, companyName, start, end, desc
   }
 
   return (
-    <>
+    <div>
       <div>
         <strong>{positionTitle}</strong>
         {hasPositionAndCompany && ' @ '}
-        <i>{companyName}</i> {hasDate && `, ${start} - ${end}`}
+        <i>{companyName}</i>
+        {hasDate && `, ${start} - ${end}`}
       </div>
-      <div className="resume__work-description">{description}</div>
-    </>
+      <div className="work-experience-subsection__description">{description}</div>
+    </div>
   );
 }
 

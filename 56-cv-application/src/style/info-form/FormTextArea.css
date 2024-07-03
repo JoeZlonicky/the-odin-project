@@ -1,4 +1,6 @@
 .form-text-area {
+  padding: 4px;
   min-height: 90px;
   resize: vertical;
+  font-size: 0.9rem;
 }

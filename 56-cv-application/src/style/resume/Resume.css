@@ -14,21 +14,6 @@
   }
 }
 
-.resume__name {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-}
-
-.resume__contact {
-  font-size: 1.2rem;
-}
-
-.resume__name,
-.resume__contact {
-  text-align: center;
-}
-
 .resume h3 {
   margin-top: 1.5rem;
   margin-bottom: 0;
@@ -36,8 +21,4 @@
 
 .resume a {
   color: inherit;
-}
-
-.resume__work-description {
-  white-space: pre-line;
 }

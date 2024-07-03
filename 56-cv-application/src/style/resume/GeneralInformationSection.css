@@ -1,0 +1,14 @@
+.general-information-section__name,
+.general-information-section__contact {
+  text-align: center;
+}
+
+.general-information-section__name {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.general-information-section__contact {
+  font-size: 1.2rem;
+}

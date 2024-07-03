@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import '../../../style/resume/GeneralInformationSection.css';
 
 function GeneralInformationSection({ name, email, phoneNumber, website }) {
   const mailTo = 'mailto:' + email;
@@ -26,8 +27,8 @@ function GeneralInformationSection({ name, email, phoneNumber, website }) {
 
   return (
     <>
-      <h2 className="resume__name">{name}</h2>
-      <div className="resume__contact">
+      <h2 className="general-information-section__name">{name}</h2>
+      <div className="general-information-section__contact">
         {subheadings.map((value, idx) => (
           <Fragment key={`${value}${idx}`}>
             {value}
