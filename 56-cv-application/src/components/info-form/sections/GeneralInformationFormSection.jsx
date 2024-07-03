@@ -5,13 +5,8 @@ function GeneralInformationFormSection({ initialName, initialEmail, initialPhone
   return (
     <StaticFormSection title={'General Information'} index={1}>
       <FormField label="Name (Required)" valueName={'name'} defaultValue={initialName} isRequired={true} />
-      <FormField label="Email (Required)" valueName={'email'} defaultValue={initialEmail} isRequired={true} />
-      <FormField
-        label="Phone Number (Required)"
-        valueName={'phoneNumber'}
-        defaultValue={initialPhoneNumber}
-        isRequired={true}
-      />
+      <FormField label="Email" valueName={'email'} defaultValue={initialEmail} />
+      <FormField label="Phone Number" valueName={'phoneNumber'} defaultValue={initialPhoneNumber} />
       <FormField label="Website" valueName={'website'} defaultValue={initialWebsite} />
     </StaticFormSection>
   );

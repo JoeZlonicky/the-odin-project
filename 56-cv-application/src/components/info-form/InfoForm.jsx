@@ -30,12 +30,15 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
     for (const [key, value] of formData.entries()) {
       if (key.startsWith('work__')) {
         const [_, id, workKey] = key.split('__');
-        if (idToWork.id === undefined) {
-          idToWork.id = Object.create(workExperienceTemplate);
+        console.log(id);
+        if (idToWork[id] === undefined) {
+          idToWork[id] = Object.create(workExperienceTemplate);
+          idToWork[id].id = id;
         }
-        idToWork.id.workKey = value;
+        idToWork[id][workKey] = value;
         continue;
       }
+
       newInfo[key] = value;
     }
 

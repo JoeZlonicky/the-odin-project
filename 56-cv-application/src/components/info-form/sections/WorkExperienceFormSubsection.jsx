@@ -26,7 +26,7 @@ function WorkExperienceFormSubsection({ initialWorkExperience }) {
       />
       <FormField
         label="End Date"
-        valueName={`work__${key}-end`}
+        valueName={`work__${key}__end`}
         defaultValue={initialWorkExperience.end}
         idOverride={`${key}-end`}
       />
