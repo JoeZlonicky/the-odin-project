@@ -1,11 +1,13 @@
-import '../style/Resume.css';
 import TrayContainer from './TrayContainer';
+import '../style/Resume.css';
 
 function TopSection({ name, email, phoneNumber, website }) {
   const mailTo = 'mailto:' + email;
-  website = website ? website.replace('www.', '').replace('https://', '') : null;
-  if (website.endsWith('/')) {
-    website = website.substring(0, website.length - 1);
+  if (website) {
+    website = website.replace('www.', '').replace('https://', '');
+    if (website.endsWith('/')) {
+      website = website.substring(0, website.length - 1);
+    }
   }
 
   return (
@@ -43,7 +45,21 @@ function EducationSection({ schoolName, certification, educationStart, education
   );
 }
 
-function WorkSection({ positionTitle, companyName, workStart, workEnd, workDescription }) {
+function WorkSection({ workExperiences }) {
+  if (!workExperiences || workExperiences.length === 0) return;
+
+  return (
+    <>
+      <h3>Work Experience</h3>
+      <hr></hr>
+      {workExperiences.map((work) => (
+        <WorkSubsection {...work} key={work.id} />
+      ))}
+    </>
+  );
+}
+
+function WorkSubsection({ positionTitle, companyName, workStart, workEnd, workDescription }) {
   if (!positionTitle && !companyName) return;
   const hasPositionAndCompany = positionTitle && companyName;
   const hasDate = workStart || workEnd;
@@ -51,8 +67,6 @@ function WorkSection({ positionTitle, companyName, workStart, workEnd, workDescr
 
   return (
     <>
-      <h3>Work Experience</h3>
-      <hr></hr>
       <div>
         <strong>{positionTitle}</strong>
         {hasPositionAndCompany && ' @ '}

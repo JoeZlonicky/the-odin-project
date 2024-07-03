@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './App.css';
 import InfoForm from './components/InfoForm';
 import Resume from './components/Resume';
+import './App.css';
 
 function App() {
   const [isEditing, setIsEditing] = useState(true);
@@ -21,8 +21,8 @@ function App() {
 
   return (
     <>
-      <h1>Resume Builder</h1>
-      <h3>By Joe Zlonicky</h3>
+      <h1 className="app__title">Resume Builder</h1>
+      <h3 className="app__author">By Joe Zlonicky</h3>
       {isEditing && <InfoForm initialInfo={info} setInfo={setInfo} setIsEditing={setIsEditing} />}
       {!isEditing && <Resume info={info} setIsEditing={setIsEditing} />}
     </>

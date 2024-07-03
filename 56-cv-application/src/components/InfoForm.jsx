@@ -1,10 +1,10 @@
-import FormField from './FormField';
-import FormSection from './FormSection';
-import DynamicFormSection from './DynamicFormSection';
-import FormTextArea from './FormTextArea';
-import TrayContainer from './TrayContainer';
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import DynamicFormSection from './DynamicFormSection';
+import FormField from './FormField';
+import FormSection from './FormSection';
+import FormTextArea from './FormTextArea';
+import TrayContainer from './TrayContainer';
 import '../style/InfoForm.css';
 
 const workExperienceTemplate = {
@@ -23,31 +23,31 @@ function WorkExperienceFillOut({ initialWorkExperience }) {
     <>
       <FormField
         label="Position Title"
-        valueName={'positionTitle'}
+        valueName={`work-${key}-positionTitle`}
         defaultValue={initialWorkExperience.positionTitle}
         idOverride={`${key}-positionTitle`}
       />
       <FormField
         label="Company Name"
-        valueName={'companyName'}
+        valueName={`work__${key}__companyName`}
         defaultValue={initialWorkExperience.companyName}
         idOverride={`${key}-companyName`}
       />
       <FormField
         label="Start Date"
-        valueName={'start'}
+        valueName={`work__${key}__start`}
         defaultValue={initialWorkExperience.start}
         idOverride={`${key}-start`}
       />
       <FormField
         label="End Date"
-        valueName={'end'}
+        valueName={`work__${key}-end`}
         defaultValue={initialWorkExperience.end}
         idOverride={`${key}-end`}
       />
       <FormTextArea
         label="Description"
-        valueName={'description'}
+        valueName={`work-${key}-description`}
         defaultValue={initialWorkExperience.description}
         idOverride={`${key}-description`}
       />
@@ -67,6 +67,11 @@ function InfoForm({ initialInfo, setInfo, setIsEditing }) {
     const newInfo = {};
     for (const [key, value] of formData.entries()) {
       newInfo[key] = value;
+      console.log(`${key} = ${value}`);
+    }
+
+    if (newInfo.workExperiences === undefined) {
+      newInfo.workExperiences = [];
     }
 
     setInfo(newInfo);
