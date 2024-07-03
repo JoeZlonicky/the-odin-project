@@ -1,6 +1,6 @@
-import '../style/FormSection.css';
+import '../../../style/info-form/FormSection.css';
 
-function FormSection({ title, index, children }) {
+function StaticFormSection({ title, index, children }) {
   return (
     <section className="form-section">
       <h2>
@@ -11,4 +11,4 @@ function FormSection({ title, index, children }) {
   );
 }
 
-export default FormSection;
+export default StaticFormSection;

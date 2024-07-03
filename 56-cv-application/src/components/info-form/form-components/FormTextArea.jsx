@@ -1,7 +1,6 @@
-import '../style/FormField.css';
-import '../style/FormTextArea.css';
+import '../../../style/info-form/FormField.css';
+import '../../../style/info-form/FormTextArea.css';
 
-// If idOverride is not provided, then valueName will be used for the input id
 function FormTextArea({ label, valueName, defaultValue, idOverride = null }) {
   const id = idOverride ? idOverride : valueName;
 

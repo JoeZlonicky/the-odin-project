@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import InfoForm from './components/InfoForm';
-import Resume from './components/Resume';
+import InfoForm from './components/info-form/InfoForm';
+import Resume from './components/resume/Resume';
 import './App.css';
 
 function App() {

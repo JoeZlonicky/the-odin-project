@@ -1,5 +1,5 @@
-import TrayContainer from './TrayContainer';
-import '../style/Resume.css';
+import TrayContainer from '../TrayContainer';
+import '../../style/resume/Resume.css';
 
 function TopSection({ name, email, phoneNumber, website }) {
   const mailTo = 'mailto:' + email;
