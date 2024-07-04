@@ -1,0 +1,10 @@
+.card-display__instructions {
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.card-display__card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 350px;
+}

@@ -1,0 +1,25 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.app__title {
+  font-size: 3rem;
+}
+
+.app__author {
+  font-size: 1.5rem;
+}
+
+.app__score-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  span {
+    font-size: 1.5rem;
+  }
+}
