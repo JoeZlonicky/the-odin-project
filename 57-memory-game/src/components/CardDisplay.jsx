@@ -7,7 +7,51 @@ function CardDisplay() {
   const [loaded, setIsLoaded] = useState(true);
   const [cardData, setCardData] = useState([
     {
-      name: 'Ditto',
+      name: 'Ditto1',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto2',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto3',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto4',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto5',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto6',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto7',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto8',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto9',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto10',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto11',
+      image: dittoImage,
+    },
+    {
+      name: 'Ditto12',
       image: dittoImage,
     },
   ]);

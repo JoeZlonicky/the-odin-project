@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px;
+  padding-top: 25px;
 }
 
 .app__title {
@@ -10,14 +10,14 @@
 }
 
 .app__author {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .app__score-container {
   display: flex;
   gap: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 
   span {
     font-size: 1.5rem;
