@@ -1,6 +1,7 @@
 .card-display {
   box-sizing: border-box;
   padding: 30px;
+  padding-top: 0;
   width: 100%;
 }
 

@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 25px;
+  padding-bottom: 50px;
 }
 
 .app__title {
