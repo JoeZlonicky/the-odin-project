@@ -3,7 +3,15 @@ import dittoImage from '../assets/images/ditto.png';
 import Card from './Card';
 import './CardDisplay.css';
 
-function CardDisplay() {
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; --i) {
+    const k = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[k]] = [arr[k], arr[i]];
+  }
+  return arr;
+}
+
+function CardDisplay({ incrementScore, resetScore }) {
   const [loaded, setIsLoaded] = useState(true);
   const [cardData, setCardData] = useState([
     {
@@ -55,8 +63,22 @@ function CardDisplay() {
       image: dittoImage,
     },
   ]);
+  const [selectedNames, setSelectedNames] = useState([]);
 
-  const cards = cardData.map((data) => <Card data={data} key={data.name} />);
+  const onCardSelected = (cardName) => {
+    if (selectedNames.some((value) => value === cardName)) {
+      resetScore();
+      setSelectedNames([]);
+      setCardData(shuffleArray(cardData));
+      return;
+    }
+
+    incrementScore();
+    setCardData(shuffleArray(cardData));
+    selectedNames.push(cardName);
+  };
+
+  const cards = cardData.map((data) => <Card data={data} key={data.name} onSelect={() => onCardSelected(data.name)} />);
 
   return (
     <div className="card-display">
