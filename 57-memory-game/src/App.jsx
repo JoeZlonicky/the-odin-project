@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import CardDisplay from './components/CardDisplay';
+import Notification from './components/Notification';
 import './App.css';
+
+const N_CARDS = 12;
 
 function App() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [timesBeat, setTimesBeat] = useState(0);
+  const [notification, setNotification] = useState('');
+  const [notificationCount, setNotificationCount] = useState(0);
 
   const incrementScore = () => {
-    setScore((score) => {
-      const newScore = score + 1;
+    setScore((current) => {
+      const newScore = current + 1;
       if (newScore > highScore) {
         setHighScore(newScore);
       }
@@ -16,8 +22,17 @@ function App() {
     });
   };
 
+  const incrementTimesBeat = () => {
+    setTimesBeat((current) => current + 1);
+  };
+
   const resetScore = () => {
     setScore(0);
+  };
+
+  const displayNotification = (text) => {
+    setNotification(text);
+    setNotificationCount((current) => current + 1);
   };
 
   return (
@@ -27,10 +42,18 @@ function App() {
 
       <div className="app__score-container">
         <span>Score: {score}</span>
-        <span>High score: {highScore}</span>
+        {timesBeat > 0 && <span>Times beat: {timesBeat}</span>}
+        {timesBeat === 0 && <span>High score: {highScore}</span>}
       </div>
 
-      <CardDisplay incrementScore={incrementScore} resetScore={resetScore} />
+      <Notification text={notification} key={`${notification}-${notificationCount}`} />
+      <CardDisplay
+        incrementScore={incrementScore}
+        resetScore={resetScore}
+        incrementTimesBeat={incrementTimesBeat}
+        displayNotification={displayNotification}
+        nCards={N_CARDS}
+      />
     </>
   );
 }

@@ -1,0 +1,25 @@
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: 2s ease-out expand-and-fade forwards;
+  pointer-events: none;
+  font-size: 4rem;
+  user-select: none;
+}
+
+@keyframes expand-and-fade {
+  from {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    display: none;
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
