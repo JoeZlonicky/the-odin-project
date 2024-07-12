@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Titan+One&display=swap');
+
+body {
+  background: linear-gradient(to right, #444, #222);
+}
+
+#root,
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section > * {
+  color: #eee;
+}
+
+.divider {
+  margin: 1rem 0;
+  box-shadow: #444 0px 0.2rem 0.5rem;
+  background-color: #111;
+  width: 100%;
+  height: 1px;
+}
+
+h3 {
+  font-weight: 300;
+  font-family: 'Titan One', cursive;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Merriweather', serif;
+}
+
+h4 {
+  margin-bottom: 0.25rem;
+  border-bottom: #111 1px solid;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  font-family: 'Merriweather', serif;
+  text-align: center;
+}
+
+ul {
+  box-sizing: border-box;
+  margin: 0 0 0.5rem 0;
+  border-bottom: #111 1px solid;
+  padding-bottom: 0.25rem;
+  width: 100%;
+}
+
+li {
+  width: 100%;
+  font-family: 'Merriweather', serif;
+}
+
+button {
+  margin-left: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: rgb(255, 255, 255);
+  padding: 0.35rem;
+  font-family: 'Merriweather', serif;
+}
