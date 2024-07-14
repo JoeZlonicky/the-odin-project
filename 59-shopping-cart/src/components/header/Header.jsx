@@ -5,16 +5,23 @@ import styles from './Header.module.css';
 
 const Header = ({ cart }) => {
   return (
-    <nav className={styles.header}>
-      <div>The Tree Store</div>
-      <div>By Joe Zlonicky</div>
-      <div>
-        <NavLink to="/">Store</NavLink>
-        <NavLink to="/cart">
-          Cart <CartCount cart={cart} />
-        </NavLink>
+    <header className={styles.header}>
+      <div className={styles.content}>
+        <div className={styles.titleAndAuthor}>
+          <div className={styles.title}>The Tree Store</div>
+          <div className={styles.author}>By Joe Zlonicky</div>
+        </div>
+
+        <nav className={styles.nav}>
+          <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>
+            Store
+          </NavLink>
+          <NavLink to="/cart" className={({ isActive }) => (isActive ? styles.active : '')}>
+            Cart <CartCount cart={cart} />
+          </NavLink>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 
