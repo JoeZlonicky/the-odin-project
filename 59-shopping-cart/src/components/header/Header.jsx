@@ -8,7 +8,9 @@ const Header = ({ cart }) => {
     <header className={styles.header}>
       <div className={styles.content}>
         <div className={styles.titleAndAuthor}>
-          <div className={styles.title}>The Tree Store</div>
+          <NavLink to="/" className={styles.title}>
+            The Tree Store
+          </NavLink>
           <div className={styles.author}>By Joe Zlonicky</div>
         </div>
 
