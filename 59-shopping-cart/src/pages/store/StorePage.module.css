@@ -1,0 +1,7 @@
+.storePage {
+  text-align: center;
+}
+
+.storePage > div {
+  margin: 10px 20px;
+}

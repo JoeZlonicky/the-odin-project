@@ -1,0 +1,25 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  text-align: start;
+}
+
+.coverImage {
+  width: calc(225px - 20px);
+  height: 150px;
+}
+
+.title {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.bottomContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: end;
+}
