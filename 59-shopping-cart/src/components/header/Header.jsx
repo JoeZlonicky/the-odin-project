@@ -16,7 +16,10 @@ const Header = ({ cart }) => {
 
         <nav className={styles.nav}>
           <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>
-            Store
+            Home
+          </NavLink>
+          <NavLink to="/all-products" className={({ isActive }) => (isActive ? styles.active : '')}>
+            All Products
           </NavLink>
           <NavLink to="/cart" className={({ isActive }) => (isActive ? styles.active : '')}>
             Cart <CartCount cart={cart} />

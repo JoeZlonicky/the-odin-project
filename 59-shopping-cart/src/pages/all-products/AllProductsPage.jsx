@@ -1,9 +1,9 @@
 import { useCart, useProducts } from '../../app/App';
 import ProductCard from '../../components/product-card/ProductCard';
 import ProductGrid from '../../components/product-grid/ProductGrid';
-import styles from './StorePage.module.css';
+import styles from './AllProductsPage.module.css';
 
-const StorePage = () => {
+const AllProductsPage = () => {
   const [cart, setCart] = useCart();
   const [products, areProductsLoaded] = useProducts();
 
@@ -28,13 +28,13 @@ const StorePage = () => {
   });
 
   return (
-    <main className={styles.storePage}>
-      <h1>Store</h1>
+    <main className={styles.allProductsPage}>
+      <h1>All Products</h1>
       {!areProductsLoaded && <div>Loading products...</div>}
-      {areProductsLoaded && products.length === 0 && <div>Hmm, we don't seem to have any products</div>}
+      {areProductsLoaded && products.length === 0 && <div>Hmm, we don&apos;t seem to have any products</div>}
       {areProductsLoaded && products.length > 0 && <ProductGrid>{productCards}</ProductGrid>}
     </main>
   );
 };
 
-export default StorePage;
+export default AllProductsPage;

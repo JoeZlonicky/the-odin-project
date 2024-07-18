@@ -31,7 +31,7 @@
 
 .nav {
   display: flex;
-  gap: 16px;
+  gap: 24px;
 }
 
 .nav a {
