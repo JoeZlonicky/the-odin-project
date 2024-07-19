@@ -7,18 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
   background-color: #272c42;
-  background:
-    radial-gradient(circle, transparent 20%, #272c42 20%, #272c42 80%, transparent 80%, transparent),
-    radial-gradient(circle, transparent 20%, #272c42 20%, #272c42 80%, transparent 80%, transparent) 25px 25px,
-    linear-gradient(#353b55 2px, transparent 2px) 0 -1px,
-    linear-gradient(90deg, #353b55 2px, #272c42 2px) -1px 0;
-  background-size:
-    50px 50px,
-    50px 50px,
-    25px 25px,
-    25px 25px;
   min-height: 100vh;
   color: white;
   font-family: Acme, sans-serif;
