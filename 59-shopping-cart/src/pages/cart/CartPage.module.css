@@ -1,3 +1,18 @@
 .cartPage {
   text-align: center;
 }
+
+.checkoutButton {
+  background-color: #697edf;
+  padding: 8px 32px;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.checkoutButton:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+}
+
+.checkoutButton:active {
+  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.2);
+}

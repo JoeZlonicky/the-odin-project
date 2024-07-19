@@ -1,3 +1,14 @@
 .homePage {
   text-align: center;
 }
+
+.title {
+  margin-bottom: 0;
+  padding: 0 16px;
+  font-size: 5rem;
+}
+
+.description {
+  padding: 0 16px;
+  font-size: 2rem;
+}

@@ -16,7 +16,7 @@ const CartPage = () => {
         Cart (<CartCount cart={cart} />)
       </h1>
 
-      <NavLink to="/thank-you" onClick={clearCart}>
+      <NavLink to="/thank-you" onClick={clearCart} className={styles.checkoutButton}>
         Checkout
       </NavLink>
     </main>
