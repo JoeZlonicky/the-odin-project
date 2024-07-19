@@ -9,7 +9,7 @@ const Header = ({ cart }) => {
       <div className={styles.content}>
         <div className={styles.titleAndAuthor}>
           <NavLink to="/" className={styles.title}>
-            The Tree Store
+            Poké Mart
           </NavLink>
           <div className={styles.author}>By Joe Zlonicky</div>
         </div>
