@@ -1,31 +1,13 @@
 import { useCart, useProducts } from '../../app/App';
+import AddToCartProductCard from '../../components/product-card/add-to-cart/AddToCartProductCard';
 import ProductCard from '../../components/product-card/ProductCard';
 import ProductGrid from '../../components/product-grid/ProductGrid';
 import styles from './AllProductsPage.module.css';
 
 const AllProductsPage = () => {
-  const [cart, setCart] = useCart();
   const [products, areProductsLoaded] = useProducts();
 
-  const productCards = products.map((product) => {
-    const addToCart = () => {
-      console.log(`Add ${product.name} to cart`);
-    };
-    const addToCartButton = (
-      <button onClick={addToCart} key="1">
-        Add to Cart
-      </button>
-    );
-    return (
-      <ProductCard
-        key={product.id}
-        img={product.img}
-        title={product.name}
-        cost={product.cost}
-        actionButtons={[addToCartButton]}
-      />
-    );
-  });
+  const productCards = products.map((product) => <AddToCartProductCard product={product} key={product.id} />);
 
   return (
     <main className={styles.allProductsPage}>
