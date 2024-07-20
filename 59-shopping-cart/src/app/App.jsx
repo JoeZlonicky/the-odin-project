@@ -5,9 +5,6 @@ import { v4 as uuid } from 'uuid';
 import Header from '../components/header/Header';
 import './App.css';
 
-const defaultCart = new Map();
-defaultCart.set('Apples', 3);
-
 const loadedProducts = [
   {
     name: 'maple',
@@ -22,6 +19,9 @@ const loadedProducts = [
     cost: 200,
   },
 ];
+
+const defaultCart = new Map();
+defaultCart.set(loadedProducts[0], 3);
 
 function App() {
   const [cart, setCart] = useState(defaultCart);

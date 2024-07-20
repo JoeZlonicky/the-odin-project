@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
+import QuantityPill from '../quantity-pill/QuantityPill';
 import styles from './ProductCard.module.css';
 
-const ProductCard = ({ img, title, cost, actionButtons }) => {
+const ProductCard = ({ product, actionButtons, quantity, setQuantity }) => {
   return (
     <div className={styles.productCard}>
-      <div className={styles.coverImage}>{img}</div>
-      <div className={styles.title}>{title}</div>
-      <div>${cost}</div>
+      <div className={styles.coverImage}>{product.img}</div>
+      <div className={styles.title}>{product.name}</div>
+      <div className={styles.cost}>¥{product.cost}</div>
       <div className={styles.bottomContainer}>
-        <div>Quantity</div>
+        <QuantityPill quantity={quantity} setQuantity={setQuantity} id={product.id} />
         <div>{actionButtons}</div>
       </div>
     </div>
@@ -16,9 +17,12 @@ const ProductCard = ({ img, title, cost, actionButtons }) => {
 };
 
 ProductCard.propTypes = {
-  img: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  cost: PropTypes.number.isRequired,
+  product: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    cost: PropTypes.number.isRequired,
+  }).isRequired,
   actionButtons: PropTypes.arrayOf(PropTypes.element),
 };
 
