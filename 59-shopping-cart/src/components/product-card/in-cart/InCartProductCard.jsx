@@ -5,7 +5,11 @@ import styles from './InCartProductCard.module.css';
 const InCartProductCard = ({ product, quantity }) => {
   const [cart, setCart] = useCart();
 
-  const removeFromCart = () => {};
+  const removeFromCart = () => {
+    const newCart = new Map([...cart]);
+    newCart.delete(product);
+    setCart(newCart);
+  };
 
   return (
     <div className={productCardStyles.productCard}>
