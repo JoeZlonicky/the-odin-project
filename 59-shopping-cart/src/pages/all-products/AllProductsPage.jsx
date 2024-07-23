@@ -1,6 +1,5 @@
-import { useCart, useProducts } from '../../app/App';
+import { useProducts } from '../../app/App';
 import AddToCartProductCard from '../../components/product-card/add-to-cart/AddToCartProductCard';
-import ProductCard from '../../components/product-card/ProductCard';
 import ProductGrid from '../../components/product-grid/ProductGrid';
 import styles from './AllProductsPage.module.css';
 

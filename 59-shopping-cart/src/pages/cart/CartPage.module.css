@@ -3,6 +3,8 @@
 }
 
 .checkoutButton {
+  display: inline-block;
+  margin-top: 32px;
   background-color: #697edf;
   padding: 8px 32px;
   font-size: 2rem;

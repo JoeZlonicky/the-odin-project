@@ -14,3 +14,12 @@
 .addToCartButton:active {
   box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.2);
 }
+
+.bottomContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+  margin-top: 10px;
+}

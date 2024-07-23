@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useCart } from '../../../app/App';
-import ProductCard from '../ProductCard';
+import QuantityPill from '../../quantity-pill/QuantityPill';
+import productCardStyles from '../ProductCard.module.css';
 import styles from './AddToCartProductCard.module.css';
 
 const AddToCartProductCard = ({ product }) => {
@@ -23,17 +24,17 @@ const AddToCartProductCard = ({ product }) => {
   };
 
   return (
-    <ProductCard
-      key={product.id}
-      product={product}
-      actionButtons={[
-        <button onClick={addToCart} key="1" className={styles.addToCartButton}>
+    <div className={productCardStyles.productCard}>
+      <div className={productCardStyles.coverImage}>{product.img}</div>
+      <div className={productCardStyles.title}>{product.name}</div>
+      <div className={productCardStyles.cost}>¥{product.cost}</div>
+      <div className={styles.bottomContainer}>
+        <QuantityPill quantity={quantity} setQuantity={setQuantity} id={product.id} />
+        <button onClick={addToCart} className={styles.addToCartButton}>
           Add to Cart
-        </button>,
-      ]}
-      quantity={quantity}
-      setQuantity={setQuantity}
-    />
+        </button>
+      </div>
+    </div>
   );
 };
 
