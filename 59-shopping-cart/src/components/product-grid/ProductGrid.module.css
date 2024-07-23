@@ -4,4 +4,5 @@
   grid-auto-rows: 1fr;
   justify-content: center;
   gap: 32px;
+  margin: 8px;
 }

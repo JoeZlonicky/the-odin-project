@@ -7,16 +7,40 @@ import './App.css';
 
 const loadedProducts = [
   {
-    name: 'maple',
+    name: 'Pokeball',
     id: uuid(),
     img: 'IMAGE LINK',
     cost: 100,
   },
   {
-    name: 'oak',
+    name: 'Healing Potion',
     id: uuid(),
     img: 'IMAGE LINK',
     cost: 200,
+  },
+  {
+    name: 'Healing Potion',
+    id: uuid(),
+    img: 'IMAGE LINK',
+    cost: 300,
+  },
+  {
+    name: 'Healing Potion',
+    id: uuid(),
+    img: 'IMAGE LINK',
+    cost: 400,
+  },
+  {
+    name: 'Healing Potion',
+    id: uuid(),
+    img: 'IMAGE LINK',
+    cost: 400,
+  },
+  {
+    name: 'Healing Potion',
+    id: uuid(),
+    img: 'IMAGE LINK',
+    cost: 400,
   },
 ];
 
