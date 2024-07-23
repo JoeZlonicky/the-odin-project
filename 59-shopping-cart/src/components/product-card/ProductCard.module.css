@@ -9,8 +9,10 @@
 }
 
 .coverImage {
+  image-rendering: crisp-edges;
   width: calc(225px - 20px);
   height: 150px;
+  object-fit: contain;
 }
 
 .title {

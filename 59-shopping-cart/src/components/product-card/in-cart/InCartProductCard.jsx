@@ -9,7 +9,7 @@ const InCartProductCard = ({ product, quantity }) => {
 
   return (
     <div className={productCardStyles.productCard}>
-      <div className={productCardStyles.coverImage}>{product.img}</div>
+      <img className={productCardStyles.coverImage} src={product.img}></img>
       <div className={productCardStyles.title}>{product.name}</div>
       <div className={productCardStyles.cost}>
         ¥{product.cost}

@@ -9,7 +9,7 @@ const loadedProducts = [
   {
     name: 'Pokeball',
     id: uuid(),
-    img: 'IMAGE LINK',
+    img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/master-ball.png',
     cost: 100,
   },
   {
