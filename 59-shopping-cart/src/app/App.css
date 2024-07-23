@@ -8,6 +8,7 @@
   flex-direction: column;
   gap: 8px;
   background-color: #272c42;
+  padding-bottom: 100px;
   min-height: 100vh;
   color: white;
   font-family: Acme, sans-serif;

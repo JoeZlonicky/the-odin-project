@@ -22,7 +22,7 @@ const Header = ({ cart }) => {
             All Products
           </NavLink>
           <NavLink to="/cart" className={({ isActive }) => (isActive ? styles.active : '')}>
-            Cart <CartCount cart={cart} />
+            Cart (<CartCount cart={cart} />)
           </NavLink>
         </nav>
       </div>

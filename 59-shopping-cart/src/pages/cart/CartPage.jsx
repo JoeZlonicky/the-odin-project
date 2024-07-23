@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../../app/App';
 import CartCount from '../../components/cart-count/CartCount';
+import ContinueShopping from '../../components/continue-shopping/ContinueShopping';
 import InCartProductCard from '../../components/product-card/in-cart/InCartProductCard';
 import ProductGrid from '../../components/product-grid/ProductGrid';
 import styles from './CartPage.module.css';
@@ -30,7 +31,10 @@ const CartPage = () => {
           </NavLink>
         </>
       ) : (
-        <NavLink to="/all-products">Continue Shopping</NavLink>
+        <>
+          <h2>Your cart is empty!</h2>
+          <ContinueShopping />
+        </>
       )}
     </main>
   );
