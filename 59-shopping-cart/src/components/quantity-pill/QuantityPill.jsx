@@ -3,11 +3,12 @@ import styles from './QuantityPill.module.css';
 const QuantityPill = ({ quantity, setQuantity, id }) => {
   const decrement = () => {
     if (quantity == 0) return;
-    setQuantity((quantity) => quantity - 1);
+    setQuantity(quantity - 1);
   };
 
   const increment = () => {
-    setQuantity((quantity) => quantity + 1);
+    if (quantity == 999) return;
+    setQuantity(quantity + 1);
   };
 
   const onInputChange = (newValue) => {
