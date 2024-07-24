@@ -26,9 +26,9 @@ async function getFunctionCallFromInput(inputValue, initial) {
 }
 
 it('Matches screenshot', () => {
-  const component = render(<QuantityPill />);
+  const container = render(<QuantityPill />);
 
-  expect(component).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });
 
 it('Uses quantity', () => {
