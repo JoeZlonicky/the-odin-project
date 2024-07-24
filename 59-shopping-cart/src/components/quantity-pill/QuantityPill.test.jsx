@@ -25,43 +25,41 @@ async function getFunctionCallFromInput(inputValue, initial) {
   return setQuantity;
 }
 
-describe('QuantityPill', () => {
-  it('Matches screenshot', () => {
-    const component = render(<QuantityPill />);
+it('Matches screenshot', () => {
+  const component = render(<QuantityPill />);
 
-    expect(component).toMatchSnapshot();
-  });
+  expect(component).toMatchSnapshot();
+});
 
-  it('Uses quantity', () => {
-    const quantity = 3;
+it('Uses quantity', () => {
+  const quantity = 3;
 
-    render(<QuantityPill quantity={quantity} />);
+  render(<QuantityPill quantity={quantity} />);
 
-    expect(screen.getByRole('textbox').value).toMatch(`${quantity}`);
-  });
+  expect(screen.getByRole('textbox').value).toMatch(`${quantity}`);
+});
 
-  it('Decrements when pressed', async () => {
-    const fn = await getFunctionCallFromButtonClick('Decrement', 3);
-    expect(fn).toHaveBeenCalledWith(2);
-  });
+it('Decrements when pressed', async () => {
+  const fn = await getFunctionCallFromButtonClick('Decrement', 3);
+  expect(fn).toHaveBeenCalledWith(2);
+});
 
-  it('Increments when pressed', async () => {
-    const fn = await getFunctionCallFromButtonClick('Increment', 3);
-    expect(fn).toHaveBeenCalledWith(4);
-  });
+it('Increments when pressed', async () => {
+  const fn = await getFunctionCallFromButtonClick('Increment', 3);
+  expect(fn).toHaveBeenCalledWith(4);
+});
 
-  it('Doesn\t decrement below 0', async () => {
-    const fn = await getFunctionCallFromButtonClick('Decrement', 0);
-    expect(fn).not.toHaveBeenCalledWith(-1);
-  });
+it('Doesn\t decrement below 0', async () => {
+  const fn = await getFunctionCallFromButtonClick('Decrement', 0);
+  expect(fn).not.toHaveBeenCalledWith(-1);
+});
 
-  it('Doesn\t go above 3 numbers', async () => {
-    const fn = await getFunctionCallFromButtonClick('Increment', 999);
-    expect(fn).not.toHaveBeenCalled(1000);
-  });
+it('Doesn\t go above 3 numbers', async () => {
+  const fn = await getFunctionCallFromButtonClick('Increment', 999);
+  expect(fn).not.toHaveBeenCalled(1000);
+});
 
-  it('Doesn\t allow alpha input', async () => {
-    const fn = await getFunctionCallFromInput('Hello9', 0);
-    expect(fn).toHaveBeenCalledWith(9);
-  });
+it('Doesn\t allow alpha input', async () => {
+  const fn = await getFunctionCallFromInput('Hello9', 0);
+  expect(fn).toHaveBeenCalledWith(9);
 });
