@@ -5,6 +5,10 @@
   gap: 4px;
 }
 
+.quantityPill button {
+  width: 30px;
+}
+
 .inputContainer {
   display: flex;
 }
@@ -27,21 +31,4 @@
 
 .label {
   font-size: 1.4rem;
-}
-
-.button {
-  cursor: pointer;
-  border: none;
-  background-color: #6071c4;
-  width: 30px;
-  color: white;
-  font-size: 1.3rem;
-}
-
-.button:hover {
-  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
-}
-
-.button:active {
-  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.2);
 }

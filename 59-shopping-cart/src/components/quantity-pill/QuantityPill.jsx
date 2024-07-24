@@ -1,13 +1,14 @@
+import Button from '../button/Button';
 import styles from './QuantityPill.module.css';
 
-const QuantityPill = ({ quantity, setQuantity, id }) => {
+function QuantityPill({ quantity, setQuantity, id }) {
   const decrement = () => {
-    if (quantity == 0) return;
+    if (quantity <= 0) return;
     setQuantity(quantity - 1);
   };
 
   const increment = () => {
-    if (quantity == 999) return;
+    if (quantity >= 999) return;
     setQuantity(quantity + 1);
   };
 
@@ -19,8 +20,6 @@ const QuantityPill = ({ quantity, setQuantity, id }) => {
     }
 
     newValue = parseInt(newValue);
-    if (quantity == newValue) return;
-
     setQuantity(newValue);
   };
 
@@ -30,9 +29,9 @@ const QuantityPill = ({ quantity, setQuantity, id }) => {
         Quantity
       </label>
       <div className={styles.inputContainer}>
-        <button type="button" onClick={decrement} className={styles.button} aria-label="Decrement">
+        <Button onClick={decrement} ariaLabel="Decrement">
           —
-        </button>
+        </Button>
         <input
           id={id + '-input'}
           min="0"
@@ -41,12 +40,12 @@ const QuantityPill = ({ quantity, setQuantity, id }) => {
           onChange={(e) => onInputChange(e.target.value)}
           maxLength={3}
         ></input>
-        <button type="button" onClick={increment} className={styles.button} aria-label="Increment">
+        <Button onClick={increment} ariaLabel="Increment">
           +
-        </button>
+        </Button>
       </div>
     </div>
   );
-};
+}
 
 export default QuantityPill;

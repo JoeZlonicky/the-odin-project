@@ -5,7 +5,6 @@ import QuantityPill from './QuantityPill';
 
 async function getFunctionCallFromButtonClick(buttonLabelText, initial) {
   const user = userEvent.setup();
-
   const setQuantity = vi.fn();
 
   render(<QuantityPill quantity={initial} setQuantity={setQuantity} />);
