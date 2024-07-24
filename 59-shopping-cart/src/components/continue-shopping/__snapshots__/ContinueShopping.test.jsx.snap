@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Matches screenshot 1`] = `
+<div>
+  <a
+    class="_continueShopping_8c1960"
+    href="/all-products"
+  >
+    Continue Shopping
+  </a>
+</div>
+`;

@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Matches screenshot 1`] = `
+<div>
+  <header
+    class="_header_69e643"
+  >
+    <div
+      class="_content_69e643"
+    >
+      <div
+        class="_titleAndAuthor_69e643"
+      >
+        <a
+          aria-current="page"
+          class="_title_69e643 active"
+          href="/"
+        >
+          Poké Mart
+        </a>
+        <div
+          class="_author_69e643"
+        >
+          By Joe Zlonicky
+        </div>
+      </div>
+      <nav
+        class="_nav_69e643"
+      >
+        <a
+          aria-current="page"
+          class="_active_69e643"
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          class=""
+          href="/all-products"
+        >
+          All Products
+        </a>
+        <a
+          class=""
+          href="/cart"
+        >
+          Cart (
+          0
+          )
+        </a>
+      </nav>
+    </div>
+  </header>
+</div>
+`;

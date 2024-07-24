@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 import Header from '../components/header/Header';
 import fetchData from '../data/fetchData';
 import './App.css';
