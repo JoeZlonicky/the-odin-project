@@ -16,7 +16,7 @@ function InCartProductCard({ product, quantity = 1 }) {
 
   return (
     <div className={productCardStyles.productCard}>
-      <img className={productCardStyles.coverImage} src={product.img}></img>
+      <img className={productCardStyles.coverImage} src={product.img} alt={product.name}></img>
       <div className={productCardStyles.title}>{product.name}</div>
       <div className={productCardStyles.cost}>
         ¥{product.cost}

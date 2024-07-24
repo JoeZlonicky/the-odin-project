@@ -28,7 +28,7 @@ function AddToCartProductCard({ product }) {
 
   return (
     <div className={productCardStyles.productCard}>
-      <img className={productCardStyles.coverImage} src={product.img}></img>
+      <img className={productCardStyles.coverImage} src={product.img} alt={product.name}></img>
       <div className={productCardStyles.title}>{product.name}</div>
       <div className={productCardStyles.cost}>¥{product.cost}</div>
       <div className={styles.bottomContainer}>
