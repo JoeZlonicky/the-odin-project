@@ -19,7 +19,7 @@ exports[`Matches screenshot 1`] = `
         >
           <button
             aria-label="Decrement"
-            class="_button_4fb095"
+            class="_button_4fb095 false"
             type="button"
           >
             —
@@ -29,11 +29,11 @@ exports[`Matches screenshot 1`] = `
             id="undefined-input"
             maxlength="3"
             min="0"
-            value=""
+            value="0"
           />
           <button
             aria-label="Increment"
-            class="_button_4fb095"
+            class="_button_4fb095 false"
             type="button"
           >
             +
@@ -57,7 +57,7 @@ exports[`Matches screenshot 1`] = `
       >
         <button
           aria-label="Decrement"
-          class="_button_4fb095"
+          class="_button_4fb095 false"
           type="button"
         >
           —
@@ -67,11 +67,11 @@ exports[`Matches screenshot 1`] = `
           id="undefined-input"
           maxlength="3"
           min="0"
-          value=""
+          value="0"
         />
         <button
           aria-label="Increment"
-          class="_button_4fb095"
+          class="_button_4fb095 false"
           type="button"
         >
           +

@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-}
 
-.quantityPill button {
-  width: 30px;
+  button {
+    width: 30px;
+  }
 }
 
 .inputContainer {

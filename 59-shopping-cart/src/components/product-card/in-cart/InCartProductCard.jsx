@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
 import { useCart } from '../../../app/App';
+import ProductType from '../../../types/ProductType';
+import Button from '../../button/Button';
 import productCardStyles from '../ProductCard.module.css';
 import styles from './InCartProductCard.module.css';
 
-const InCartProductCard = ({ product, quantity }) => {
+function InCartProductCard({ product, quantity = 1 }) {
   const [cart, setCart] = useCart();
 
   const removeFromCart = () => {
@@ -19,11 +22,18 @@ const InCartProductCard = ({ product, quantity }) => {
         ¥{product.cost}
         {quantity > 1 && ` x${quantity}`}
       </div>
-      <button onClick={removeFromCart} className={styles.removeFromCartButton}>
-        Remove from Cart
-      </button>
+      <div className={styles.bottomSection}>
+        <Button onClick={removeFromCart} isNegative={true}>
+          Remove from Cart
+        </Button>
+      </div>
     </div>
   );
+}
+
+InCartProductCard.propTypes = {
+  product: PropTypes.shape(ProductType),
+  quantity: PropTypes.number,
 };
 
 export default InCartProductCard;

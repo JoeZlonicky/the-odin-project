@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../app/App';
 import CartCount from '../../components/cart-count/CartCount';
 import ContinueShopping from '../../components/continue-shopping/ContinueShopping';
@@ -6,7 +6,7 @@ import InCartProductCard from '../../components/product-card/in-cart/InCartProdu
 import ProductGrid from '../../components/product-grid/ProductGrid';
 import styles from './CartPage.module.css';
 
-const CartPage = () => {
+function CartPage() {
   const [cart, setCart] = useCart();
 
   const clearCart = () => {
@@ -26,9 +26,9 @@ const CartPage = () => {
       {productCards.length > 0 ? (
         <>
           <ProductGrid areShortCards={true}>{productCards}</ProductGrid>
-          <NavLink to="/thank-you" onClick={clearCart} className={styles.checkoutButton}>
+          <Link to="/thank-you" onClick={clearCart} className={styles.checkoutButton}>
             Checkout
-          </NavLink>
+          </Link>
         </>
       ) : (
         <>
@@ -38,6 +38,6 @@ const CartPage = () => {
       )}
     </main>
   );
-};
+}
 
 export default CartPage;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CartCount from '../cart-count/CartCount';
 import styles from './Header.module.css';
 
-const Header = ({ cart }) => {
+function Header({ cart }) {
   return (
     <header className={styles.header}>
       <div className={styles.content}>
@@ -28,10 +28,10 @@ const Header = ({ cart }) => {
       </div>
     </header>
   );
-};
+}
 
 Header.propTypes = {
-  cart: PropTypes.instanceOf(Map),
+  cart: PropTypes.instanceOf(Map).isRequired,
 };
 
 export default Header;

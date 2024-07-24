@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useCart } from '../../../app/App';
+import ProductType from '../../../types/ProductType';
+import Button from '../../button/Button';
 import QuantityPill from '../../quantity-pill/QuantityPill';
 import productCardStyles from '../ProductCard.module.css';
 import styles from './AddToCartProductCard.module.css';
 
-const AddToCartProductCard = ({ product }) => {
+function AddToCartProductCard({ product }) {
   const [cart, setCart] = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -30,12 +33,14 @@ const AddToCartProductCard = ({ product }) => {
       <div className={productCardStyles.cost}>¥{product.cost}</div>
       <div className={styles.bottomContainer}>
         <QuantityPill quantity={quantity} setQuantity={setQuantity} id={product.id} />
-        <button onClick={addToCart} className={styles.addToCartButton}>
-          Add to Cart
-        </button>
+        <Button onClick={addToCart}>Add to Cart</Button>
       </div>
     </div>
   );
+}
+
+AddToCartProductCard.propTypes = {
+  product: PropTypes.shape(ProductType),
 };
 
 export default AddToCartProductCard;

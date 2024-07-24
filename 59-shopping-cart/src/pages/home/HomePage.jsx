@@ -3,7 +3,7 @@ import AddToCartProductCard from '../../components/product-card/add-to-cart/AddT
 import ProductGrid from '../../components/product-grid/ProductGrid';
 import styles from './HomePage.module.css';
 
-const HomePage = () => {
+function HomePage() {
   const [products, areProductsLoaded] = useProducts();
 
   const popularProductCards = products
@@ -22,6 +22,6 @@ const HomePage = () => {
       )}
     </main>
   );
-};
+}
 
 export default HomePage;

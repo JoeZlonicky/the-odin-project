@@ -1,26 +1,27 @@
+import PropTypes from 'prop-types';
 import Button from '../button/Button';
 import styles from './QuantityPill.module.css';
 
-function QuantityPill({ quantity, setQuantity, id }) {
+function QuantityPill({ quantity = 0, setQuantity, id }) {
   const decrement = () => {
     if (quantity <= 0) return;
-    setQuantity(quantity - 1);
+    setQuantity?.(quantity - 1);
   };
 
   const increment = () => {
     if (quantity >= 999) return;
-    setQuantity(quantity + 1);
+    setQuantity?.(quantity + 1);
   };
 
   const onInputChange = (newValue) => {
     newValue = newValue.replace(/\D/g, '');
     if (newValue == '') {
-      setQuantity(0);
+      setQuantity?.(0);
       return;
     }
 
     newValue = parseInt(newValue);
-    setQuantity(newValue);
+    setQuantity?.(newValue);
   };
 
   return (
@@ -47,5 +48,11 @@ function QuantityPill({ quantity, setQuantity, id }) {
     </div>
   );
 }
+
+QuantityPill.propTypes = {
+  quantity: PropTypes.number,
+  setQuantity: PropTypes.func,
+  id: PropTypes.string,
+};
 
 export default QuantityPill;

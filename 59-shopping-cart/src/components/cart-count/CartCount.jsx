@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function CartCount({ cart }) {
   let count = 0;
   cart.forEach((value) => {
@@ -5,5 +7,9 @@ function CartCount({ cart }) {
   });
   return <>{count}</>;
 }
+
+CartCount.propTypes = {
+  cart: PropTypes.instanceOf(Map).isRequired,
+};
 
 export default CartCount;

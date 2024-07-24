@@ -1,15 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './NotFoundPage.module.css';
 
-const NotFoundPage = () => {
+function NotFoundPage() {
   return (
     <main className={styles.notFoundPage}>
       <h1>Page not found!</h1>
       <p>
-        Return to <NavLink to="/">Home Page</NavLink>
+        Return to <Link to="/">Home Page</Link>
       </p>
     </main>
   );
-};
+}
 
 export default NotFoundPage;

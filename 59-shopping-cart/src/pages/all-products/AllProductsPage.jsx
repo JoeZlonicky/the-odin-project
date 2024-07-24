@@ -3,7 +3,7 @@ import AddToCartProductCard from '../../components/product-card/add-to-cart/AddT
 import ProductGrid from '../../components/product-grid/ProductGrid';
 import styles from './AllProductsPage.module.css';
 
-const AllProductsPage = () => {
+function AllProductsPage() {
   const [products, areProductsLoaded] = useProducts();
 
   const productCards = products.map((product) => <AddToCartProductCard product={product} key={product.id} />);
@@ -16,6 +16,6 @@ const AllProductsPage = () => {
       {areProductsLoaded && products.length > 0 && <ProductGrid>{productCards}</ProductGrid>}
     </main>
   );
-};
+}
 
 export default AllProductsPage;
