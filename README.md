@@ -10,4 +10,4 @@ Finished:
 - [Advanced HTML and CSS](https://www.theodinproject.com/paths/full-stack-javascript/courses/advanced-html-and-css) - 16/16
 - [React](https://www.theodinproject.com/paths/full-stack-javascript/courses/react) - 26/26
 - [Databases](https://www.theodinproject.com/paths/full-stack-javascript/courses/databases) - 3/3
-- [NodeJS](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs) - 0/21
+- [NodeJS](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs) - 7/21
