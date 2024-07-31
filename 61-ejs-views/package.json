@@ -1,0 +1,14 @@
+{
+  "name": "61-ejs-views",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "run": "node app.js",
+    "watch": "node --watch app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}
