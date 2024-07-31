@@ -16,6 +16,9 @@ app.set('view engine', 'ejs');
 // Serve public files (e.g. CSS)
 app.use(express.static(assetsPath));
 
+// For posting new messages
+app.use(express.urlencoded({ extended: true }));
+
 // Routes
 app.use('/messages', messagesRouter);
 app.use('/new', formsRouter);

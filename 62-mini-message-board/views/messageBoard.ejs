@@ -11,10 +11,10 @@
   
   <h2>Messages</h2>
   <div class="message-container">
-    <% messages.forEach((message) => { %>
+    <% messages.reverse().forEach((message) => { %>
       <div class="message">
         <div class="message__body"><%=message.text%></div>
-        <div class="message__footer"><%=message.user%> - <%=message.added%></div>
+        <div class="message__footer"><%=message.author%> - <%=message.date%></div>
       </div>
     <% }) %>
   </div>
