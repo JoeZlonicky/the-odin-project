@@ -1,0 +1,22 @@
+body {
+  padding: 16px;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  border: 1px solid black;
+}
+
+.message__body {
+  border-bottom: 1px solid black;
+  padding: 8px;
+}
+
+.message__footer {
+  padding: 8px;
+}

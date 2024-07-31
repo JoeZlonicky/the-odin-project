@@ -1,0 +1,28 @@
+body {
+  padding: 16px;
+}
+
+form label {
+  display: block;
+  margin-top: 8px;
+}
+
+form input,
+form textarea {
+  min-width: 240px;
+}
+
+form textarea {
+  min-height: 160px;
+}
+
+.end-section {
+  display: block;
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.end-section button {
+  min-width: 64px;
+}

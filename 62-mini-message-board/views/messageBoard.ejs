@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+  <title>Message Board</title>
+  <link rel="stylesheet" href="./messageBoard.css">
+</head>
+<body>
+  <h1>Message Board</h1>
+  <form action="/new">
+    <input type="submit" value="New Message"/>
+  </form>
+  
+  <h2>Messages</h2>
+  <div class="message-container">
+    <% messages.forEach((message) => { %>
+      <div class="message">
+        <div class="message__body"><%=message.text%></div>
+        <div class="message__footer"><%=message.user%> - <%=message.added%></div>
+      </div>
+    <% }) %>
+  </div>
+  
+</body>

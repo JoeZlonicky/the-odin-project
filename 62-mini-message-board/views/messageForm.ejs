@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+  <title>New Message | Message Board</title>
+  <link rel="stylesheet" href="./messageForm.css" />
+</head>
+<body>
+  <h1>New Message</h1>
+  <form method="POST" action="/messages">
+    <label for="message-body">Message:</label>
+    <textarea name="messageBody" id="message-body"></textarea>
+
+    <label for="message-author">Author:</label>
+    <input type="text" name="messageAuthor" id="message-author" />
+
+    <div class="end-section">
+      <a href="/">Discard</a>
+      <button type="submit">Post</button>
+    </div>
+  </form>
+</body>
