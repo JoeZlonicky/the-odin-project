@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<head>
-  <title>Message Board</title>
-  <link rel="stylesheet" href="./messageBoard.css">
-</head>
-<body>
-  <h1>Message Board</h1>
-  <form action="/new">
-    <input type="submit" value="New Message"/>
-  </form>
-  
-  <h2>Messages</h2>
-  <div class="message-container">
-    <% messages.reverse().forEach((message) => { %>
-      <div class="message">
-        <div class="message__body"><%=message.text%></div>
-        <div class="message__footer"><%=message.author%> - <%=message.date%></div>
-      </div>
-    <% }) %>
-  </div>
-  
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Board</title>
+    <link rel="stylesheet" href="/messageBoard.css">
+  </head>
+
+  <body>
+    <h1>Message Board</h1>
+    <form action="/new">
+      <input type="submit" value="New Message"/>
+    </form>
+    
+    <h2>Messages</h2>
+    <div class="message-container">
+      <% messages.reverse().forEach((message) => { %>
+        <div class="message">
+          <div class="message__body"><%=message.body%></div>
+          <div class="message__open"><a href="/messages/<%=message.id%>">Open Message</a></div>
+          <div class="message__footer"><%=message.author%> - <%=dateformat(message.date)%></div>
+        </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

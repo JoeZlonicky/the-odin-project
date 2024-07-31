@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<head>
-  <title>Message</title>
-  <link rel="stylesheet" href="./index.css">
-</head>
-<body>
-  <h1>Message Board</h1>
-  <form action="/new">
-    <input type="submit" value="New Message"/>
-  </form>
-  
-  <h2>Messages</h2>
-  <div class="message-container">
-    <% messages.reverse().forEach((message) => { %>
-      <div class="message">
-        <div class="message__body"><%=message.text%></div>
-        <div class="message__footer"><%=message.author%> - <%=message.added%></div>
-      </div>
-    <% }) %>
-  </div>
-  
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Message | Message Board</title>
+    <link rel="stylesheet" href="/message.css" />
+  </head>
+
+  <body>
+    <h1>Message #<%=message.id%></h1>
+    <h3>Author</h3>
+    <div><%=message.author%></div>
+    <h3>Body</h3>
+    <div><%=message.body%></div>
+    <h3>Date</h3>
+    <div><%=message.date%></div>
+    <div class="footer">
+      <a href="/messages">Back</a>
+    </div>
+  </body>
+</html>

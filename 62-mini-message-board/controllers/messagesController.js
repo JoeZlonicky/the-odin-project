@@ -1,30 +1,43 @@
+import { format } from 'date-fns';
+
+let messageCounter = 1;
+
 const messages = [
   {
-    text: 'Hello, world!',
+    body: 'Hello, world!',
     author: 'Programmer42',
     date: new Date(),
+    id: messageCounter++,
   },
   {
-    text: 'test',
+    body: 'test',
     author: 'testUser76',
     date: new Date(),
+    id: messageCounter++,
   },
 ];
 
 export function getAll(_req, res) {
-  return res.render('messageBoard', { messages: messages });
+  return res.render('messageBoard', { messages: messages, dateformat: (date) => format(date, 'yyyy/MM/dd - h:mmaa') });
 }
 
 export function getMessage(req, res) {
-  return res.render('message', { message: req.body.id });
+  const id = parseInt(req.params?.id);
+  const message = messages.find((m) => m.id === id);
+
+  if (message === undefined) {
+    return res.status(404).send({ message: 'Message not found' });
+  }
+
+  return res.render('message', { message: message, dateformat: (date) => format(date, 'yyyy/MM/dd - h:mmaa') });
 }
 
 export function postMessage(req, res) {
   const t = new Date();
-  let message = `[${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}]`;
+  let message = `[${format(t, 'HH:mm:ss')}]`;
 
   if (req.body?.messageAuthor) {
-    message += ` [${req.body.messageAuthor}]:`;
+    message += ` [Author: ${req.body.messageAuthor}]:`;
   } else {
     message += ' [ERROR]: Missing message author';
     console.log(message);
@@ -42,9 +55,10 @@ export function postMessage(req, res) {
   console.log(message);
 
   messages.push({
-    text: req.body.messageBody,
+    body: req.body.messageBody,
     author: req.body.messageAuthor,
     date: t,
+    id: messageCounter++,
   });
 
   return res.redirect('/messages');

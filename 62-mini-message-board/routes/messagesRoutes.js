@@ -4,8 +4,8 @@ import * as messages from '../controllers/messagesController.js';
 const messagesRouter = Router();
 
 messagesRouter.get('/', messages.getAll);
-messagesRouter.post('/', messages.postMessage);
+messagesRouter.get('/:id(\\d+)', messages.getMessage);
 
-messagesRouter.get('/:id', messages.getMessage);
+messagesRouter.post('/', messages.postMessage);
 
 export default messagesRouter;
