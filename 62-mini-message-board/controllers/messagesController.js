@@ -5,13 +5,7 @@ let messageCounter = 1;
 const messages = [
   {
     body: 'Hello, world!',
-    author: 'Programmer42',
-    date: new Date(),
-    id: messageCounter++,
-  },
-  {
-    body: 'test',
-    author: 'testUser76',
+    author: 'The Developer',
     date: new Date(),
     id: messageCounter++,
   },
