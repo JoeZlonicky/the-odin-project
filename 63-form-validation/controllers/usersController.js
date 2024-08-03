@@ -18,7 +18,7 @@ const validateUser = [
     .isLength({ min: 1, max: 10 })
     .withMessage(`Last name ${lengthErr}`),
   body('email').trim().isEmail().withMessage('Invalid email.'),
-  body('age').optional().isInt({ min: 18, max: 120 }).withMessage('Age must be between 18 and 120.'),
+  body('age').optional({ values: 'falsy' }).isInt({ min: 18, max: 120 }).withMessage('Age must be between 18 and 120.'),
   body('bio').trim().optional().isLength({ min: 0, max: 200 }),
 ];
 
@@ -55,7 +55,7 @@ export const postNewUser = [
     }
 
     const { firstName, lastName, email, age, bio } = req.body;
-    usersStorage.addUser({ firstName, lastName, email, age, bio });
+    usersStorage.addUser({ firstName, lastName, email, age: age || '', bio });
     res.redirect('/');
   },
 ];
@@ -74,7 +74,7 @@ export const postUserUpdate = [
     }
 
     const { firstName, lastName, email, age, bio } = req.body;
-    usersStorage.updateUser(req.params.id, { firstName, lastName, email, age, bio });
+    usersStorage.updateUser(req.params.id, { firstName, lastName, email, age: age || '', bio });
     res.redirect('/');
   },
 ];
@@ -82,4 +82,37 @@ export const postUserUpdate = [
 export function postDeleteUser(req, res) {
   usersStorage.deleteUser(req.params.id);
   res.redirect('/');
+}
+
+export function getUserSearch(_req, res) {
+  res.render('search', {
+    title: 'User Search',
+  });
+}
+
+export function postUserSearch(req, res) {
+  const { name, email } = req.body;
+  res.redirect(`/search-results?name=${name}&email=${email}`);
+}
+
+export function getSearchResults(req, res) {
+  const name = req.query.name;
+  const email = req.query.email;
+
+  let users = usersStorage.getUsers();
+  users = users.filter((user) => {
+    if (name) {
+      const userFullName = `${user.firstName} ${user.lastName}`;
+      if (!userFullName.includes(name)) return false;
+    }
+    if (email) {
+      if (!user.email.includes(email)) return false;
+    }
+    return true;
+  });
+
+  res.render('searchResults', {
+    title: 'Search Results',
+    users: users,
+  });
 }

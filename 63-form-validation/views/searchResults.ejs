@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <a href="/search" style="display: block;">New Search</a>
+    <a href="/" style="display: block; margin-bottom: 8px;">Back to Home</a>
+    <%- include('partials/userList', {noUsersMessage: 'No users found.'}) %>
+  </body>
+</html>
