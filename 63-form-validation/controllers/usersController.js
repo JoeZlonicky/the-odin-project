@@ -17,6 +17,9 @@ const validateUser = [
     .withMessage(`Last name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
     .withMessage(`Last name ${lengthErr}`),
+  body('email').trim().isEmail().withMessage('Invalid email.'),
+  body('age').optional().isInt({ min: 18, max: 120 }).withMessage('Age must be between 18 and 120.'),
+  body('bio').trim().optional().isLength({ min: 0, max: 200 }),
 ];
 
 export function getUsersList(_req, res) {
@@ -51,8 +54,8 @@ export const postNewUser = [
       });
     }
 
-    const { firstName, lastName } = req.body;
-    usersStorage.addUser({ firstName, lastName });
+    const { firstName, lastName, email, age, bio } = req.body;
+    usersStorage.addUser({ firstName, lastName, email, age, bio });
     res.redirect('/');
   },
 ];
@@ -70,8 +73,8 @@ export const postUserUpdate = [
       });
     }
 
-    const { firstName, lastName } = req.body;
-    usersStorage.updateUser(req.params.id, { firstName, lastName });
+    const { firstName, lastName, email, age, bio } = req.body;
+    usersStorage.updateUser(req.params.id, { firstName, lastName, email, age, bio });
     res.redirect('/');
   },
 ];
