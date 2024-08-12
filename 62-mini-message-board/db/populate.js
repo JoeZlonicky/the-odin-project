@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS messages (
   body TEXT
 );
 
+DELETE FROM messages;
+
 INSERT INTO messages (author, datetime, body)
 VALUES
   ('The Void', CURRENT_TIMESTAMP, 'Hello, world!')
