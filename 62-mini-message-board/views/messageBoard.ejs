@@ -15,11 +15,11 @@
     
     <h2>Messages</h2>
     <div class="message-container">
-      <% messages.toReversed().forEach((message) => { %>
+      <% messages.forEach((message) => { %>
         <div class="message">
           <div class="message__body"><%=message.body%></div>
           <div class="message__open"><a href="/messages/<%=message.id%>">Open Message</a></div>
-          <div class="message__footer"><%=message.author%> - <%=dateformat(message.date)%></div>
+          <div class="message__footer"><%=message.author%> - <%=datetimeFormat(message.datetime)%></div>
         </div>
       <% }) %>
     </div>
