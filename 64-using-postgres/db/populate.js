@@ -34,7 +34,7 @@ async function main() {
     console.log('Done!');
   } catch (err) {
     console.error('Failed to perform query');
-    console.err(err);
+    console.error(err);
   } finally {
     await client.end();
   }
