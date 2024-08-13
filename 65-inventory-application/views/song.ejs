@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><%=song.name%> | Music Database</title>
+  </head>
+  <body>
+    <a href="/view">Index</a> > <a href="/songs/view">All Songs</a> - <a href="/songs/<%=song.id%>">View Raw</a>
+    <h1>Song: <%=song.name%></h1>
+    <div><b>Name:</b> <%=song.name%></div>
+    <div><b>Length:</b> <%=song.length_seconds%> seconds</div>
+    <div><b>Artists:</b> <% artists.forEach((artist, idx) => { %>
+      <a href="/artists/<%=artist.id%>/view"><%=artist.name%><% if(idx < artists.length - 1) {%>,<%}%></a>
+    <%})%></div>
+  </body>
+</html>

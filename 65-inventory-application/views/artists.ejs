@@ -4,10 +4,12 @@
     <title>Artists | Music Database</title>
   </head>
   <body>
+    <a href="/view">Index</a> - <a href="/artists">View Raw</a>
+    <h1>Artists</h1>
+    <ul>
     <% artists.forEach((artist) => {%>
-      <div>Id: <%=artist.id%>, Name: <%=artist.name%></div>
+      <li><a href="/artists/<%=artist.id%>/view"><%=artist.name%></a></li>
     <% }) %>
-    <a href="/artists">Raw</a>
-    <a href="/view">Index</a>
+    </ul>
   </body>
 </html>

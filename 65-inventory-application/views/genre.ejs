@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><%=genre.name%> | Music Database</title>
+  </head>
+  <body>
+    <a href="/view">Index</a> > <a href="/genres/view">All Genres</a> - <a href="/genres/<%=genre.id%>">View Raw</a>
+    <h1>Genre: <%=genre.name%></h1>
+    <div><b>Name:</b> <%=genre.name%></div>
+    <div><b>Number of Artists:</b> <%=artists.length%></div>
+    <div><b>Number of Songs:</b> <%=songs.length%></div>
+  </body>
+</html>

@@ -1,12 +1,26 @@
 import asyncHandler from 'express-async-handler';
-import * as artists from '../db/queries/artistsQueries.js';
+import * as q from '../db/queries/artistsQueries.js';
 
 export const getArtists = asyncHandler(async (_req, res) => {
-  const all = await artists.getAllArtists();
-  res.send(all);
+  const artists = await q.getAllArtists();
+  res.send(artists);
 });
 
 export const viewArtists = asyncHandler(async (_req, res) => {
-  const all = await artists.getAllArtists();
-  res.render('artists', { artists: all });
+  const artists = await q.getAllArtists();
+  res.render('artists', { artists });
+});
+
+export const getArtist = asyncHandler(async (req, res) => {
+  const artist = await q.getArtist(req.params.id);
+  const songs = await q.getSongsByArtist(req.params.id);
+  const genres = await q.getGenresOfArtist(req.params.id);
+  res.send({ ...artist, songs, genres });
+});
+
+export const viewArtist = asyncHandler(async (req, res) => {
+  const artist = await q.getArtist(req.params.id);
+  const songs = await q.getSongsByArtist(req.params.id);
+  const genres = await q.getGenresOfArtist(req.params.id);
+  res.render('artist', { artist, songs, genres });
 });
