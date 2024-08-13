@@ -1,26 +1,16 @@
 import pool from '../pool.js';
 
-export async function getAllArtists() {
+export async function selectAllArtists() {
   const { rows } = await pool.query('SELECT * FROM artists');
   return rows;
 }
 
-export async function getArtist(id) {
+export async function selectArtist(id) {
   const { rows } = await pool.query('SELECT * FROM artists WHERE id = $1', [id]);
   return rows.length > 0 ? rows[0] : null;
 }
 
-export async function deleteArtist(id) {
-  const { rows } = await pool.query('DELETE FROM artists WHERE id = $1 RETURNING *', [id]);
-  return rows.length > 0 ? rows[0] : null;
-}
-
-export async function updateArtist(id, name) {
-  const { rows } = await pool.query('UPDATE artists SET name = $1 WHERE id = $2 RETURNING *', [name, id]);
-  return rows.length > 0 ? rows[0] : null;
-}
-
-export async function getSongsByArtist(id) {
+export async function selectSongsByArtist(id) {
   const { rows } = await pool.query(
     `SELECT songs.id AS id, songs.name AS name
       FROM songs INNER JOIN song_artists ON songs.id = song_id
@@ -31,7 +21,7 @@ export async function getSongsByArtist(id) {
   return rows;
 }
 
-export async function getGenresOfArtist(id) {
+export async function selectGenresOfArtist(id) {
   const { rows } = await pool.query(
     `SELECT DISTINCT genres.id AS id, genres.name AS name 
       FROM genres INNER JOIN song_genres ON genres.id = song_genres.genre_id 
@@ -42,4 +32,14 @@ export async function getGenresOfArtist(id) {
     [id],
   );
   return rows;
+}
+
+export async function updateArtist(id, name) {
+  const { rows } = await pool.query('UPDATE artists SET name = $1 WHERE id = $2 RETURNING *', [name, id]);
+  return rows.length > 0 ? rows[0] : null;
+}
+
+export async function deleteArtist(id) {
+  const { rows } = await pool.query('DELETE FROM artists WHERE id = $1 RETURNING *', [id]);
+  return rows.length > 0 ? rows[0] : null;
 }

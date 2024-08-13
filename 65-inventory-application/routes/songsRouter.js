@@ -3,10 +3,10 @@ import * as controller from '../controllers/songsController.js';
 
 const songsRouter = Router();
 
-songsRouter.get('/', controller.getSongs);
-songsRouter.get('/view', controller.viewSongs);
+songsRouter.get('/:id(\\d+)', controller.readSong);
+songsRouter.get('/:id(\\d+)/view', controller.viewSong);
 
-songsRouter.get('/:id', controller.getSong);
-songsRouter.get('/:id/view', controller.viewSong);
+songsRouter.get('/', controller.readAllSongs);
+songsRouter.get('/view', controller.viewAllSongs);
 
 export default songsRouter;

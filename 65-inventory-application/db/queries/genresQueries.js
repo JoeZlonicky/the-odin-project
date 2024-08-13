@@ -1,5 +1,10 @@
 import pool from '../pool.js';
 
+export async function insertGenre(name) {
+  const { rows } = await pool.query('INSERT INTO genres (name) VALUES ($1) RETURNING *', [name]);
+  return rows.length > 0 ? rows[0] : null;
+}
+
 export async function selectAllGenres() {
   const { rows } = await pool.query('SELECT * FROM genres');
   return rows;
@@ -7,21 +12,6 @@ export async function selectAllGenres() {
 
 export async function selectGenre(id) {
   const { rows } = await pool.query('SELECT * FROM genres WHERE id = $1', [id]);
-  return rows.length > 0 ? rows[0] : null;
-}
-
-export async function deleteGenre(id) {
-  const { rows } = await pool.query('DELETE FROM genres WHERE id = $1 RETURNING *', [id]);
-  return rows.length > 0 ? rows[0] : null;
-}
-
-export async function insertGenre(name) {
-  const { rows } = await pool.query('INSERT INTO genres (name) VALUES ($1) RETURNING *', [name]);
-  return rows.length > 0 ? rows[0] : null;
-}
-
-export async function updateGenre(id, name) {
-  const { rows } = await pool.query('UPDATE genres SET name = $1 WHERE id = $2 RETURNING *', [name, id]);
   return rows.length > 0 ? rows[0] : null;
 }
 
@@ -47,4 +37,14 @@ export async function selectSongsOfGenre(id) {
     [id],
   );
   return rows;
+}
+
+export async function updateGenre(id, name) {
+  const { rows } = await pool.query('UPDATE genres SET name = $1 WHERE id = $2 RETURNING *', [name, id]);
+  return rows.length > 0 ? rows[0] : null;
+}
+
+export async function deleteGenre(id) {
+  const { rows } = await pool.query('DELETE FROM genres WHERE id = $1 RETURNING *', [id]);
+  return rows.length > 0 ? rows[0] : null;
 }

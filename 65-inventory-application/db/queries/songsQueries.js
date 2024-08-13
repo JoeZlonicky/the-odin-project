@@ -1,18 +1,21 @@
 import pool from '../pool.js';
 
-export async function getAllSongs() {
+export async function selectAllSongs() {
   const { rows } = await pool.query('SELECT * FROM songs');
   return rows;
 }
 
-export async function getSong(id) {
+export async function selectSong(id) {
   const { rows } = await pool.query('SELECT * FROM songs WHERE id = $1', [id]);
   return rows.length > 0 ? rows[0] : null;
 }
 
-export async function deleteSong(id) {
-  const { rows } = await pool.query('DELETE FROM songs WHERE id = $1 RETURNING *', [id]);
-  return rows.length > 0 ? rows[0] : null;
+export async function selectSongArtists(id) {
+  const { rows } = await pool.query(
+    'SELECT artists.id AS id, artists.name AS name FROM songs INNER JOIN song_artists ON songs.id = song_id INNER JOIN artists ON artists.id = artist_id WHERE songs.id = $1',
+    [id],
+  );
+  return rows;
 }
 
 export async function updateSong(id, name) {
@@ -20,10 +23,7 @@ export async function updateSong(id, name) {
   return rows.length > 0 ? rows[0] : null;
 }
 
-export async function getSongArtists(id) {
-  const { rows } = await pool.query(
-    'SELECT artists.id AS id, artists.name AS name FROM songs INNER JOIN song_artists ON songs.id = song_id INNER JOIN artists ON artists.id = artist_id WHERE songs.id = $1',
-    [id],
-  );
-  return rows;
+export async function deleteSong(id) {
+  const { rows } = await pool.query('DELETE FROM songs WHERE id = $1 RETURNING *', [id]);
+  return rows.length > 0 ? rows[0] : null;
 }

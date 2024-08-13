@@ -69,7 +69,7 @@ INSERT INTO song_artists VALUES
 `;
 
 async function main() {
-  console.log('Populating database...');
+  console.log('Connecting to database...');
 
   let client;
   try {
@@ -81,6 +81,7 @@ async function main() {
     return;
   }
 
+  console.log('Populating database...');
   try {
     await client.query(SQL);
     console.log('Done!');

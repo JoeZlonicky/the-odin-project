@@ -24,9 +24,11 @@ export const viewCreateGenre = asyncHandler(async (_req, res) => {
 
 // /:id
 export const readGenre = asyncHandler(async (req, res) => {
-  const genre = await q.selectGenre(req.params.id);
-  const artists = await q.selectArtistsOfGenre(req.params.id);
-  const songs = await q.selectSongsOfGenre(req.params.id);
+  const [genre, artists, songs] = await Promise.all([
+    q.selectGenre(req.params.id),
+    q.selectArtistsOfGenre(req.params.id),
+    q.selectSongsOfGenre(req.params.id),
+  ]);
   res.send({ ...genre, artists, songs });
 });
 
@@ -42,9 +44,11 @@ export const deleteGenre = asyncHandler(async (req, res) => {
 });
 
 export const viewGenre = asyncHandler(async (req, res) => {
-  const genre = await q.selectGenre(req.params.id);
-  const artists = await q.selectArtistsOfGenre(req.params.id);
-  const songs = await q.selectSongsOfGenre(req.params.id);
+  const [genre, artists, songs] = await Promise.all([
+    q.selectGenre(req.params.id),
+    q.selectArtistsOfGenre(req.params.id),
+    q.selectSongsOfGenre(req.params.id),
+  ]);
   res.render('genre/genre', { genre, artists, songs });
 });
 
