@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Songs | Music Database</title>
+  </head>
+  <body>
+    <% songs.forEach((song) => {%>
+      <div>Id: <%=song.id%>, Name: <%=song.name%></div>
+    <% }) %>
+    <a href="/songs">Raw</a>
+    <a href="/view">Index</a>
+  </body>
+</html>
