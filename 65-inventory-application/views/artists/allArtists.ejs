@@ -11,6 +11,8 @@
       <li><a href="/artists/<%=artist.id%>/view"><%=artist.name%></a></li>
     <% }) %>
     </ul>
-    <button>Add Artist</button>
+    <form action="/artists/viewCreate" method="get">
+      <button type="submit">Add Artist</button>
+    </form>
   </body>
 </html>

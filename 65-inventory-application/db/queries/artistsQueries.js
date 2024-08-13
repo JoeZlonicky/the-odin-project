@@ -1,5 +1,10 @@
 import pool from '../pool.js';
 
+export async function insertArtist(name) {
+  const { rows } = await pool.query('INSERT INTO artists (name) VALUES ($1) RETURNING *', [name]);
+  return rows.length > 0 ? rows[0] : null;
+}
+
 export async function selectAllArtists() {
   const { rows } = await pool.query('SELECT * FROM artists');
   return rows;

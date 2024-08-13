@@ -7,17 +7,29 @@
     <a href="/view">Index</a> > <a href="/artists/view">All Artists</a> - <a href="/artists/<%=artist.id%>">View Raw</a>
     <h1>Artist: <%=artist.name%></h1>
     <div><b>Name:</b> <%=artist.name%></div>
-    <div><b>Genres:</b> <% genres.forEach((genre, idx) => { %>
+    <div><b>Genres:</b> 
+    <% if (genres.length === 0) {%>
+      <span>None</span>
+    <%}%>
+    <% genres.forEach((genre, idx) => { %>
       <a href="/genres/<%=genre.id%>/view"><%=genre.name%><% if(idx < genres.length - 1) {%>,<%}%></a>
-    <%})%></div>
-    <div><b>Songs (<%=songs.length%>):</b></div>
+    <%})%>
+    </div>
+
+    <div><b>Songs<%if (songs.length === 0) {%></b>: None</div><%} else {%>
+      (<%=songs.length%>):</b></div>
     <ul>
       <% songs.forEach((song) => { %>
         <li><a href="/songs/<%=song.id%>/view"><%=song.name%></a></li>
       <%});%>
     </ul>
+    <%}%>
     <button>Add Song</button>
-    <button>Edit Artist</button>
-    <button>Delete Artist</button>
+    <form action="/artists/<%=artist.id%>/viewUpdate" method="get">
+      <button type="submit">Edit Artist</button>
+    </form>
+    <form action="/artists/<%=artist.id%>?_method=DELETE" method="post">
+      <button type="submit">Delete Artist</button>
+    </form>
   </body>
 </html>

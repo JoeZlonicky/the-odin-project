@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Edit <%=artist.name%>| Music Database</title>
+  </head>
+  <body>
+    <a href="/view">Index</a> > <a href="/artists/view">All Artists</a>
+    <h1>Edit Artist</h1>
+    <form action="/artists/<%=artist.id%>" method="post">
+      <label for="name">Name: <input type="text" id="name" name="name" value="<%=artist.name%>"></label>
+      <div>
+        <button type="submit">Update</button>
+      </div>
+    </form>
+  </body>
+</html>

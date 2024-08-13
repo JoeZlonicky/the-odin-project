@@ -42,8 +42,8 @@ VALUES
 ;
 
 CREATE TABLE IF NOT EXISTS song_genres (
-  song_id INTEGER REFERENCES songs (id) NOT NULL,
-  genre_id INTEGER REFERENCES genres (id) NOT NULL,
+  song_id INTEGER REFERENCES songs (id) ON DELETE CASCADE NOT NULL,
+  genre_id INTEGER REFERENCES genres (id) ON DELETE CASCADE NOT NULL,
   PRIMARY KEY(song_id, genre_id)
 );
 
@@ -55,8 +55,8 @@ INSERT INTO song_genres VALUES
 ;
 
 CREATE TABLE IF NOT EXISTS song_artists (
-  song_id INTEGER REFERENCES songs (id) NOT NULL,
-  artist_id INTEGER REFERENCES artists (id) NOT NULL,
+  song_id INTEGER REFERENCES songs (id) ON DELETE CASCADE NOT NULL,
+  artist_id INTEGER REFERENCES artists (id) ON DELETE CASCADE NOT NULL,
   PRIMARY KEY(song_id, artist_id)
 );
 
