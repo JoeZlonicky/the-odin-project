@@ -9,5 +9,13 @@
     <div><b>Name:</b> <%=genre.name%></div>
     <div><b>Number of Artists:</b> <%=artists.length%></div>
     <div><b>Number of Songs:</b> <%=songs.length%></div>
+
+    <form action="/genres/<%=genre.id%>/viewUpdate" method="get">
+      <button type="submit">Edit Genre</button>
+    </form>
+    <form action="/genres/<%=genre.id%>?_method=DELETE" method="post">
+      <button type="submit">Delete Genre</button>
+    </form>
+    
   </body>
 </html>

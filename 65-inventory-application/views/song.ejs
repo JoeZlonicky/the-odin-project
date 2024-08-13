@@ -11,5 +11,7 @@
     <div><b>Artists:</b> <% artists.forEach((artist, idx) => { %>
       <a href="/artists/<%=artist.id%>/view"><%=artist.name%><% if(idx < artists.length - 1) {%>,<%}%></a>
     <%})%></div>
+    <button>Edit Song</button>
+    <button>Delete Song</button>
   </body>
 </html>

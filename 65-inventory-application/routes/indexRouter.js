@@ -3,8 +3,7 @@ import * as controller from '../controllers/indexController.js';
 
 const indexRouter = Router();
 
-indexRouter.get('/', controller.getIndex);
-
-indexRouter.get('/view', controller.getIndexView);
+indexRouter.get('/view', controller.viewIndex);
+indexRouter.get('/', controller.readIndex);
 
 export default indexRouter;

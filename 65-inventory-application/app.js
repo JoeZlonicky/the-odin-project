@@ -1,5 +1,6 @@
 import 'dotenv/config.js';
 import express from 'express';
+import methodOverride from 'method-override';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import artistsRouter from './routes/artistsRouter.js';
@@ -15,6 +16,7 @@ const viewsPath = join(__dirname, 'views');
 app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);

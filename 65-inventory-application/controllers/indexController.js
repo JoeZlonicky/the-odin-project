@@ -1,9 +1,9 @@
 import asyncHandler from 'express-async-handler';
 
-export const getIndex = asyncHandler(async (_req, res) => {
+export const readIndex = asyncHandler(async (_req, res) => {
   res.redirect('/view');
 });
 
-export const getIndexView = asyncHandler(async (_req, res) => {
+export const viewIndex = asyncHandler(async (_req, res) => {
   res.render('index');
 });
