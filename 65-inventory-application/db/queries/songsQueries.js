@@ -1,5 +1,13 @@
 import pool from '../pool.js';
 
+export async function insertSong(name, lengthSeconds) {
+  const { rows } = await pool.query('INSERT INTO songs (name, length_seconds) VALUES ($1, $2) RETURNING *', [
+    name,
+    lengthSeconds,
+  ]);
+  return rows.length > 0 ? rows[0] : null;
+}
+
 export async function selectAllSongs() {
   const { rows } = await pool.query('SELECT * FROM songs');
   return rows;
@@ -18,8 +26,12 @@ export async function selectSongArtists(id) {
   return rows;
 }
 
-export async function updateSong(id, name) {
-  const { rows } = await pool.query('UPDATE songs SET name = $1 WHERE id = $2 RETURNING *', [name, id]);
+export async function updateSong(id, name, lengthSeconds) {
+  const { rows } = await pool.query('UPDATE songs SET name = $1, length_seconds = $2 WHERE id = $3 RETURNING *', [
+    name,
+    lengthSeconds,
+    id,
+  ]);
   return rows.length > 0 ? rows[0] : null;
 }
 

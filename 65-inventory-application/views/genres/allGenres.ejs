@@ -11,6 +11,8 @@
       <li><a href="/genres/<%=genre.id%>/view"><%=genre.name%></a></li>
     <% }) %>
     </ul>
-    <a href="/genres/viewCreate">Add Genre</a>
+    <form action="/genres/viewCreate" method="get">
+      <button type="submit">Add Genre</button>
+    </form>
   </body>
 </html>

@@ -4,8 +4,8 @@ import * as q from '../db/queries/genresQueries.js';
 // /
 export const createGenre = asyncHandler(async (req, res) => {
   const { name } = req.body;
-  await q.insertGenre(name);
-  res.redirect('/genres/view');
+  const genre = await q.insertGenre(name);
+  res.redirect(`/genres/${genre.id}/view`);
 });
 
 export const readAllGenres = asyncHandler(async (_req, res) => {

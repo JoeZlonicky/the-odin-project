@@ -11,6 +11,8 @@
       <li><a href="/songs/<%=song.id%>/view"><%=song.name%></a></li>
     <% }) %>
     </ul>
-    <button>Add Song</button>
+    <form action="/songs/viewCreate" method="get">
+      <button type="submit">Add Song</button>
+    </form>
   </body>
 </html>

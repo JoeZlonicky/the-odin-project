@@ -4,7 +4,7 @@
     <title>Edit <%=genre.name%>| Music Database</title>
   </head>
   <body>
-    <a href="/view">Index</a> > <a href="/genres/view">All Genres</a>
+    <a href="/view">Index</a> > <a href="/genres/view">All Genres</a> > <a href="/genres/<%=genre.id%>/view"><%=genre.name%></a>
     <h1>Edit Genre</h1>
     <form action="/genres/<%=genre.id%>" method="post">
       <label for="name">Name: <input type="text" id="name" name="name" value="<%=genre.name%>"></label>

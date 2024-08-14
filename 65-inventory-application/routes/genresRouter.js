@@ -3,8 +3,8 @@ import * as controller from '../controllers/genresController.js';
 
 const genresRouter = Router();
 
-genresRouter.post('/:id(\\d+)', controller.updateGenre);
 genresRouter.get('/:id(\\d+)', controller.readGenre);
+genresRouter.post('/:id(\\d+)', controller.updateGenre);
 genresRouter.delete('/:id(\\d+)', controller.deleteGenre);
 genresRouter.get('/:id(\\d+)/view', controller.viewGenre);
 genresRouter.get('/:id(\\d+)/viewUpdate', controller.viewUpdateGenre);

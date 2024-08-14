@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Edit <%=song.name%> | Music Database</title>
+  </head>
+  <body>
+    <a href="/view">Index</a> > <a href="/songs/view">All Songs</a> > <a href="/songs/<%=song.id%>/view"><%=song.name%></a>
+    <h1>Edit Song</h1>
+    <form action="/songs/<%=song.id%>" method="post">
+      <label for="name">Name: <input type="text" id="name" name="name" value="<%=song.name%>" required></label>
+      <label for="lengthSeconds">Length (seconds): <input type="number" id="lengthSeconds" name="lengthSeconds" min="1" step="1" value="<%=song.length_seconds%>" required></label>
+      <div>
+        <label for="genres">Genre(s):</label>
+      </div>
+      <div>
+        <select name="genres" id="genres" multiple>
+          <%genres.forEach((genre) => {%>
+          <option value="<%=genre.id%>"><%=genre.name%></option>
+          <%});%>
+        </select> 
+      </div>
+      <div>
+        <label for="artists">Artist(s):</label>
+      </div>
+      <div>
+        <select name="artists" id="artists" multiple>
+          <%artists.forEach((artist) => {%>
+          <option value="<%=artist.id%>"><%=artist.name%></option>
+          <%});%>
+        </select>
+      </div>
+      <div>
+        <button type="submit">Update</button>
+      </div>
+    </form>
+  </body>
+</html>

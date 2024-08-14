@@ -4,8 +4,8 @@ import * as q from '../db/queries/artistsQueries.js';
 // /
 export const createArtist = asyncHandler(async (req, res) => {
   const { name } = req.body;
-  await q.insertArtist(name);
-  res.redirect('/artists/view');
+  const artist = await q.insertArtist(name);
+  res.redirect(`/artists/${artist.id}/view`);
 });
 
 export const readAllArtists = asyncHandler(async (_req, res) => {
