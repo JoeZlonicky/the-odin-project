@@ -8,7 +8,10 @@
     <h1>Song: <%=song.name%></h1>
     <div><b>Name:</b> <%=song.name%></div>
     <div><b>Length:</b> <%=song.length_seconds%> seconds</div>
-    <div><b>Artists:</b> <% artists.forEach((artist, idx) => { %>
+    <div><b>Genre(s):</b> <% genres.forEach((genre, idx) => { %>
+      <a href="/genres/<%=genre.id%>/view"><%=genre.name%><% if(idx < genres.length - 1) {%>,<%}%></a>
+    <%})%></div>
+    <div><b>Artist(s):</b> <% artists.forEach((artist, idx) => { %>
       <a href="/artists/<%=artist.id%>/view"><%=artist.name%><% if(idx < artists.length - 1) {%>,<%}%></a>
     <%})%></div>
 

@@ -6,7 +6,15 @@ import * as q from '../db/queries/songsQueries.js';
 // /
 export const createSong = asyncHandler(async (req, res) => {
   const { name, lengthSeconds } = req.body;
-  const song = await q.insertSong(name, lengthSeconds);
+  let { genreIds, artistIds } = req.body;
+  if (!Array.isArray(genreIds)) {
+    genreIds = [genreIds];
+  }
+  if (!Array.isArray(artistIds)) {
+    artistIds = [artistIds];
+  }
+
+  const song = await q.insertSong(name, lengthSeconds, artistIds, genreIds);
   res.redirect(`/songs/${song.id}/view`);
 });
 
@@ -27,13 +35,25 @@ export const viewCreateSong = asyncHandler(async (_req, res) => {
 
 // /:id
 export const readSong = asyncHandler(async (req, res) => {
-  const [song, artists] = await Promise.all([q.selectSong(req.params.id), q.selectSongArtists(req.params.id)]);
-  res.send({ ...song, artists });
+  const [song, genres, artists] = await Promise.all([
+    q.selectSong(req.params.id),
+    q.selectSongGenres(req.params.id),
+    q.selectSongArtists(req.params.id),
+  ]);
+  res.send({ ...song, genres, artists });
 });
 
 export const updateSong = asyncHandler(async (req, res) => {
   const { name, lengthSeconds } = req.body;
-  await q.updateSong(req.params.id, name, lengthSeconds);
+  let { genreIds, artistIds } = req.body;
+  if (!Array.isArray(genreIds)) {
+    genreIds = [genreIds];
+  }
+  if (!Array.isArray(artistIds)) {
+    artistIds = [artistIds];
+  }
+
+  await q.updateSong(req.params.id, name, lengthSeconds, genreIds, artistIds);
   res.redirect(`/songs/${req.params.id}/view`);
 });
 
@@ -43,15 +63,24 @@ export const deleteSong = asyncHandler(async (req, res) => {
 });
 
 export const viewSong = asyncHandler(async (req, res) => {
-  const [song, artists] = await Promise.all([q.selectSong(req.params.id), q.selectSongArtists(req.params.id)]);
-  res.render('songs/song', { song, artists });
+  const [song, genres, artists] = await Promise.all([
+    q.selectSong(req.params.id),
+    q.selectSongGenres(req.params.id),
+    q.selectSongArtists(req.params.id),
+  ]);
+  res.render('songs/song', { song, genres, artists });
 });
 
 export const viewUpdateSong = asyncHandler(async (req, res) => {
-  const [song, genres, artists] = await Promise.all([
+  const [song, genres, artists, songGenres, songArtists] = await Promise.all([
     q.selectSong(req.params.id),
     genresQ.selectAllGenres(),
     artistsQ.selectAllArtists(),
+    q.selectSongGenres(req.params.id),
+    q.selectSongArtists(req.params.id),
   ]);
-  res.render('songs/updateSong', { song, genres, artists });
+
+  const songGenreIds = songGenres.map((genre) => genre.id);
+  const songArtistIds = songArtists.map((artist) => artist.id);
+  res.render('songs/updateSong', { song, genres, artists, songGenreIds, songArtistIds });
 });

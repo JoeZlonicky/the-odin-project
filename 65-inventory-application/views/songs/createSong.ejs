@@ -13,7 +13,7 @@
         <label for="genres">Genre(s):</label>
       </div>
       <div>
-        <select name="genres" id="genres" multiple>
+        <select name="genreIds" id="genres" multiple>
           <%genres.forEach((genre) => {%>
           <option value="<%=genre.id%>"><%=genre.name%></option>
           <%});%>
@@ -23,10 +23,10 @@
         <label for="artists">Artist(s):</label>
       </div>
       <div>
-        <select name="artists" id="artists" multiple>
-          <%artists.forEach((artist) => {%>
+        <select name="artistIds" id="artists" multiple>
+        <%artists.forEach((artist) => {%>
           <option value="<%=artist.id%>"><%=artist.name%></option>
-          <%});%>
+        <%});%>
         </select>
       </div>
       <div>

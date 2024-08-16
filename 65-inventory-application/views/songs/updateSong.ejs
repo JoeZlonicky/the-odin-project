@@ -13,20 +13,26 @@
         <label for="genres">Genre(s):</label>
       </div>
       <div>
-        <select name="genres" id="genres" multiple>
+        <select name="genreIds" id="genres" multiple>
           <%genres.forEach((genre) => {%>
-          <option value="<%=genre.id%>"><%=genre.name%></option>
-          <%});%>
+          <%if (songGenreIds.includes(genre.id)) {%>
+            <option value="<%=genre.id%>" selected><%=genre.name%></option>
+          <%} else {%>
+            <option value="<%=genre.id%>"><%=genre.name%></option>
+          <%}});%>
         </select> 
       </div>
       <div>
-        <label for="artists">Artist(s):</label>
+        <label for="artistIds">Artist(s):</label>
       </div>
       <div>
-        <select name="artists" id="artists" multiple>
+        <select name="artistIds" id="artists" multiple>
           <%artists.forEach((artist) => {%>
-          <option value="<%=artist.id%>"><%=artist.name%></option>
-          <%});%>
+          <%if (songArtistIds.includes(artist.id)) {%>
+            <option value="<%=artist.id%>" selected><%=artist.name%></option>
+          <%} else {%>
+            <option value="<%=artist.id%>"><%=artist.name%></option>
+          <%}});%>
         </select>
       </div>
       <div>
