@@ -7,7 +7,7 @@
     <a href="/view">Index</a> > <a href="/genres/view">All Genres</a> > <a href="/genres/<%=genre.id%>/view"><%=genre.name%></a>
     <h1>Edit Genre</h1>
     <form action="/genres/<%=genre.id%>" method="post">
-      <label for="name">Name: <input type="text" id="name" name="name" value="<%=genre.name%>"></label>
+      <label for="name">Name: <input type="text" id="name" name="name" value="<%=genre.name%>" maxlength="255" required></label>
       <div>
         <button type="submit">Update</button>
       </div>

@@ -7,7 +7,7 @@
     <a href="/view">Index</a> > <a href="/artists/view">All Artists</a> > <a href="/artists/<%=artist.id%>/view"><%=artist.name%></a>
     <h1>Edit Artist</h1>
     <form action="/artists/<%=artist.id%>" method="post">
-      <label for="name">Name: <input type="text" id="name" name="name" value="<%=artist.name%>"></label>
+      <label for="name">Name: <input type="text" id="name" name="name" value="<%=artist.name%>" maxlength="255" required></label>
       <div>
         <button type="submit">Update</button>
       </div>
