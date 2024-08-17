@@ -3,6 +3,8 @@ import express from 'express';
 import methodOverride from 'method-override';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import pageNotFound from './error-handling/pageNotFound.js';
+import serverError from './error-handling/serverError.js';
 import artistsRouter from './routes/artistsRouter.js';
 import genresRouter from './routes/genresRouter.js';
 import indexRouter from './routes/indexRouter.js';
@@ -23,6 +25,9 @@ app.use('/', indexRouter);
 app.use('/artists', artistsRouter);
 app.use('/genres', genresRouter);
 app.use('/songs', songsRouter);
+
+app.use(serverError);
+app.use(pageNotFound);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
