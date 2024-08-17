@@ -72,13 +72,13 @@ export async function updateSong(id, name, lengthSeconds, genreIds, artistIds) {
       id,
     ]);
 
-    if (genreIds) {
+    if (genreIds.length > 0) {
       await client.query('DELETE FROM song_genres WHERE song_id = $1 AND genre_id <> ANY ($2::int[])', [id, genreIds]);
     } else {
       await client.query('DELETE FROM song_genres WHERE song_id = $1', [id]);
     }
 
-    if (artistIds) {
+    if (artistIds.length > 0) {
       await client.query('DELETE FROM song_artists WHERE song_id = $1 AND artist_id <> ANY ($2::int[])', [
         id,
         genreIds,
