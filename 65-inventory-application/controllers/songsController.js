@@ -14,7 +14,7 @@ export const createSong = asyncHandler(async (req, res) => {
     artistIds = artistIds ? [artistIds] : [];
   }
 
-  const song = await q.insertSong(name, lengthSeconds, artistIds, genreIds);
+  const song = await q.insertSong(name, lengthSeconds, genreIds, artistIds);
   res.redirect(`/songs/${song.id}/view`);
 });
 
