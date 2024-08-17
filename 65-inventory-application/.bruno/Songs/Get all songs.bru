@@ -1,0 +1,15 @@
+meta {
+  name: Get all songs
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/songs
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}

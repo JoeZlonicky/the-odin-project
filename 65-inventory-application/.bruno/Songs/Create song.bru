@@ -1,0 +1,16 @@
+meta {
+  name: Create song
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/songs
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  name: test song
+  lengthSeconds: 99
+}
