@@ -11,13 +11,11 @@ export async function insertSong(name, lengthSeconds, genreIds, artistIds) {
     ]);
 
     const id = rows[0].id;
-
-    for (const genreId of genreIds) {
-      await client.query('INSERT INTO song_genres VALUES ($1, $2)', [id, genreId]);
+    if (genreIds.length > 0) {
+      await client.query('INSERT INTO song_genres SELECT $1, UNNEST($2::int[])', [id, genreIds]);
     }
-
-    for (const artistId of artistIds) {
-      await client.query('INSERT INTO song_artists VALUES ($1, $2)', [id, artistId]);
+    if (artistIds.length > 0) {
+      await client.query('INSERT INTO song_artists SELECT $1, UNNEST($2::int[])', [id, artistIds]);
     }
 
     await client.query('COMMIT');
@@ -43,7 +41,10 @@ export async function selectSong(id) {
 
 export async function selectSongGenres(id) {
   const { rows } = await pool.query(
-    'SELECT genres.id AS id, genres.name AS name FROM songs INNER JOIN song_genres ON songs.id = song_id INNER JOIN genres ON genres.id = genre_id WHERE songs.id = $1',
+    `SELECT genres.id AS id, genres.name AS name 
+    FROM songs INNER JOIN song_genres ON songs.id = song_id 
+    INNER JOIN genres ON genres.id = genre_id 
+    WHERE songs.id = $1`,
     [id],
   );
   return rows;
@@ -51,7 +52,10 @@ export async function selectSongGenres(id) {
 
 export async function selectSongArtists(id) {
   const { rows } = await pool.query(
-    'SELECT artists.id AS id, artists.name AS name FROM songs INNER JOIN song_artists ON songs.id = song_id INNER JOIN artists ON artists.id = artist_id WHERE songs.id = $1',
+    `SELECT artists.id AS id, artists.name AS name
+    FROM songs INNER JOIN song_artists ON songs.id = song_id 
+    INNER JOIN artists ON artists.id = artist_id 
+    WHERE songs.id = $1`,
     [id],
   );
   return rows;
@@ -68,15 +72,29 @@ export async function updateSong(id, name, lengthSeconds, genreIds, artistIds) {
       id,
     ]);
 
-    await client.query('DELETE FROM song_genres WHERE song_id = $1 AND genre_id <> ANY ($2::int[])', [id, genreIds]);
-    await client.query('DELETE FROM song_artists WHERE song_id = $1 AND artist_id <> ANY ($2::int[])', [id, genreIds]);
-
-    for (const genreId of genreIds) {
-      await client.query('INSERT INTO song_genres VALUES ($1, $2) ON CONFLICT DO NOTHING', [id, genreId]);
+    if (genreIds) {
+      await client.query('DELETE FROM song_genres WHERE song_id = $1 AND genre_id <> ANY ($2::int[])', [id, genreIds]);
+    } else {
+      await client.query('DELETE FROM song_genres WHERE song_id = $1', [id]);
     }
 
-    for (const artistId of artistIds) {
-      await client.query('INSERT INTO song_artists VALUES ($1, $2) ON CONFLICT DO NOTHING', [id, artistId]);
+    if (artistIds) {
+      await client.query('DELETE FROM song_artists WHERE song_id = $1 AND artist_id <> ANY ($2::int[])', [
+        id,
+        genreIds,
+      ]);
+    } else {
+      await client.query('DELETE FROM song_artists WHERE song_id = $1', [id]);
+    }
+
+    if (genreIds.length > 0) {
+      await client.query('INSERT INTO song_genres SELECT $1, UNNEST($2::int[]) ON CONFLICT DO NOTHING', [id, genreIds]);
+    }
+    if (artistIds.length > 0) {
+      await client.query('INSERT INTO song_artists SELECT $1, UNNEST($2::int[]) ON CONFLICT DO NOTHING', [
+        id,
+        artistIds,
+      ]);
     }
 
     await client.query('COMMIT');

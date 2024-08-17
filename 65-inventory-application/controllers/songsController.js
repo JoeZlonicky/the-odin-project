@@ -8,10 +8,10 @@ export const createSong = asyncHandler(async (req, res) => {
   const { name, lengthSeconds } = req.body;
   let { genreIds, artistIds } = req.body;
   if (!Array.isArray(genreIds)) {
-    genreIds = [genreIds];
+    genreIds = genreIds ? [genreIds] : [];
   }
   if (!Array.isArray(artistIds)) {
-    artistIds = [artistIds];
+    artistIds = artistIds ? [artistIds] : [];
   }
 
   const song = await q.insertSong(name, lengthSeconds, artistIds, genreIds);
@@ -47,10 +47,10 @@ export const updateSong = asyncHandler(async (req, res) => {
   const { name, lengthSeconds } = req.body;
   let { genreIds, artistIds } = req.body;
   if (!Array.isArray(genreIds)) {
-    genreIds = [genreIds];
+    genreIds = genreIds ? [genreIds] : [];
   }
   if (!Array.isArray(artistIds)) {
-    artistIds = [artistIds];
+    artistIds = artistIds ? [artistIds] : [];
   }
 
   await q.updateSong(req.params.id, name, lengthSeconds, genreIds, artistIds);
