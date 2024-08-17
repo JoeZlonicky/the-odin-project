@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <title>Edit <%=song.name%> | Music Database</title>
+    <link rel="stylesheet" href="/style.css"/>
   </head>
   <body>
     <a href="/view">Index</a> > <a href="/songs/view">All Songs</a> > <a href="/songs/<%=song.id%>/view"><%=song.name%></a>
     <h1>Edit Song</h1>
     <form action="/songs/<%=song.id%>" method="post">
-      <label for="name">Name: <input type="text" id="name" name="name" value="<%=song.name%>" maxlength="255" required></label>
-      <label for="lengthSeconds">Length (seconds): <input type="number" id="lengthSeconds" name="lengthSeconds" min="1" step="1" value="<%=song.length_seconds%>" required></label>
+      <div>
+        <label for="name">Name: <input type="text" id="name" name="name" value="<%=song.name%>" maxlength="255" required></label>
+      </div>
+      <div>
+        <label for="lengthSeconds">Length (seconds): <input type="number" id="lengthSeconds" name="lengthSeconds" min="1" step="1" value="<%=song.length_seconds%>" required></label>
+      </div>
       <div>
         <label for="genres">Genre(s):</label>
       </div>

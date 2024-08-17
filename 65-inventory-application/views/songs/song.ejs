@@ -2,18 +2,33 @@
 <html lang="en">
   <head>
     <title><%=song.name%> | Music Database</title>
+    <link rel="stylesheet" href="/style.css"/>
   </head>
   <body>
     <a href="/view">Index</a> > <a href="/songs/view">All Songs</a> - <a href="/songs/<%=song.id%>">View Raw</a>
     <h1>Song: <%=song.name%></h1>
     <div><b>Name:</b> <%=song.name%></div>
     <div><b>Length:</b> <%=song.length_seconds%> seconds</div>
-    <div><b>Genre(s):</b> <% genres.forEach((genre, idx) => { %>
+
+    <div><b>Genre(s):</b> 
+    <% if(genres.length > 0) {%>
+    <% genres.forEach((genre, idx) => { %>
       <a href="/genres/<%=genre.id%>/view"><%=genre.name%><% if(idx < genres.length - 1) {%>,<%}%></a>
-    <%})%></div>
-    <div><b>Artist(s):</b> <% artists.forEach((artist, idx) => { %>
+    <%})%>
+    <%} else {%>
+      <span>None</span>
+    <%}%>
+    </div>
+
+    <div><b>Artist(s):</b>
+    <% if (artists.length > 0) {%>
+      <% artists.forEach((artist, idx) => { %>
       <a href="/artists/<%=artist.id%>/view"><%=artist.name%><% if(idx < artists.length - 1) {%>,<%}%></a>
-    <%})%></div>
+    <%})%>
+    <%} else {%>
+      <span>None</span>
+    <%}%>
+    </div>
 
     <form action="/songs/<%=song.id%>/viewUpdate" method="get">
       <button type="submit">Edit Song</button>

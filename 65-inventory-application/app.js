@@ -13,7 +13,10 @@ import songsRouter from './routes/songsRouter.js';
 const app = express();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const publicPath = join(__dirname, 'public');
 const viewsPath = join(__dirname, 'views');
+
+app.use(express.static(publicPath));
 
 app.set('views', viewsPath);
 app.set('view engine', 'ejs');

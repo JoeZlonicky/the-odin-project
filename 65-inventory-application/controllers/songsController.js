@@ -28,9 +28,10 @@ export const viewAllSongs = asyncHandler(async (_req, res) => {
   res.render('songs/allSongs', { songs });
 });
 
-export const viewCreateSong = asyncHandler(async (_req, res) => {
+export const viewCreateSong = asyncHandler(async (req, res) => {
+  const defaultArtistId = parseInt(req.query.defaultArtistId) || -1;
   const [genres, artists] = await Promise.all([genresQ.selectAllGenres(), artistsQ.selectAllArtists()]);
-  res.render('songs/createSong', { genres, artists });
+  res.render('songs/createSong', { genres, artists, defaultArtistId });
 });
 
 // /:id

@@ -1,0 +1,44 @@
+:root {
+  background-color: #313131;
+  color: white;
+  font-size: 1.1rem;
+  font-family: sans-serif;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+ul {
+  margin-top: 0;
+}
+
+a {
+  color: #ff55dc;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 8px;
+  border: 2px solid #ff8ae8;
+  border-radius: 8px 8px;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+  font-size: 1rem;
+}
+
+form {
+  margin: 8px 0;
+}
+
+input,
+select {
+  font-size: 1rem;
+}
+
+option:checked {
+  background: linear-gradient(#ff8ae8, #ff8ae8);
+  background-color: #ff8ae8 !important;
+  color: black !important;
+}

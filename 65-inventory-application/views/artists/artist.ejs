@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title><%=artist.name%> | Music Database</title>
+    <link rel="stylesheet" href="/style.css"/>
   </head>
   <body>
     <a href="/view">Index</a> > <a href="/artists/view">All Artists</a> - <a href="/artists/<%=artist.id%>">View Raw</a>
@@ -24,7 +25,10 @@
       <%});%>
     </ul>
     <%}%>
-    <button>Add Song</button>
+    <form action="/songs/viewCreate" method="get">
+      <input type="hidden" name="defaultArtistId" value="<%=artist.id%>"/>
+      <button type="submit">Add Song</button>
+    </form>
     <form action="/artists/<%=artist.id%>/viewUpdate" method="get">
       <button type="submit">Edit Artist</button>
     </form>
