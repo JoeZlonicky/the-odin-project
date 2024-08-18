@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Log In | <%= siteName %></title>
+    <link rel="stylesheet" href="/style.css"/>
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1>Log In</h1>
+    <% if (user) { %>
+      <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
+    <% } else { %>
+      <form action="/auth/log-in" method="post">
+        <div>
+          <label for="user-name">Username: </label>
+          <input name="username" id="username" required/>
+        </div>
+        <div>
+          <label for="password">Password: </label>
+          <input name="password" id="password" required/>
+        </div>
+        <div>
+          <p>Don't have an account? <a href="/auth/sign-up">Sign up</a> instead.</p>
+        </div>
+        <div>
+          <button type="submit">Log in</button>
+        </div>
+      </form>
+    <% } %>
+  </body>
+</html>

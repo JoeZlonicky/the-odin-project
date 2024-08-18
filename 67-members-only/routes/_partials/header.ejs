@@ -1,0 +1,13 @@
+<header>
+  <span>
+    <a href="/"><%= siteName %></a>
+  </span>
+  <nav>
+    <% if (user) {%>
+      <a href="/auth/log-out">Log out</a>
+    <% } else { %>
+      <a href="/auth/log-in">Log in</a>
+      <a href="/auth/sign-up">Sign up</a>
+    <% } %>
+  </nav>
+</header>
