@@ -8,10 +8,10 @@
     <%- include('header') %>
     <h1><%= siteName %></h1>
     <% if (user) { %>
-      <p>Welcome to The Forum!</p>
+      <p>Welcome to The Forum, <%= user.first_name %>!</p>
     <% } else { %>
-      <p><a href="/auth/log-in">Log In</a></p>
-      <p><a href="/auth/sign-up">Sign Up</a></p>
+      <p><a href="/auth/log-in/view">Log In</a></p>
+      <p><a href="/auth/sign-up/view">Sign Up</a></p>
     <% } %>
   </body>
 </html>

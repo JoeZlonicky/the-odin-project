@@ -1,11 +1,10 @@
 import { Router } from 'express';
-import * as controller from './signUp.controller.js';
+import { signUp } from './signUp.controller.js';
 
 const signUpRouter = Router();
 
-signUpRouter.get('/view', controller.view);
+signUpRouter.get('/view', signUp.view);
 
-signUpRouter.get('/', controller.get);
-signUpRouter.post('/', controller.post);
+signUpRouter.post('/', signUp.post);
 
 export { signUpRouter };

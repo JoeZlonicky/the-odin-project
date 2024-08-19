@@ -4,4 +4,4 @@ function view(err, _req, res, _next) {
   res.status(500).render('_errors/serverError');
 }
 
-export { view };
+export const serverError = { view };

@@ -1,12 +1,11 @@
 import { Router } from 'express';
-import { protectedRoute } from '../../../auth/protectedRoute.js';
-import * as controller from './logIn.controller.js';
+import { authenticate } from '../../../auth/authenticate.js';
+import { logIn } from './logIn.controller.js';
 
 const logInRouter = Router();
 
-logInRouter.get('/view', controller.view);
+logInRouter.get('/view', logIn.view);
 
-logInRouter.get('/', controller.get);
-logInRouter.post('/', protectedRoute, controller.post);
+logInRouter.post('/', authenticate);
 
 export { logInRouter };
