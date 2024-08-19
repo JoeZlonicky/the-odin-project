@@ -10,6 +10,9 @@
     <% if (user) { %>
       <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
     <% } else { %>
+      <% if (locals.error) { %>
+        <div><%= error %> </div>
+      <% } %>
       <form action="/auth/log-in" method="post">
         <div>
           <label for="user-name">Username: </label>
