@@ -23,5 +23,13 @@
     </div>
 
     <h2>Site Stats</h2>
+    <div>
+      <b>Number of messages: </b>
+      <%=messages.length%>
+    </div>
+    <div>
+      <b>Number of users: </b>
+      <%=(user && user.is_member) ? users.length : 'Unknown'%>
+    </div>
   </body>
 </html>
