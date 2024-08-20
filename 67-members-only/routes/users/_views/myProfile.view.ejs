@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My Profile | <%= siteName %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1>My Profile</h1>
+    <div>
+      <b>Username:</b>
+      <%=user.username%>
+    </div>
+    <div>
+      <b>First Name:</b>
+      <%=user.first_name%>
+    </div>
+    <div>
+      <b>Last Name:</b>
+      <%=user.last_name%>
+    </div>
+    <div>
+      <b>Number of messages:</b>
+      <%=messages.length%>
+    </div>
+    <p><a href="/">Home</a></p>
+  </body>
+</html>

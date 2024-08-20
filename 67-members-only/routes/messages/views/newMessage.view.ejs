@@ -8,10 +8,6 @@
     <%- include('header') %>
     <h1>New Message</h1>
 
-    <% if (!user) { %>
-    <p>You need to <a href="/auth/log-in">log in</a> to post a new message.</p>
-    <% } else { %>
-
     <% if (locals.error) { %>
     <div><%= error %></div>
     <% } %>

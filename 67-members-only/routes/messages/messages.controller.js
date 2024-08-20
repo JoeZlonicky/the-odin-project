@@ -1,4 +1,6 @@
 import asyncHandler from 'express-async-handler';
+import { PageNotFoundController } from '../_errors/pageNotFound.controller.js';
+import { UnauthorizedController } from '../_errors/unauthorizedError.controller.js';
 import { Messages } from './messages.model.js';
 
 const get = asyncHandler(async (req, res) => {
@@ -6,7 +8,7 @@ const get = asyncHandler(async (req, res) => {
   const message = await Messages.getById(id);
 
   if (!message) {
-    res.status(404).render('messages/views/messageNotFound');
+    PageNotFoundController.get(req, res);
     return;
   }
 
@@ -16,7 +18,8 @@ const get = asyncHandler(async (req, res) => {
 const post = asyncHandler(async (req, res) => {
   const user = req.user;
   if (!user) {
-    res.status(401).render('_errors/unauthorizedError');
+    UnauthorizedController.get(req, res);
+    return;
   }
 
   const { title, body } = req.body;
@@ -24,7 +27,11 @@ const post = asyncHandler(async (req, res) => {
   res.redirect('/');
 });
 
-function getCreateForm(_req, res) {
+function getCreateForm(req, res) {
+  if (!req.user) {
+    UnauthorizedController.get(req, res);
+    return;
+  }
   res.render('messages/views/newMessage');
 }
 

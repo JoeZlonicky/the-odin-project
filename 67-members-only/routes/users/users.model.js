@@ -25,6 +25,16 @@ async function getAll() {
   return rows;
 }
 
+async function getUserMessages(id) {
+  const { rows } = await dbPool.query(
+    `SELECT messages.* 
+    FROM users JOIN messages ON users.id = messages.user_id
+    WHERE users.id = $1`,
+    [id],
+  );
+  return rows;
+}
+
 async function insert(username, password, firstName, lastName, isMember, isAdmin) {
   const { rows } = await dbPool.query(
     `INSERT INTO users (username, password, first_name, last_name, is_member, is_admin) 
@@ -35,4 +45,4 @@ async function insert(username, password, firstName, lastName, isMember, isAdmin
   return rows[0];
 }
 
-export const Users = { getById, getByUsername, getAll, insert };
+export const Users = { getById, getByUsername, getUserMessages, getAll, insert };
