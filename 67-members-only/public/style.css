@@ -16,3 +16,20 @@ nav {
   display: flex;
   gap: 8px;
 }
+
+.message-preview {
+  border: 1px solid white;
+
+  div {
+    padding: 8px;
+  }
+
+  div:first-child {
+    padding-bottom: 0;
+    font-weight: bold;
+  }
+
+  div:last-child {
+    border-top: 1px dashed white;
+  }
+}

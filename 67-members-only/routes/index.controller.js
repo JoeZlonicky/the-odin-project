@@ -6,4 +6,4 @@ const get = asyncHandler(async (_req, res) => {
   return res.render('index', { messages: messages });
 });
 
-export const index = { get };
+export const IndexController = { get };

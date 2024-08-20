@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { logIn } from './logIn.controller.js';
+import { LogInController } from './logIn.controller.js';
 
 const logInRouter = Router();
 
-logInRouter.get('/', logIn.get);
-logInRouter.post('/', logIn.post);
+logInRouter.get('/', LogInController.get);
+logInRouter.post('/', LogInController.post);
 
 export { logInRouter };

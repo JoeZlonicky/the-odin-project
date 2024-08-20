@@ -5,4 +5,4 @@ const get = asyncHandler(async (req, res) => {
   res.redirect('/');
 });
 
-export const logOut = { get };
+export const LogOutController = { get };

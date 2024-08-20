@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>View Message | <%= siteName %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1>View Message</h1>
+    <div><b>Title:</b> <%=message.title%></div>
+    <div><b>Body:</b> <%=message.body%></div>
+    <div><b>Author:</b> Anonymous</div>
+    <div><b>Posted date:</b> Unknown</div>
+    <p><a href="/">Home</a></p>
+  </body>
+</html>

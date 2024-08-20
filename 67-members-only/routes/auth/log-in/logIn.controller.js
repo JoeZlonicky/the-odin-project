@@ -20,4 +20,4 @@ const post = asyncHandler(async (req, res, next) => {
   })(req, res, next);
 });
 
-export const logIn = { post, get };
+export const LogInController = { post, get };

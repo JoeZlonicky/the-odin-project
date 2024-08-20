@@ -4,4 +4,4 @@ function handle(err, _req, res, _next) {
   res.status(500).render('_errors/serverError');
 }
 
-export const serverError = { handle };
+export const ServerErrorController = { handle };

@@ -24,4 +24,4 @@ const post = asyncHandler(async (req, res) => {
   res.redirect('/');
 });
 
-export const signUp = { get, post };
+export const SignUpController = { get, post };
