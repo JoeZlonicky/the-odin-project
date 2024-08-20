@@ -11,7 +11,8 @@ const post = asyncHandler(async (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.render('auth/log-in/logIn', { error: info.message });
+      const { username } = req.body;
+      return res.status(401).render('auth/log-in/logIn', { error: info.message, username });
     }
 
     await req.promiseLogIn(user);

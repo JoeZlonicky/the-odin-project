@@ -2,38 +2,53 @@
 <html lang="en">
   <head>
     <title>Sign up | <%= siteName %></title>
-    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <%- include('header') %>
     <h1>Sign up</h1>
     <% if (user) { %>
-      <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
+    <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
     <% } else { %>
-      <form action="/auth/sign-up" method="post">
-        <div>
-          <label for="username">Username: </label>
-          <input name="username" id="username" required/>
-        </div>
-        <div>
-          <label for="password">Password: </label>
-          <input name="password" id="password" required/>
-        </div>
-        <div>
-          <label for="first-name">First Name: </label>
-          <input name="firstName" id="first-name" required/>
-        </div>
-        <div>
-          <label for="last-name">Last Name: </label>
-          <input name="lastName" id="last-name" required/>
-        </div>
-        <div>
-          <p>Already have an account? <a href="/auth/log-in/view">Log in</a> instead.</p>
-        </div>
-        <div>
-          <button type="submit">Sign up</button>
-        </div>
-      </form>
+    <% if (locals.error) { %>
+    <div><%= error %></div>
+    <% } %>
+    <form action="/auth/sign-up" method="post">
+      <div>
+        <label for="username">Username: </label>
+        <input name="username" id="username" autocomplete="username" value="<%= locals.username || '' %>" required />
+      </div>
+      <div>
+        <label for="password">Password: </label>
+        <input name="password" id="password" type="password" autocomplete="new-password" required />
+      </div>
+      <div>
+        <label for="first-name">First Name: </label>
+        <input
+          name="firstName"
+          id="first-name"
+          autocomplete="given-name"
+          value="<%= locals.firstName || '' %>"
+          required
+        />
+      </div>
+      <div>
+        <label for="last-name">Last Name: </label>
+        <input
+          name="lastName"
+          id="last-name"
+          autocomplete="family-name"
+          value="<%= locals.lastName || '' %>"
+          required
+        />
+      </div>
+      <div>
+        <p>Already have an account? <a href="/auth/log-in">Log in</a> instead.</p>
+      </div>
+      <div>
+        <button type="submit">Sign up</button>
+      </div>
+    </form>
     <% } %>
   </body>
 </html>

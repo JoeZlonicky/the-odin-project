@@ -2,8 +2,8 @@ import bcrypt from 'bcryptjs';
 import LocalStrategy from 'passport-local';
 import { Users } from '../routes/users/users.model.js';
 
-const incorrectUsernameMessage = 'Incorrect username';
-const correctUsernameMessage = 'Incorrect password';
+const incorrectUsernameMessage = 'Invalid username';
+const correctUsernameMessage = 'Invalid password';
 
 const localStrategy = new LocalStrategy(async (username, password, done) => {
   try {
