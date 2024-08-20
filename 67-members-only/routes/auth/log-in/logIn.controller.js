@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import passport from 'passport';
 
-function view(_req, res) {
+function get(_req, res) {
   res.render('auth/log-in/logIn');
 }
 
@@ -19,4 +19,4 @@ const post = asyncHandler(async (req, res, next) => {
   })(req, res, next);
 });
 
-export const logIn = { post, view };
+export const logIn = { post, get };

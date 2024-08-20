@@ -3,8 +3,7 @@ import { signUp } from './signUp.controller.js';
 
 const signUpRouter = Router();
 
-signUpRouter.get('/view', signUp.view);
-
+signUpRouter.get('/', signUp.get);
 signUpRouter.post('/', signUp.post);
 
 export { signUpRouter };

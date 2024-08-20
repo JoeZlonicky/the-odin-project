@@ -8,10 +8,9 @@ const indexRouter = Router();
 
 indexRouter.use('/auth', authRouter);
 
-indexRouter.get('/view', index.view);
-indexRouter.get('/', index.read);
+indexRouter.get('/', index.get);
 
-indexRouter.use(serverError.view);
-indexRouter.use(pageNotFound.view);
+indexRouter.use(pageNotFound.get);
+indexRouter.use(serverError.handle);
 
 export { indexRouter };

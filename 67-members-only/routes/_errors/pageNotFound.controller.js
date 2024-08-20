@@ -1,5 +1,5 @@
-function view(_req, res) {
+function get(_req, res) {
   res.status(404).render('_errors/pageNotFound');
 }
 
-export const pageNotFound = { view };
+export const pageNotFound = { get };
