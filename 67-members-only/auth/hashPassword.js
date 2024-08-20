@@ -1,7 +1,10 @@
 import bcrypt from 'bcryptjs';
 
+const saltLength = 10;
+
 async function hashPassword(password) {
-  return await bcrypt.hash(password, 10);
+  const hashed = await bcrypt.hash(password, saltLength);
+  return hashed;
 }
 
 export { hashPassword };
