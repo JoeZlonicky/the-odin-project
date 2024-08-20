@@ -17,6 +17,12 @@ nav {
   gap: 8px;
 }
 
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .message-preview {
   border: 1px solid white;
 
@@ -24,12 +30,16 @@ nav {
     padding: 8px;
   }
 
-  div:first-child {
-    padding-bottom: 0;
+  .message-preview__title {
     font-weight: bold;
   }
 
-  div:last-child {
+  .message-preview__body {
+    padding-top: 0;
+  }
+
+  .message-preview__footer {
     border-top: 1px dashed white;
+    padding-top: 8px;
   }
 }

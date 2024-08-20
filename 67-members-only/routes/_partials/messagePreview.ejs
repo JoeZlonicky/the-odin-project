@@ -1,5 +1,11 @@
 <div class="message-preview">
-  <div><%= message.title %></div>
-  <div><%= message.body %></div>
-  <div>Anonymous Author - <a href="/messages/<%=message.id%>">Open</a></div>
+  <div class="message-preview__title"><%= message.title %></div>
+  <% if (message.body) { %>
+  <div class="message-preview__body"><%= message.body %></div>
+  <% } %>
+
+  <div class="message-preview__footer">
+    <%= (user && user.id === message.user_id) ? 'You' : 'Anonymous Author' %> -
+    <a href="/messages/<%=message.id%>">Open</a>
+  </div>
 </div>

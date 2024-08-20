@@ -9,14 +9,19 @@
     <h1><%= siteName %></h1>
     <% if (user) { %>
     <p>Welcome to The Forum, <%= user.first_name %>!</p>
+    <p><a href="/messages/newMessage">Post a new message</a></p>
     <% } %>
     <h2>Messages</h2>
     <% if (messages.length === 0) {%>
     <div>No messages yet!</div>
-    <% } %>
-    <% messages.forEach((message) => {%>
-    <%- include('messagePreview', {message}) %>
-    <% }); %>
+    <% } else {%>
+    <div class="messages-container">
+      <% messages.forEach((message) => {%>
+      <%- include('messagePreview', {message}) %>
+      <% }); %>
+      <% } %>
+    </div>
+
     <h2>Site Stats</h2>
   </body>
 </html>

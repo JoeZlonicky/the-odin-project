@@ -13,4 +13,19 @@ const get = asyncHandler(async (req, res) => {
   res.render('messages/views/message', { message: message });
 });
 
-export const MessagesController = { get };
+const post = asyncHandler(async (req, res) => {
+  const user = req.user;
+  if (!user) {
+    res.status(401).render('_errors/unauthorizedError');
+  }
+
+  const { title, body } = req.body;
+  Messages.post(user.id, title, body);
+  res.redirect('/');
+});
+
+function getCreateForm(_req, res) {
+  res.render('messages/views/newMessage');
+}
+
+export const MessagesController = { get, getCreateForm, post };

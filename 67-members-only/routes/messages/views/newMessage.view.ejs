@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>New Message | <%= siteName %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1>New Message</h1>
+
+    <% if (!user) { %>
+    <p>You need to <a href="/auth/log-in">log in</a> to post a new message.</p>
+    <% } else { %>
+
+    <% if (locals.error) { %>
+    <div><%= error %></div>
+    <% } %>
+
+    <form action="/messages" method="post">
+      <div>
+        <label for="title">Title: </label>
+        <input name="title" id="title" value="<%= locals.title || '' %>" required />
+      </div>
+      <div>
+        <label for="body">Body: </label>
+        <div>
+          <textarea name="body" id="body"></textarea>
+        </div>
+      </div>
+      <div>
+        <button type="submit">Post</button>
+      </div>
+    </form>
+    <% } %>
+  </body>
+</html>
