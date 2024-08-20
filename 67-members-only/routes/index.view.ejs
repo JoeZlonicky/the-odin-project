@@ -6,11 +6,14 @@
   </head>
   <body>
     <%- include('header') %>
+
     <h1><%= siteName %></h1>
-    <% if (user) { %>
+
+    <% if (isLoggedIn) { %>
     <p>Welcome to The Forum, <%= user.first_name %>!</p>
     <p><a href="/messages/newMessage">Post a new message</a></p>
     <% } %>
+
     <h2>Messages</h2>
     <% if (messages.length === 0) {%>
     <div>No messages yet!</div>
@@ -29,7 +32,7 @@
     </div>
     <div>
       <b>Number of users: </b>
-      <%=(user && user.is_member) ? users.length : 'Unknown'%>
+      <%=(isMember) ? users.length : '[Visible by members]'%>
     </div>
   </body>
 </html>

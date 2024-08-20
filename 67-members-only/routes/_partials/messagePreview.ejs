@@ -5,7 +5,7 @@
   <% } %>
 
   <div class="message-preview__footer">
-    <%= (user && user.id === message.user_id) ? 'You' : 'Anonymous Author' %> -
+    <%= isIdUserId(message.user_id) ? '[You]' : 'Anonymous Author' %> -
     <a href="/messages/<%=message.id%>">Open</a>
   </div>
 </div>

@@ -3,7 +3,7 @@
     <a href="/"><%= siteName %></a>
   </span>
   <nav>
-    <% if (user) {%>
+    <% if (isLoggedIn) {%>
     <a href="/users/<%=user.id%>">My Profile</a>
     <a href="/auth/log-out">Log out</a>
     <% } else { %>

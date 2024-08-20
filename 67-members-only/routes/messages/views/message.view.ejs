@@ -7,10 +7,22 @@
   <body>
     <%- include('header') %>
     <h1>View Message</h1>
-    <div><b>Title:</b> <%=message.title%></div>
-    <div><b>Body:</b> <%=message.body%></div>
-    <div><b>Author:</b> Anonymous</div>
-    <div><b>Posted date:</b> Unknown</div>
+    <div>
+      <b>Title:</b>
+      <%=message.title%>
+    </div>
+    <div>
+      <b>Body:</b>
+      <%=message.body%>
+    </div>
+    <div>
+      <b>Author:</b>
+      <%=isIdUserId(message.user_id) ? '[You]' : '[Visible by members]'%>
+    </div>
+    <div>
+      <b>Posted date:</b>
+      <%=isIdUserId(message.user_id) ? datetimeFormat(message.timestamp) : '[Visible by members]' %>
+    </div>
     <p><a href="/">Home</a></p>
   </body>
 </html>

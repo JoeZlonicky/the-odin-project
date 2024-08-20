@@ -8,7 +8,7 @@
     <%- include('header') %>
     <h1>Log In</h1>
 
-    <% if (user) { %>
+    <% if (isLoggedIn) { %>
     <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
     <% } else { %>
 

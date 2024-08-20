@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import asyncHandler from 'express-async-handler';
 import { PageNotFoundController } from '../_errors/pageNotFound.controller.js';
 import { UnauthorizedController } from '../_errors/unauthorizedError.controller.js';
@@ -12,7 +13,10 @@ const get = asyncHandler(async (req, res) => {
     return;
   }
 
-  res.render('messages/views/message', { message: message });
+  res.render('messages/views/message', {
+    message: message,
+    datetimeFormat: (date) => format(date, 'yyyy/MM/dd - h:mmaa'),
+  });
 });
 
 const post = asyncHandler(async (req, res) => {
