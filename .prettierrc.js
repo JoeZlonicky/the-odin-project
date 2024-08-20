@@ -1,5 +1,5 @@
 export default {
-  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-css-order'],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-css-order', 'prettier-plugin-ejs'],
   singleQuote: true,
   printWidth: 120,
   trailingCommas: 'all',
