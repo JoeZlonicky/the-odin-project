@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import asyncHandler from 'express-async-handler';
 import { validationResult } from 'express-validator';
+import { NotAnAdminController } from '../_errors/not-an-admin/notAnAdmin.controller.js';
 import { PageNotFoundController } from '../_errors/page-not-found/pageNotFound.controller.js';
 import { UnauthorizedController } from '../_errors/unauthorized/unauthorized.controller.js';
 import { Messages } from './messages.model.js';
@@ -43,4 +44,27 @@ const post = [
   }),
 ];
 
-export const MessagesController = { get, post };
+const remove = asyncHandler(async (req, res) => {
+  const user = req.user;
+  if (!user) {
+    UnauthorizedController.get(req, res);
+    return;
+  }
+
+  const id = req.params.id;
+  const message = await Messages.getById(id);
+  if (!user.is_admin && message && message.user_id !== user.id) {
+    NotAnAdminController.get(req, res);
+    return;
+  }
+
+  if (!message) {
+    PageNotFoundController.get(req, res);
+    return;
+  }
+
+  await Messages.deleteById(id);
+  res.redirect('/');
+});
+
+export const MessagesController = { get, post, remove };

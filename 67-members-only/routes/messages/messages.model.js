@@ -32,4 +32,9 @@ async function post(userId, title, body) {
   return rows[0];
 }
 
-export const Messages = { getAll, getById, post };
+async function deleteById(id) {
+  const { rows } = await dbPool.query('DELETE FROM messages WHERE messages.id = $1', [id]);
+  return rows[0];
+}
+
+export const Messages = { getAll, getById, post, deleteById };

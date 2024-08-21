@@ -7,6 +7,7 @@ const messagesRouter = Router();
 messagesRouter.use('/new', newMessageRouter);
 
 messagesRouter.get('/:id(\\d)+', MessagesController.get);
+messagesRouter.delete('/:id(\\d)+', MessagesController.remove);
 
 messagesRouter.post('/', MessagesController.post);
 
