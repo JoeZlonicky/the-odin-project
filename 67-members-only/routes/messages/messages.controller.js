@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import asyncHandler from 'express-async-handler';
-import { PageNotFoundController } from '../_errors/pageNotFound.controller.js';
-import { UnauthorizedController } from '../_errors/unauthorizedError.controller.js';
+import { PageNotFoundController } from '../_errors/page-not-found/pageNotFound.controller.js';
+import { UnauthorizedController } from '../_errors/unauthorized/unauthorized.controller.js';
 import { Messages } from './messages.model.js';
 
 const get = asyncHandler(async (req, res) => {
@@ -13,7 +13,7 @@ const get = asyncHandler(async (req, res) => {
     return;
   }
 
-  res.render('messages/views/message', {
+  res.render('messages/message', {
     message: message,
     datetimeFormat: (datetime) => format(datetime, 'yyyy/MM/dd - h:mmaa'),
   });
@@ -31,12 +31,4 @@ const post = asyncHandler(async (req, res) => {
   res.redirect('/');
 });
 
-function getCreateForm(req, res) {
-  if (!req.user) {
-    UnauthorizedController.get(req, res);
-    return;
-  }
-  res.render('messages/views/newMessage');
-}
-
-export const MessagesController = { get, getCreateForm, post };
+export const MessagesController = { get, post };

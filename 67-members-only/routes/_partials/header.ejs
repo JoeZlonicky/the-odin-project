@@ -5,10 +5,10 @@
   <nav>
     <% if (isLoggedIn) {%>
     <a href="/users/<%=user.id%>">My Profile</a>
-    <a href="/auth/log-out">Log out</a>
+    <a href="/users/log-out">Log out</a>
     <% } else { %>
-    <a href="/auth/log-in">Log in</a>
-    <a href="/auth/sign-up">Sign up</a>
+    <a href="/users/log-in">Log in</a>
+    <a href="/users/sign-up">Sign up</a>
     <% } %>
   </nav>
 </header>

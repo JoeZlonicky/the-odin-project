@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler';
 import passport from 'passport';
 
 function get(_req, res) {
-  res.render('auth/log-in/logIn');
+  res.render('users/log-in/logIn');
 }
 
 const post = asyncHandler(async (req, res, next) => {
@@ -12,7 +12,7 @@ const post = asyncHandler(async (req, res, next) => {
     }
     if (!user) {
       const { username } = req.body;
-      return res.status(401).render('auth/log-in/logIn', { error: info.message, username });
+      return res.status(401).render('users/log-in/logIn', { error: info.message, username });
     }
 
     await req.promiseLogIn(user);

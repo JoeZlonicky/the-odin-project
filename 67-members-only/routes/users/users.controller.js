@@ -1,8 +1,11 @@
 import asyncHandler from 'express-async-handler';
-import { NotAMemberController } from '../_errors/notAMembercontroller.js';
-import { PageNotFoundController } from '../_errors/pageNotFound.controller.js';
-import { UnauthorizedController } from '../_errors/unauthorizedError.controller.js';
+import { validationResult } from 'express-validator';
+import { hashPassword } from '../../auth/hashPassword.js';
+import { NotAMemberController } from '../_errors/not-a-member/notAMember.controller.js';
+import { PageNotFoundController } from '../_errors/page-not-found/pageNotFound.controller.js';
+import { UnauthorizedController } from '../_errors/unauthorized/unauthorized.controller.js';
 import { Users } from './users.model.js';
+import { validateUser } from './users.validation.js';
 
 const get = asyncHandler(async (req, res) => {
   const user = req.user;
@@ -31,40 +34,23 @@ const get = asyncHandler(async (req, res) => {
   res.render('users/_views/otherProfile', { otherUser, messages });
 });
 
-const updateToMember = asyncHandler(async (req, res) => {
-  const user = req.user;
-  if (!user) {
-    UnauthorizedController.get(req, res);
-    return;
-  }
+const post = [
+  validateUser,
+  asyncHandler(async (req, res) => {
+    const { username, password, firstName, lastName } = req.body;
 
-  const { password } = req.body;
-  if (password !== process.env.MEMBER_PASSWORD || user.is_member) {
-    const messages = await Users.getUserMessages(user.id);
-    res.render('users/_views/myProfile', { messages: messages, memberPasswordError: 'Invalid' });
-    return;
-  }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('users/sign-up/signUp', { errors: errors.array(), username, firstName, lastName });
+      return;
+    }
 
-  await Users.updateToMember(user.id);
-  res.redirect(`/users/${user.id}`);
-});
+    const hashedPassword = await hashPassword(password);
+    const user = await Users.insert(username, hashedPassword, firstName, lastName, false, false);
 
-const updateToAdmin = asyncHandler(async (req, res) => {
-  const user = req.user;
-  if (!user) {
-    UnauthorizedController.get(req, res);
-    return;
-  }
+    await req.promiseLogIn(user);
+    res.redirect('/');
+  }),
+];
 
-  const { password } = req.body;
-  if (password !== process.env.ADMIN_PASSWORD || user.is_admin) {
-    const messages = await Users.getUserMessages(user.id);
-    res.render('users/_views/myProfile', { messages: messages, adminPasswordError: 'Invalid' });
-    return;
-  }
-
-  await Users.updateToAdmin(user.id);
-  res.redirect(`/users/${user.id}`);
-});
-
-export const UsersController = { get, updateToMember, updateToAdmin };
+export const UsersController = { get, post };

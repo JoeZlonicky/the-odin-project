@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import { MessagesController } from './messages.controller.js';
+import { newMessageRouter } from './new-message/newMessage.router.js';
 
 const messagesRouter = Router();
 
-messagesRouter.get('/:id(\\d)+', MessagesController.get);
+messagesRouter.use('/new', newMessageRouter);
 
-messagesRouter.get('/newMessage', MessagesController.getCreateForm);
+messagesRouter.get('/:id(\\d)+', MessagesController.get);
 
 messagesRouter.post('/', MessagesController.post);
 

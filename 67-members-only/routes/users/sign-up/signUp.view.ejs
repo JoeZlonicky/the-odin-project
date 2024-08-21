@@ -9,7 +9,7 @@
 
     <h1>Sign up</h1>
     <% if (isLoggedIn) { %>
-    <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
+    <p>You are already logged in. Would you like to <a href="/users/log-out">log out</a> instead?</p>
     <% } else { %>
 
     <% if (locals.errors) { %>
@@ -18,7 +18,7 @@
     <% }) %>
     <% } %>
 
-    <form action="/auth/sign-up" method="post">
+    <form action="/users/sign-up" method="post">
       <div>
         <label for="username">Username: </label>
         <input name="username" id="username" autocomplete="username" value="<%= locals.username || '' %>" required />
@@ -52,7 +52,7 @@
         />
       </div>
       <div>
-        <p>Already have an account? <a href="/auth/log-in">Log in</a> instead.</p>
+        <p>Already have an account? <a href="/users/log-in">Log in</a> instead.</p>
       </div>
       <div>
         <button type="submit">Sign up</button>
