@@ -45,4 +45,28 @@ async function insert(username, password, firstName, lastName, isMember, isAdmin
   return rows[0];
 }
 
-export const Users = { getById, getByUsername, getUserMessages, getAll, insert };
+async function updateToMember(id) {
+  const { rows } = await dbPool.query(
+    `
+    UPDATE users
+    SET is_member = TRUE
+    WHERE id = $1
+    RETURNING *`,
+    [id],
+  );
+  return rows[0];
+}
+
+async function updateToAdmin(id) {
+  const { rows } = await dbPool.query(
+    `
+    UPDATE users
+    SET is_member = TRUE, is_admin = TRUE
+    WHERE id = $1
+    RETURNING *`,
+    [id],
+  );
+  return rows[0];
+}
+
+export const Users = { getById, getByUsername, getUserMessages, getAll, insert, updateToMember, updateToAdmin };

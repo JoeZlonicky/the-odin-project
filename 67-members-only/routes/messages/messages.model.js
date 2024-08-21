@@ -1,19 +1,25 @@
 import { dbPool } from '../../db/dbPool.js';
 
 async function getAll(descendingTimestamp = false) {
-  let rows = [];
+  let query = `SELECT messages.*, username 
+    FROM messages JOIN users 
+    ON messages.user_id = users.id`;
 
   if (descendingTimestamp) {
-    ({ rows } = await dbPool.query('SELECT * from messages ORDER BY timestamp DESC'));
-  } else {
-    ({ rows } = await dbPool.query('SELECT * from messages'));
+    query += ' ORDER BY timestamp DESC';
   }
 
+  const { rows } = await dbPool.query(query);
   return rows;
 }
 
 async function getById(id) {
-  const { rows } = await dbPool.query('SELECT * FROM messages WHERE id = $1', [id]);
+  const { rows } = await dbPool.query(
+    `SELECT messages.*, username 
+    FROM messages JOIN users 
+    ON messages.user_id = users.id WHERE messages.id = $1`,
+    [id],
+  );
   return rows[0];
 }
 

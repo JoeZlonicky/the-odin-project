@@ -20,7 +20,7 @@
     <% } else {%>
     <div class="messages-container">
       <% messages.forEach((message) => {%>
-      <%- include('messagePreview', {message}) %>
+      <%- include('messagePreview', {message, datetimeFormat}) %>
       <% }); %>
       <% } %>
     </div>

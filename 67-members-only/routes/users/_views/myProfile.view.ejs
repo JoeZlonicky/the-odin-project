@@ -23,6 +23,38 @@
       <b>Number of messages:</b>
       <%=messages.length%>
     </div>
+
+    <h2>Access</h2>
+    <div>
+      <% if (isMember) { %>
+      <div><b>Member:</b> yes</div>
+      <% } else {%>
+      <form action="/users/member" method="post">
+        <label for="member-password">Member Password: </label>
+        <input name="password" id="member-password" type="password" required />
+        <% if (locals.memberPasswordError) { %>
+        <span>[<%=locals.memberPasswordError%>]</span>
+        <% } %>
+        <button type="submit">Submit</button>
+      </form>
+
+      <% } %>
+    </div>
+
+    <div>
+      <% if (isAdmin) { %>
+      <div><b>Admin:</b> yes</div>
+      <% } else {%>
+      <form action="/users/admin" method="post">
+        <label for="admin-password">Admin Password: </label>
+        <input name="password" id="admin-password" type="password" required />
+        <% if (locals.adminPasswordError) { %>
+        <span>[<%=locals.adminPasswordError%>]</span>
+        <% } %>
+        <button type="submit">Submit</button>
+      </form>
+      <% } %>
+    </div>
     <p><a href="/">Home</a></p>
   </body>
 </html>

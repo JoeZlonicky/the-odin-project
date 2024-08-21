@@ -1,23 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title><%=otherUser.username%> | <%= siteName %></title>
+    <title><%= otherUser.username %> | <%= siteName %></title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <%- include('header') %>
-    <h1><%=otherUser.username%>'s Profile</h1>
+    <h1><%= otherUser.username %>'s Profile</h1>
     <div>
       <b>Username:</b>
-      <%=otherUser.username%>
+      <%= otherUser.username %>
     </div>
     <div>
       <b>First Name:</b>
-      <%=otherUser.first_name%>
+      <%= otherUser.first_name %>
     </div>
     <div>
       <b>Last Name:</b>
-      <%=otherUser.last_name%>
+      <%= otherUser.last_name %>
+    </div>
+    <div>
+      <b>Number of messages:</b>
+      <%= isMember ? messages.length : '[Visible by members]' %>
     </div>
     <p><a href="/">Home</a></p>
   </body>

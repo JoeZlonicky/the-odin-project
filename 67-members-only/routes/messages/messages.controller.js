@@ -15,7 +15,7 @@ const get = asyncHandler(async (req, res) => {
 
   res.render('messages/views/message', {
     message: message,
-    datetimeFormat: (date) => format(date, 'yyyy/MM/dd - h:mmaa'),
+    datetimeFormat: (datetime) => format(datetime, 'yyyy/MM/dd - h:mmaa'),
   });
 });
 

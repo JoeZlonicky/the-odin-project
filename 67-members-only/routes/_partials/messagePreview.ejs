@@ -5,7 +5,16 @@
   <% } %>
 
   <div class="message-preview__footer">
-    <%= isIdUserId(message.user_id) ? '[You]' : 'Anonymous Author' %> -
-    <a href="/messages/<%=message.id%>">Open</a>
+    <% if (isIdUserId(message.user_id)) { %> [You] <% } else if (isMember) { %>
+    <a href="/users/<%= message.user_id %>"><%=message.username%></a>
+    <% } else { %>
+    Anonymous Author
+    <% } %>
+
+    <% if (isIdUserId(message.user_id) || isMember) { %>
+    -
+    <%= datetimeFormat(message.timestamp) %>
+    <% } %>
+    - <a href="/messages/<%=message.id%>">Open</a>
   </div>
 </div>
