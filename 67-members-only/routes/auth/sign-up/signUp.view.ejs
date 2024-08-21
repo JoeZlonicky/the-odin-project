@@ -12,9 +12,12 @@
     <p>You are already logged in. Would you like to <a href="/auth/log-out">log out</a> instead?</p>
     <% } else { %>
 
-    <% if (locals.error) { %>
-    <div><%= error %></div>
+    <% if (locals.errors) { %>
+    <% locals.errors.forEach((error) => { %>
+    <div><%= error.msg %></div>
+    <% }) %>
     <% } %>
+
     <form action="/auth/sign-up" method="post">
       <div>
         <label for="username">Username: </label>
@@ -23,6 +26,10 @@
       <div>
         <label for="password">Password: </label>
         <input name="password" id="password" type="password" autocomplete="new-password" required />
+      </div>
+      <div>
+        <label for="confirm-password">Confirm Password: </label>
+        <input name="confirmPassword" id="confirm-password" type="password" autocomplete="new-password" required />
       </div>
       <div>
         <label for="first-name">First Name: </label>
