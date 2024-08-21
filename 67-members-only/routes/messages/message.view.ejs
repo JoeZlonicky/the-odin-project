@@ -12,16 +12,16 @@
       <%=message.title%>
     </div>
     <div>
-      <b>Body:</b>
-      <%=message.body%>
-    </div>
-    <div>
       <b>Author:</b>
       <%=isIdUserId(message.user_id) ? '[You]' : '[Visible by members]'%>
     </div>
     <div>
       <b>Posted date:</b>
       <%=isIdUserId(message.user_id) ? datetimeFormat(message.timestamp) : '[Visible by members]' %>
+    </div>
+    <div>
+      <b>Body:</b>
+      <div class="keep-new-lines"><%=message.body%></div>
     </div>
     <p><a href="/">Home</a></p>
   </body>

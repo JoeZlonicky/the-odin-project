@@ -8,19 +8,17 @@
     <%- include('header') %>
     <h1>New Message</h1>
 
-    <% if (locals.error) { %>
-    <div><%= error %></div>
-    <% } %>
+    <%- include('errorList') %>
 
     <form action="/messages" method="post">
       <div>
         <label for="title">Title: </label>
-        <input name="title" id="title" value="<%= locals.title || '' %>" required />
+        <input name="title" id="title" minlength="1" maxlength="64" value="<%= locals.title || '' %>" required />
       </div>
       <div>
         <label for="body">Body: </label>
         <div>
-          <textarea name="body" id="body"></textarea>
+          <textarea name="body" id="body" maxlength="2000"><%= locals.body || '' %></textarea>
         </div>
       </div>
       <div>

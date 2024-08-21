@@ -12,13 +12,9 @@
     <p>You are already logged in. Would you like to <a href="/users/log-out">log out</a> instead?</p>
     <% } else { %>
 
-    <% if (locals.errors) { %>
-    <% locals.errors.forEach((error) => { %>
-    <div><%= error.msg %></div>
-    <% }) %>
-    <% } %>
+    <%- include('errorList') %>
 
-    <form action="/users/sign-up" method="post">
+    <form action="/users" method="post">
       <div>
         <label for="username">Username: </label>
         <input name="username" id="username" autocomplete="username" value="<%= locals.username || '' %>" required />

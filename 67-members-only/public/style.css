@@ -1,5 +1,6 @@
 :root {
   background-color: black;
+  padding-bottom: 100px;
   color: white;
 }
 
@@ -38,6 +39,24 @@ input {
 
 form {
   margin-top: 8px;
+}
+
+ul {
+  margin-top: 4px;
+  padding-left: 32px;
+}
+
+textarea {
+  min-width: 283px;
+  min-height: 100px;
+}
+
+input#title {
+  min-width: 240px;
+}
+
+.keep-new-lines {
+  white-space: pre-wrap;
 }
 
 .messages-container {

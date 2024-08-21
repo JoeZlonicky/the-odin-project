@@ -16,4 +16,6 @@ usersRouter.use('/member', memberRouter);
 
 usersRouter.get('/:id(\\d)+', UsersController.get);
 
+usersRouter.post('/', UsersController.post);
+
 export { usersRouter };
