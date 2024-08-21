@@ -24,14 +24,6 @@
         <input name="username" id="username" autocomplete="username" value="<%= locals.username || '' %>" required />
       </div>
       <div>
-        <label for="password">Password: </label>
-        <input name="password" id="password" type="password" autocomplete="new-password" required />
-      </div>
-      <div>
-        <label for="confirm-password">Confirm Password: </label>
-        <input name="confirmPassword" id="confirm-password" type="password" autocomplete="new-password" required />
-      </div>
-      <div>
         <label for="first-name">First Name: </label>
         <input
           name="firstName"
@@ -52,12 +44,20 @@
         />
       </div>
       <div>
-        <p>Already have an account? <a href="/users/log-in">Log in</a> instead.</p>
+        <label for="password">Password: </label>
+        <input name="password" id="password" type="password" autocomplete="new-password" required />
+      </div>
+      <div>
+        <label for="confirm-password">Confirm Password: </label>
+        <input name="confirmPassword" id="confirm-password" type="password" autocomplete="new-password" required />
       </div>
       <div>
         <button type="submit">Sign up</button>
       </div>
     </form>
+    <div>
+      <p>Already have an account? <a href="/users/log-in">Log in</a> instead.</p>
+    </div>
     <% } %>
   </body>
 </html>

@@ -13,7 +13,10 @@
     <% } else { %>
 
     <% if (locals.error) { %>
-    <div><%= error %></div>
+    <div>
+      <b>Error:</b>
+      <%= error %>
+    </div>
     <% } %>
 
     <form action="/users/log-in" method="post">
@@ -26,12 +29,13 @@
         <input name="password" id="password" type="password" autocomplete="current-password" required />
       </div>
       <div>
-        <p>Don't have an account? <a href="/users/sign-up">Sign up</a> instead.</p>
-      </div>
-      <div>
         <button type="submit">Log in</button>
       </div>
     </form>
+
+    <div>
+      <p>Don't have an account? <a href="/users/sign-up">Sign up</a> instead.</p>
+    </div>
     <% } %>
   </body>
 </html>

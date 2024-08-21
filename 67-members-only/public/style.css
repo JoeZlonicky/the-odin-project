@@ -17,6 +17,29 @@ nav {
   gap: 8px;
 }
 
+button {
+  cursor: pointer;
+  margin-top: 12px;
+  border: 1px solid white;
+  background-color: black;
+  padding: 2px 12px;
+  color: white;
+  font-size: 1.1rem;
+  font-family: inherit;
+}
+
+button:hover:not(:active) {
+  background-color: rgb(92, 92, 92);
+}
+
+input {
+  margin-bottom: 8px;
+}
+
+form {
+  margin-top: 8px;
+}
+
 .messages-container {
   display: flex;
   flex-direction: column;
