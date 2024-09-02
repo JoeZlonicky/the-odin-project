@@ -1,0 +1,9 @@
+[submodule "69-blog/blog-api"]
+	path = 69-blog/blog-api
+	url = https://github.com/JoeZlonicky/blog-api
+[submodule "69-blog/blog-admin"]
+	path = 69-blog/blog-admin
+	url = https://github.com/JoeZlonicky/blog-admin
+[submodule "69-blog/blog-website"]
+	path = 69-blog/blog-website
+	url = https://github.com/JoeZlonicky/blog-website
